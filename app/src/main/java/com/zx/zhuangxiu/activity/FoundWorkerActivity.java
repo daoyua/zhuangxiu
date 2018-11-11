@@ -77,7 +77,7 @@ public class FoundWorkerActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_found_worker);
 
-        userID =URLS.getUser_id();
+        userID = URLS.getUser_id();
 
         initView();
     }
@@ -107,9 +107,9 @@ public class FoundWorkerActivity extends AppCompatActivity implements View.OnCli
         mRefresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
-                if (page==1){
-                    getWorkerList(page,URLS.getLocation());
-                }else {
+                if (page == 1) {
+                    getWorkerList(page, URLS.getLocation());
+                } else {
                     getWorkerList(page);
                 }
 
@@ -128,7 +128,7 @@ public class FoundWorkerActivity extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.worker_rb2:
                 shouYeZgrTwoList.clear();
-                getWorkerList(1,URLS.getLocation());
+                getWorkerList(1, URLS.getLocation());
                 page = 1;
                 break;
             case R.id.worker_rb3:
@@ -176,8 +176,8 @@ public class FoundWorkerActivity extends AppCompatActivity implements View.OnCli
 
     }
 
-    public void getWorkerList(int typeId,String address) {
-        String urlPath = URLS.syFoundWorkerShow(typeId,address);
+    public void getWorkerList(int typeId, String address) {
+        String urlPath = URLS.syFoundWorkerShow(typeId, address);
 
         OkHttpUtils.get(urlPath, new OkHttpUtils.ResultCallback<ShouYeZgrOne>() {
             @Override

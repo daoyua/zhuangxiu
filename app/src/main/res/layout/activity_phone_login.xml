@@ -84,6 +84,16 @@
                     android:maxLength="11"
                     android:textSize="@dimen/shisi"
                     android:theme="@style/MyEditText" />
+                <TextView
+                    android:id="@+id/phone_login_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:visibility="visible"
+                    android:text="注册"
+                    android:textColor="@color/green" />
             </RelativeLayout>
 
             <RelativeLayout

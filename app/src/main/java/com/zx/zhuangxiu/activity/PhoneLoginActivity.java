@@ -40,6 +40,7 @@ public class PhoneLoginActivity extends AppCompatActivity implements View.OnClic
 
     private List<FisrstLoginBean> mlist = new ArrayList<>();
     private CountDownTimer timer;
+    private TextView phone_login_register;
 
 
     @Override
@@ -58,7 +59,9 @@ public class PhoneLoginActivity extends AppCompatActivity implements View.OnClic
         }
 
     }
+
     private long mExitToastTime;
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
@@ -67,6 +70,7 @@ public class PhoneLoginActivity extends AppCompatActivity implements View.OnClic
         }
         return super.onKeyDown(keyCode, event);
     }
+
     //点击两次退出
     public void exit() {
         if ((System.currentTimeMillis() - mExitToastTime) > 2000) {
@@ -87,6 +91,9 @@ public class PhoneLoginActivity extends AppCompatActivity implements View.OnClic
         phone_login_yanzm = (EditText) findViewById(R.id.phone_login_yanzm);  //输入的验证码
 
         phone_login_yzm = (TextView) findViewById(R.id.phone_login_yzm);  //获取验证码
+        //获取验证码
+        phone_login_register = (TextView) findViewById(R.id.phone_login_register);
+        phone_login_register.setVisibility(View.GONE);
         phone_login = (TextView) findViewById(R.id.phone_login);
         phone_login_back = (ImageView) findViewById(R.id.phone_login_back);
 //        phone_gerenzhuce = (TextView) findViewById(R.id.phone_gerenzhuce);
@@ -97,6 +104,7 @@ public class PhoneLoginActivity extends AppCompatActivity implements View.OnClic
         phone_login_back.setOnClickListener(this);
      /*   phone_gerenzhuce.setOnClickListener(this);
         phone_qiyezhuce.setOnClickListener(this);*/
+        phone_login_register.setOnClickListener(this);
         phone_login_yzm.setOnClickListener(this);
         wechart.setOnClickListener(this);
 
@@ -108,6 +116,10 @@ public class PhoneLoginActivity extends AppCompatActivity implements View.OnClic
         switch (view.getId()) {
             case R.id.phone_login:
                 getlogin();
+                break;
+            //TODO  注册
+            case R.id.phone_login_register:
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.phone_login_yzm:
                 getyanzhengma();
@@ -178,6 +190,7 @@ public class PhoneLoginActivity extends AppCompatActivity implements View.OnClic
 
 
     }
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
@@ -200,9 +213,9 @@ public class PhoneLoginActivity extends AppCompatActivity implements View.OnClic
         return onTouchEvent(ev);
     }
 
-    public  boolean isShouldHideInput(View v, MotionEvent event) {
+    public boolean isShouldHideInput(View v, MotionEvent event) {
         if (v != null && (v instanceof EditText)) {
-            int[] leftTop = { 0, 0 };
+            int[] leftTop = {0, 0};
             //获取输入框当前的location位置
             v.getLocationInWindow(leftTop);
             int left = leftTop[0];
@@ -219,68 +232,69 @@ public class PhoneLoginActivity extends AppCompatActivity implements View.OnClic
         }
         return false;
     }
+
     /**
      * 登陆接口
      */
     public void getlogin() {
         final String mtelephone = phone_login_phonenum.getText().toString().trim();
         String yanzhengma = phone_login_yanzm.getText().toString().trim();
-        if (TextUtils.isEmpty(mtelephone)){
+        if (TextUtils.isEmpty(mtelephone)) {
             Toast.makeText(this, "请输入手机号", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(!RegexUtils.isMobileExact(mtelephone)){
+        if (!RegexUtils.isMobileExact(mtelephone)) {
             Toast.makeText(this, "请输入正确的手机号", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (TextUtils.isEmpty(yanzhengma)){
+        if (TextUtils.isEmpty(yanzhengma)) {
             Toast.makeText(this, "请输入验证码", Toast.LENGTH_SHORT).show();
             return;
         }
-            String url = URLS.Firstlogin(mtelephone, yanzhengma);
-            OkHttpUtils.get(url, new OkHttpUtils.ResultCallback<FisrstLoginBean>() {
-                @Override
-                public void onSuccess(FisrstLoginBean response) {
-                    if (response.getResult() == 1) {
-                        if (response.getData().getState() == 1) {
-                            Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_SHORT).show();
-                            final int userId = response.getData().getUserId();
-                            //获取sharedPreferences对象
-                            SharedPreferences sharedPreferences = getSharedPreferences("zx", Context.MODE_PRIVATE);
-                            //获取editor对象
-                            SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
-                            editor.putInt("userId", userId);
-                            //提交
-                            editor.commit();//提交修改
-                            URLS.setUser_id(userId);
-                            Intent intent = new Intent(PhoneLoginActivity.this, HomeActivity.class);
-                            intent.putExtra("UserID", userId);
-                            startActivity(intent);
-                            PhoneLoginActivity.this.finish();
+        String url = URLS.Firstlogin(mtelephone, yanzhengma);
+        OkHttpUtils.get(url, new OkHttpUtils.ResultCallback<FisrstLoginBean>() {
+            @Override
+            public void onSuccess(FisrstLoginBean response) {
+                if (response.getResult() == 1) {
+                    if (response.getData().getState() == 1) {
+                        Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_SHORT).show();
+                        final int userId = response.getData().getUserId();
+                        //获取sharedPreferences对象
+                        SharedPreferences sharedPreferences = getSharedPreferences("zx", Context.MODE_PRIVATE);
+                        //获取editor对象
+                        SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
+                        editor.putInt("userId", userId);
+                        //提交
+                        editor.commit();//提交修改
+                        URLS.setUser_id(userId);
+                        Intent intent = new Intent(PhoneLoginActivity.this, HomeActivity.class);
+                        intent.putExtra("UserID", userId);
+                        startActivity(intent);
+                        PhoneLoginActivity.this.finish();
 
-                        } else {
-                            Intent intent = new Intent(PhoneLoginActivity.this, LoginActivity.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putString("shooujihao",mtelephone);
-                            intent.putExtras(bundle);
-                            startActivity(intent);
-                        }
-
+                    } else {
+                        Intent intent = new Intent(PhoneLoginActivity.this, LoginActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("shooujihao", mtelephone);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
                     }
-                }
 
-                @Override
-                public void onFailure(Exception e) {
-                    Toast.makeText(getApplicationContext(), "登陆失败，请查看您的手机号和验证码是否正确", Toast.LENGTH_SHORT).show();
                 }
-            });
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Toast.makeText(getApplicationContext(), "登陆失败，请查看您的手机号和验证码是否正确", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (timer!=null){
+        if (timer != null) {
             timer.cancel();
         }
     }

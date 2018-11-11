@@ -2,7 +2,6 @@ package com.zx.zhuangxiu.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +22,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -44,31 +42,20 @@ import com.zx.zhuangxiu.model.ImageBean;
 import com.zx.zhuangxiu.model.RegisteBean;
 import com.zx.zhuangxiu.utils.LocalJsonResolutionUtils;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.Response;
 
 /**
  * 个人注册界面
@@ -120,8 +107,8 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
     private String shooujihao;
     RadioButton nan, nv;
     String sex = "";
-    private String oppid="";
-    private String token="";
+    private String oppid = "";
+    private String token = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -267,7 +254,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
 
     /* 上传图片*/
     private void upLoadImage(File file) {
-        final ProgressDialog progressDialog=new ProgressDialog(this);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("正在上传");
         progressDialog.show();
         MultipartBody.Builder builder = new MultipartBody.Builder()
@@ -302,7 +289,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
 
             @Override
             public void onFailure(Exception e) {
-    progressDialog.dismiss();
+                progressDialog.dismiss();
             }
         });
     }
@@ -342,10 +329,20 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                 if (nv.isChecked()) {
                     sex = "女";
                 }
-                if (TextUtils.isEmpty(nameString) || TextUtils.isEmpty(shenfennumString) || TextUtils.isEmpty(phoneString) || TextUtils.isEmpty(IDUrl) || TextUtils.isEmpty(IDHoldUrl) || TextUtils.isEmpty(IDUrl1)) {
-                    Toast.makeText(PersonRegistActivity.this, "请填写完整必填信息或重新选择上传的图片", Toast.LENGTH_LONG).show();
-                    return;
+                //|| TextUtils.isEmpty(shenfennumString) 身份证选填
+
+                //|| TextUtils.isEmpty(IDHoldUrl)手持身份证
+                //|| TextUtils.isEmpty(IDUrl1) 身份证正反
+                if (TextUtils.isEmpty(nameString)) {//姓名
+                    Toast.makeText(PersonRegistActivity.this, "请填写姓名", Toast.LENGTH_LONG).show();
                 }
+                if (TextUtils.isEmpty(phoneString)) {//电话
+                    Toast.makeText(PersonRegistActivity.this, "请填写电话", Toast.LENGTH_LONG).show();
+                }
+//                if (TextUtils.isEmpty(nameString) || TextUtils.isEmpty(phoneString) || TextUtils.isEmpty(IDUrl) || TextUtils.isEmpty(IDHoldUrl) || TextUtils.isEmpty(IDUrl1)) {
+//                    Toast.makeText(PersonRegistActivity.this, "请填写完整必填信息或重新选择上传的图片", Toast.LENGTH_LONG).show();
+//                    return;
+//                }
                 if (TextUtils.isEmpty(gz1) && TextUtils.isEmpty(gz2) && TextUtils.isEmpty(gz3) && TextUtils.isEmpty(gz4) && TextUtils.isEmpty(gz5)) {
                     Toast.makeText(PersonRegistActivity.this, "请至少选择一个工种", Toast.LENGTH_LONG).show();
                     return;
@@ -354,10 +351,13 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                     Toast.makeText(this, "请输入正确的手机号", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (!RegexUtils.isIDCard18Exact(shenfennumString)) {
-                    Toast.makeText(this, "请输入正确的身份证号", Toast.LENGTH_SHORT).show();
-                    return;
+                if (!TextUtils.isEmpty(shenfennumString)) {//身份证号
+                    if (!RegexUtils.isIDCard18Exact(shenfennumString)) {
+                        Toast.makeText(this, "请输入正确的身份证号", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                 }
+
                 if (TextUtils.isEmpty(s)) {
                     Toast.makeText(this, "请输入工作年限", Toast.LENGTH_SHORT).show();
                     return;
@@ -368,6 +368,10 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                 }
                 if (TextUtils.isEmpty(age)) {
                     Toast.makeText(this, "请输入年龄", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(egerenjienng.getText().toString())) {
+                    Toast.makeText(this, "请输入个人技能，简单介绍下你会什么", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String workType = gz1 + gz2 + gz3 + gz4 + gz5;
@@ -432,8 +436,8 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
         View view = inflater.inflate(R.layout.my_info_dialog, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(view);
-        TextView tv_paizhao =  view.findViewById(R.id.paizhao);
-        TextView tv_xiangce =  view.findViewById(R.id.bendixiangce);
+        TextView tv_paizhao = view.findViewById(R.id.paizhao);
+        TextView tv_xiangce = view.findViewById(R.id.bendixiangce);
         tv_paizhao.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("WrongConstant")
             @Override

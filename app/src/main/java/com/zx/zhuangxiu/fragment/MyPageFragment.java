@@ -143,8 +143,8 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
                     if (data.getUserUrl().startsWith("http://") || data.getUserUrl().startsWith("https://")) {
                         Picasso.with(getActivity())
                                 .load(data.getUserUrl())
-                                .placeholder(R.mipmap.logo_zhanwei)
-                                .error(R.mipmap.logo_zhanwei)
+                                .placeholder(R.mipmap.head_normal)//logo_zhanwei
+                                .error(R.mipmap.head_normal)
                                 .fit()
                                 .centerCrop()
                                 .into(mypager_touxiang);
@@ -152,8 +152,8 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
                     } else {
                         Picasso.with(getActivity())
                                 .load(URLS.HTTP + data.getUserUrl())
-                                .placeholder(R.mipmap.logo_zhanwei)
-                                .error(R.mipmap.logo_zhanwei)
+                                .placeholder(R.mipmap.head_normal)
+                                .error(R.mipmap.head_normal)
                                 .fit()
                                 .centerCrop()
                                 .into(mypager_touxiang);

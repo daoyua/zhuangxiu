@@ -22,7 +22,7 @@
                 android:layout_height="60dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
-                android:src="@mipmap/logo_zhanwei" />
+                android:src="@mipmap/head_normal" />
 
             <TextView
                 android:id="@+id/worker_item_name"
