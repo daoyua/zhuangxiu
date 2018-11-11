@@ -55,7 +55,7 @@ public class BusinessJmhzFragment extends Fragment {
                 getJmhzInfo();
             }
         });
-
+        jmhztextview.setVisibility(View.GONE);
         jmhztextview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

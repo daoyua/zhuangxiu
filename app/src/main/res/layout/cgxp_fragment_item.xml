@@ -45,7 +45,7 @@
         android:layout_toRightOf="@+id/cgxp_item_img"
         android:ellipsize="end"
         android:maxLines="2"
-        android:text="用途:--------"
+        android:text="电话:--------"
         android:textSize="12sp" />
 
     <TextView
@@ -89,12 +89,12 @@
         android:id="@+id/cgxp_item_tuijian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cgxp_item_img"
         android:layout_alignParentRight="true"
+        android:layout_below="@+id/cgxp_item_img"
         android:layout_marginTop="15dp"
         android:background="@drawable/corners_small_bg"
         android:padding="8dp"
-        android:text="分享给好友"
+        android:text="电话"
         android:textColor="@color/white"
         android:textSize="12sp" />
 
@@ -103,12 +103,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cgxp_item_img"
-        android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
         android:layout_toLeftOf="@+id/cgxp_item_tuijian"
         android:background="@drawable/corners_small_bg"
         android:padding="8dp"
-        android:text="我有产品"
+        android:text="私聊"
         android:textColor="@color/white"
         android:textSize="12sp" />
 

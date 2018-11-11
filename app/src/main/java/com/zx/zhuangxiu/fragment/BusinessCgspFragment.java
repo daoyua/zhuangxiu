@@ -26,13 +26,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BusinessCgspFragment extends Fragment {
-
+    public static final int REQUEST_CALL_PERMISSION = 10111; //拨号请求码
     private ListView cgxp_listview;
     private CgxpListViewAdapter mCgxpListViewAdapter;
 
     private List<BusinessCgspBean.DataBean> syProductTwoList = new ArrayList<>();
     private SmartRefreshLayout mRefresh;
     private TextView mRelease;
+
 
     @Nullable
     @Override
@@ -48,6 +49,7 @@ public class BusinessCgspFragment extends Fragment {
         cgxp_listview =  view.findViewById(R.id.cgxp_listview);
         mRefresh = view.findViewById(R.id.refresh);
         mRelease = view.findViewById(R.id.tv_release);
+        mRelease.setVisibility(View.GONE);
         mRelease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

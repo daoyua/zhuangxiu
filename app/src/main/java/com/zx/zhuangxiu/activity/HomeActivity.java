@@ -127,6 +127,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             }
         }).request();
 
+        //TODO
+
+        //融云消息过多就变色  zy
         RongIM.getInstance().setOnReceiveUnreadCountChangedListener(new RongIM.OnReceiveUnreadCountChangedListener() {
             @Override
             public void onMessageIncreased(int i) {
@@ -136,7 +139,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 Log.e("TAG",i+"");
 
             }
-        },Conversation.ConversationType.PRIVATE);
+        }, Conversation.ConversationType.PRIVATE);
 
 
     }

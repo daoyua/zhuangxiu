@@ -17,6 +17,16 @@
             android:text="商机"
             android:textColor="@color/white"
             android:layout_centerInParent="true"/>
+        <TextView
+            android:id="@+id/bussiness_publish"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="发布需求"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
 
     </RelativeLayout>
 
@@ -41,7 +51,7 @@
                 android:layout_weight="1"
                 android:button="@null"
                 android:checked="true"
-                android:text="采购商品"
+                android:text="需求商品"
                 android:gravity="center"
                 android:textColor="@drawable/radiobutton_textcolor"
                 android:textSize="14sp"
@@ -54,7 +64,7 @@
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
-                android:text="购买服务"
+                android:text="需求服务"
                 android:textColor="@drawable/radiobutton_textcolor"
                 android:textSize="14sp"
                 android:textStyle="bold"

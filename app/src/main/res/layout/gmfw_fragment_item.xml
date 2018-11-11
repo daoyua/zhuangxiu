@@ -151,12 +151,12 @@
             android:id="@+id/gmfw_item_youhaoyou"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
             android:layout_toLeftOf="@+id/gmfw_item_tuijian"
             android:background="@drawable/corners_small_bg"
             android:padding="8dp"
-            android:text="承接服务"
+            android:text="私聊"
             android:textColor="@color/white"
             android:textSize="12sp" />
     </RelativeLayout>

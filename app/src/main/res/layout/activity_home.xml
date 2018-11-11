@@ -51,10 +51,10 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:button="@null"
-            android:drawableTop="@drawable/radiobutton_business"
             android:drawablePadding="3dp"
+            android:drawableTop="@drawable/radiobutton_business"
             android:gravity="center"
-            android:text="商机"
+            android:text="需求市场"
             android:textColor="@drawable/radiobutton_textcolor"
             android:textSize="@dimen/ten"
             android:textStyle="bold" />
@@ -90,6 +90,7 @@
     android:text=""
     android:textColor="@color/white" />
     <TextView
+        android:visibility="gone"
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:layout_alignParentBottom="true"

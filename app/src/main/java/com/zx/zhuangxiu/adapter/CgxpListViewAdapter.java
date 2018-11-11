@@ -1,11 +1,7 @@
 package com.zx.zhuangxiu.adapter;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -20,10 +16,8 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.zx.zhuangxiu.R;
 import com.zx.zhuangxiu.URLS;
-import com.zx.zhuangxiu.activity.DetailsActivity;
-import com.zx.zhuangxiu.activity.MyInfoActivity;
-import com.zx.zhuangxiu.activity.WXFXActivity;
 import com.zx.zhuangxiu.model.BusinessCgspBean;
+import com.zx.zhuangxiu.utils.MyUntils;
 import com.zx.zhuangxiu.utils.ToTime;
 import com.zx.zhuangxiu.view.RoundImageView;
 
@@ -80,7 +74,10 @@ public class CgxpListViewAdapter extends BaseAdapter {
         if (mList.size() != 0) {
             holder.cgxp_item_title.setText("" + mList.get(position).getGoodsname());
             holder.cgxp_item_yaoqiu.setText("产品简介:" + mList.get(position).getGoodsinfo());
-            holder.cgxp_item_yongtu.setText("电话:" + mList.get(position).getPhone());
+            final long phone = mList.get(position).getPhone();
+
+//            holder.cgxp_item_yongtu.setText("电话:" +333333);
+            holder.cgxp_item_yongtu.setText("电话:" +phone);
             holder.cgxp_item_price.setText("理想价位:￥" + mList.get(position).getPrice());
             holder.cgxp_item_nums.setText("数量:" + mList.get(position).getNum() + "个");
             String riqi = ToTime.getDateTimeFromMillisecond(mList.get(position).getEndtime());
@@ -103,7 +100,13 @@ public class CgxpListViewAdapter extends BaseAdapter {
                 }
 
             }
-
+            //打电话
+            holder.cgxp_item_tuijian.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MyUntils.call(mContext,phone+"");
+                }
+            });
 
         }
 
@@ -124,13 +127,14 @@ public class CgxpListViewAdapter extends BaseAdapter {
             }
         });
 
-        holder.cgxp_item_tuijian.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(mContext, WXFXActivity.class);
-                mContext.startActivity(intent);
-            }
-        });
+        //跳转分享微信
+//        holder.cgxp_item_tuijian.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(mContext, WXFXActivity.class);
+//                mContext.startActivity(intent);
+//            }
+//        });
 
         return convertView;
     }
@@ -190,4 +194,6 @@ public class CgxpListViewAdapter extends BaseAdapter {
         TextView cgxp_item_title, cgxp_item_yaoqiu, cgxp_item_yongtu, cgxp_item_price, cgxp_item_nums, cgxp_item_riqi, cgxp_item_tuijian, cgxp_item_youhaoyou;
 
     }
+
+
 }

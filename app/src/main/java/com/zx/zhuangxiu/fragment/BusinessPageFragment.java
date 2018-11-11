@@ -12,14 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.zx.zhuangxiu.R;
+import com.zx.zhuangxiu.activity.FaBuFuWuActivity;
+import com.zx.zhuangxiu.activity.FaBuShngPinActivity;
+import com.zx.zhuangxiu.activity.FabushangjiActivity;
 
 public class BusinessPageFragment extends Fragment implements View.OnClickListener {
 
     public static final int ITEM_SHANGPIN = 1;   //采购商品
     public static final int ITEM_GOUFUWU = 2; // 购买服务
     public static final int ITEM_HEZUO = 3; // 加盟合作
+    public static  int status = 1; // 加盟合作
 
     private BusinessCgspFragment mBusinessCgspFragment;
     private BusinessGmfwFragment mBusinessGmfwFragment;
@@ -32,6 +37,7 @@ public class BusinessPageFragment extends Fragment implements View.OnClickListen
     private long mExitToastTime;
     private Fragment frag = new BusinessCgspFragment();
     private FragmentTransaction transaction;
+    private TextView bussiness_publish;
 
 
     @Nullable
@@ -46,6 +52,7 @@ public class BusinessPageFragment extends Fragment implements View.OnClickListen
     }
 
     private void initView(View view) {
+        bussiness_publish = (TextView) view.findViewById(R.id.bussiness_publish);
         mRb1 = (RadioButton) view.findViewById(R.id.business_rb1);
         mRb2 = (RadioButton) view.findViewById(R.id.business_rb2);
         mRb3 = (RadioButton) view.findViewById(R.id.business_rb3);
@@ -53,6 +60,7 @@ public class BusinessPageFragment extends Fragment implements View.OnClickListen
         mRb1.setOnClickListener(this);
         mRb2.setOnClickListener(this);
         mRb3.setOnClickListener(this);
+        bussiness_publish.setOnClickListener(this);
 
     }
 
@@ -117,14 +125,36 @@ public class BusinessPageFragment extends Fragment implements View.OnClickListen
         switch (view.getId()) {
             case R.id.business_rb1:
                 switchItem(ITEM_SHANGPIN);
+                status=1;
                 break;
             case R.id.business_rb2:
                 switchItem(ITEM_GOUFUWU);
+                status=2;
                 break;
             case R.id.business_rb3:
                 switchItem(ITEM_HEZUO);
+                status=3;
+                break;
+                case R.id.bussiness_publish:
+                    //TODO
+                  publish(status);
                 break;
             default:
+                break;
+        }
+    }
+
+    private void publish(int i) {
+        switch (i){
+            case 1:
+                startActivity(new Intent(getActivity(),FaBuShngPinActivity.class));
+
+                break;
+            case 2:
+                startActivity(new Intent(getActivity(),FaBuFuWuActivity.class));
+                break;
+            case 3:
+                startActivity(new Intent(getActivity(),FabushangjiActivity.class));
                 break;
         }
     }
