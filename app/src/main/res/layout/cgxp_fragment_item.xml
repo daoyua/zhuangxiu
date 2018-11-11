@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <com.zx.zhuangxiu.view.RoundImageView
+        android:id="@+id/cgxp_item_img"
+        android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:background="@mipmap/logo_zhanwei" />
+
+    <TextView
+        android:id="@+id/cgxp_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/cgxp_item_img"
+        android:text="------"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/cgxp_item_yaoqiu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cgxp_item_title"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/cgxp_item_img"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="产品简介:-----"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/cgxp_item_yongtu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cgxp_item_yaoqiu"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/cgxp_item_img"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="用途:--------"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/cgxp_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cgxp_item_yongtu"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/cgxp_item_img"
+        android:text="理想价位：￥----"
+        android:textColor="@color/green"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/cgxp_item_nums"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cgxp_item_price"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/cgxp_item_img"
+        android:text="数量:-----个"
+        android:textColor="@color/black"
+        android:textSize="@dimen/shier" />
+
+    <TextView
+        android:id="@+id/cgxp_item_riqi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cgxp_item_nums"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/cgxp_item_img"
+        android:text="截止有效期:-----"
+        android:textColor="@color/black"
+        android:textSize="@dimen/shier" />
+
+
+    <TextView
+        android:id="@+id/cgxp_item_tuijian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cgxp_item_img"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/corners_small_bg"
+        android:padding="8dp"
+        android:text="分享给好友"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/cgxp_item_youhaoyou"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cgxp_item_img"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@+id/cgxp_item_tuijian"
+        android:background="@drawable/corners_small_bg"
+        android:padding="8dp"
+        android:text="我有产品"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+
+</RelativeLayout>

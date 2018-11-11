@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".activity.MyDingDanQYandSJActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/green">
+
+        <!--<ImageView-->
+            <!--android:id="@+id/my_dingdan_back"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/fanhuianjian"-->
+            <!--android:layout_centerVertical="true"/>-->
+        <TextView
+            android:id="@+id/my_dingdan_back"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="返回"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/shiliu"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/shiliu"
+            android:textColor="@color/white"
+            android:text="我的订单"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/my_dingdan_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <RadioButton
+            android:id="@+id/my_dingdan_rb1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="未支付"
+            android:textColor="@drawable/radiobutton_textcolor"
+            android:textSize="@dimen/shisi"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/my_dingdan_rb2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="已支付"
+            android:textColor="@drawable/radiobutton_textcolor"
+            android:textSize="@dimen/shisi"
+            android:textStyle="bold" />
+    </RadioGroup>
+
+
+    <ListView
+        android:divider="@color/listitemjiange"
+        android:dividerHeight="18dp"
+        android:id="@+id/my_dingdan_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

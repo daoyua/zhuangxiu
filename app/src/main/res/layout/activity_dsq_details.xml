@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.DsqDetailsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/green">
+
+        <TextView
+            android:id="@+id/dsq_back"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="返回"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/shiliu"/>
+
+        <TextView
+            android:id="@+id/dsq_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/shiliu"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:text="头条详情"/>
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:id="@+id/sv_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:scrollbars="none">
+      <LinearLayout
+          android:orientation="vertical"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+          <TextView
+              android:id="@+id/dsq_xiaotitle"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:padding="10dp"
+              android:text=""
+              android:textColor="@color/black"
+              android:textSize="@dimen/shisi"
+              android:textStyle="bold" />
+          <ImageView
+              android:id="@+id/dsq_tupian"
+              android:layout_width="match_parent"
+              android:layout_height="160dp"
+              android:src="@mipmap/logo_zhanwei"
+              />
+          <TextView
+              android:id="@+id/html"
+              android:layout_margin="10dp"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+          <com.zx.zhuangxiu.view.MylistView
+              android:id="@+id/img_list"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"></com.zx.zhuangxiu.view.MylistView>
+
+      </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

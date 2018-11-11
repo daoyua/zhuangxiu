@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white">
+
+        <com.zx.zhuangxiu.view.RoundImageView
+            android:id="@+id/dingdan_item_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/logo_zhanwei" />
+
+        <TextView
+            android:id="@+id/dingdan_item_title"
+            android:layout_toRightOf="@+id/dingdan_item_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="@dimen/shisi"
+            android:text="---"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"/>
+        
+        <TextView
+            android:id="@+id/dingdan_item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/dingdan_item_img"
+            android:layout_alignBottom="@+id/dingdan_item_img"
+            android:layout_marginBottom="5dp"
+            android:textSize="@dimen/shisi"
+            android:textColor="@color/green"
+            android:text="￥-----"/>
+
+        <TextView
+            android:id="@+id/dingdan_item_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/dingdan_item_price"
+            android:layout_alignBottom="@+id/dingdan_item_img"
+            android:layout_marginBottom="5dp"
+            android:textSize="@dimen/shisi"
+            android:textColor="@color/black"
+            android:text="X 1"/>
+        
+    </RelativeLayout>
+</LinearLayout>

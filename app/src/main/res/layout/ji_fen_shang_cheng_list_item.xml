@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/imageview"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@mipmap/logo_zhanwei" />
+
+        <TextView
+            android:id="@+id/textbiaoti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imageview"
+            android:text="标题"
+            android:textColor="@color/black"
+            android:textSize="@dimen/shisi" />
+
+        <TextView
+            android:id="@+id/textjiejian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textbiaoti"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imageview"
+            android:text="简介"
+            android:textSize="@dimen/shier" />
+
+
+        <TextView
+            android:id="@+id/textzongshu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imageview"
+            android:text="剩余量："
+            android:textColor="@color/black"
+            android:layout_alignBottom="@+id/imageview"
+            android:textSize="@dimen/shier" />
+
+
+        <TextView
+            android:id="@+id/textok"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/corners_small_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="兑换"
+            android:textColor="@color/white"
+            android:textSize="@dimen/shier" />
+
+        <TextView
+            android:id="@+id/textzhuangtai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textjiejian"
+            android:layout_marginRight="10dp"
+            android:text="所需积分：20"
+            android:textColor="@color/black"
+            android:textSize="@dimen/shier" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/xiangxineirong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="详细描述：-----"
+        android:textSize="@dimen/shier" />
+</LinearLayout>

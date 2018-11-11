@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.zx.zhuangxiu">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!-- 高德地图需要的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 不是SDK需要的权限，是示例中的后台唤醒定位需要的权限 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 需要运行时注册的权限 -->
+    <!-- 环信权限开始 -->
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+
+    <!-- 听筒和扬声器模式切换 -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <!-- 震动 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 录制语音 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 拍照 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+
+    <!-- 音视频 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- 环信权限结束 -->
+
+
+    <!-- 读取缓存数据 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- 3.2.0版本增加 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- 3.2.0版本增加 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <application
+        android:name=".ECApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".activity.PhoneLoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.HomeActivity"
+            android:screenOrientation="portrait">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <!-- 首页-找工人 -->
+        <activity
+            android:name=".activity.FoundWorkerActivity"
+            android:screenOrientation="portrait" />
+        <!-- 首页-找产品 -->
+        <activity
+            android:name=".activity.FoundGoodsActivity"
+            android:screenOrientation="portrait" />
+        <!-- 我的-我的订单 -->
+        <activity
+            android:name=".activity.MyDingDanActivity"
+            android:screenOrientation="portrait" />
+        <!-- 我的-金额 -->
+        <activity
+            android:name=".activity.JinEActivity"
+            android:screenOrientation="portrait" />
+        <!-- 我的-金额-明细 -->
+        <activity
+            android:name=".activity.MingXiActivity"
+            android:screenOrientation="portrait" />
+        <!-- 我的-账户设置 -->
+        <activity
+            android:name=".activity.MyInfoActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <!-- 我的-账户设置-改昵称 -->
+        <activity
+            android:name=".activity.GaiNichengActivity"
+            android:screenOrientation="portrait" />
+        <!-- 我的-账户设置-修改绑定手机号 -->
+        <activity
+            android:name=".activity.BindingPhoneActivity"
+            android:screenOrientation="portrait" />
+        <!-- 首页-消息 -->
+        <activity
+            android:name=".activity.HomeXiaoXiActivity"
+            android:screenOrientation="portrait" />
+        <!-- 登录-个人注册 -->
+        <activity
+            android:name=".activity.PersonRegistActivity"
+            android:screenOrientation="portrait" />
+        <!-- 登录-企业注册 -->
+        <activity
+            android:name=".activity.CompanyRegistActivity"
+            android:screenOrientation="portrait" />
+        <!-- 首页-石材玉石 -->
+        <activity
+            android:name=".activity.HomeYuShiActivity"
+            android:screenOrientation="portrait" />
+        <!-- 详情页 -->
+        <activity
+            android:name=".activity.DetailsActivity"
+            android:screenOrientation="portrait" />
+        <!-- 首页-消息通知 -->
+        <activity
+            android:name=".activity.XiaoXiNoticeActivity"
+            android:screenOrientation="portrait" />
+        <!-- 首页-找工作 -->
+        <activity
+            android:name=".activity.FoundWorkActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.FoundFuWuActivity" />
+        <activity android:name=".activity.FoundWorkerDetailsActivity" />
+        <activity android:name=".activity.FoundWorkDetailsActivity" />
+        <activity android:name=".activity.FaBuWorkActivity" />
+        <activity android:name=".activity.FaBuWorkNextActivity" />
+        <activity android:name=".activity.FoundFuWuDetailsActivity" />
+        <activity android:name=".activity.XiaoXiYouHuiActivity" />
+        <activity android:name=".activity.SouSuoActivity" />
+        <activity android:name=".activity.DaShiQuanActivity" />
+        <activity android:name=".activity.WebViewActivityOne" />
+        <activity android:name=".activity.JmhzDetalisActivity" />
+        <activity android:name=".activity.MyDongTaiGRActivity" />
+        <activity android:name=".activity.MyDongTaiQYActivity" />
+        <activity android:name=".activity.JiFenShangChengActivity" />
+        <activity android:name=".activity.MyDongTaiSJActivity" />
+        <activity android:name=".activity.MyDingDanGRChanPinActivity" />
+        <activity android:name=".activity.MyDingDanGRFuWuActivity" />
+        <activity android:name=".activity.MyDingDanQYandSJActivity" />
+        <activity android:name=".activity.FoundFu2WuActivity" />
+        <activity android:name=".activity.FoundFu3WuActivity" />
+
+        <!-- 微信登陆/分享开始 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="wx7b35475567490806" />
+            </intent-filter>
+        </activity>
+        <!-- 微信登陆/分享结束 -->
+
+
+        <!-- 微信支付开始 -->
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="wx7b35475567490806" />
+            </intent-filter>
+        </activity>
+        <!-- 微信支付结束 -->
+
+
+        <!-- 阿里支付开始 -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <!-- 阿里支付结束 -->
+
+
+        <!-- 高德地图 -->
+        <service android:name="com.amap.api.location.APSService" />
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="e4043159ca84e841e63c8978beb87b60" />
+        <!-- 高德地图结束 -->
+        <activity android:name=".activity.AilPayActivity" />
+        <activity android:name=".activity.ZgrSearchActivity" />
+        <activity android:name=".activity.ZfwSearchActivity" />
+        <activity android:name=".activity.WeiXinZFActivity" />
+        <activity android:name=".activity.WXFXActivity" />
+        <activity android:name=".activity.MyDingDanQYandSJXiangQingAcitivity" />
+        <activity android:name=".activity.DsqDetailsActivity" />
+        <activity android:name=".activity.JieSuanActivity" />
+        <activity android:name=".activity.BindPhoneActivity" />
+
+        <!--
+          <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+          </intent-filter>
+        -->
+
+        <activity android:name=".activity.MyAddressActivity" />
+        <activity android:name=".activity.AddAddressActivity" />
+        <activity android:name=".activity.SetHouTaiMiMaActivity" />
+        <activity android:name=".activity.SubmitDingDanActivity" />
+        <activity android:name=".activity.MyDianPuActivity" />
+        <!-- 环信开始 -->
+        <!-- 设置环信应用的AppKey -->
+        <!--
+            <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true"
+            tools:ignore="ExportedService" />
+        <service
+            android:name="com.hyphenate.chat.EMJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        &lt;!&ndash; 声明sdk所需的receiver &ndash;&gt;
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+            &lt;!&ndash; 可选filter &ndash;&gt;
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        -->
+        <!-- 环信结束 -->
+        <activity android:name=".activity.MyDingDansActivity" />
+        <activity android:name=".activity.BindingZhifubaoActivity" />
+        <activity android:name=".activity.FabushangjiActivity" />
+        <activity
+            android:name=".activity.MylookaddressActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.MapActivity" />
+        <activity android:name=".activity.ShopCarActicity" />
+        <activity android:name=".activity.Settlement" />
+        <activity android:name=".activity.WebViewActivity" />
+        <activity android:name=".activity.CommentsActivity" />
+        <activity android:name=".activity.SendActivity" />
+        <activity android:name=".activity.AddAccountAcitivity" />
+        <activity android:name=".activity.JiamemghezuoActivity" />
+        <activity
+            android:name=".activity.ConversationList"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.zx.zhuangxiu"
+                    android:pathPrefix="/conversation/"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.Subconversationlist"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.zx.zhuangxiu"
+                    android:pathPrefix="/subconversationlist"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.zx.zhuangxiu.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/rc_file_path" />
+        </provider>
+
+        <activity android:name=".activity.FuWuShopActivity" />
+        <activity android:name=".activity.FaBuFuWuActivity" />
+        <activity android:name=".activity.FaBuShngPinActivity" />
+        <activity android:name=".activity.OrderActivity"></activity>
+    </application>
+
+</manifest>

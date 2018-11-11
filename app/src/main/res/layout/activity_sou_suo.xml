@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.SouSuoActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/green">
+
+        <!--<ImageView-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:id="@+id/ss_back"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/fanhuianjian"/>-->
+        <TextView
+            android:id="@+id/ss_back"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="返回"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/shiliu"/>
+
+        <EditText
+            android:id="@+id/ss_et"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:background="@drawable/sousuok"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:hint="请输入搜索商品"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/seach"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/ss_ss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="14sp"
+            android:text="搜索"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+        <TextView
+            android:id="@+id/ss_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/lightGray"
+            android:text="没有相关内容，换个词试试吧"/>
+
+    <ListView
+        android:layout_below="@+id/rl"
+        android:id="@+id/ss_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</RelativeLayout>

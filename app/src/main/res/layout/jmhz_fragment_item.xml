@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <com.zx.zhuangxiu.view.RoundImageView
+        android:id="@+id/jmhz_item_img"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@mipmap/logo_zhanwei" />
+
+    <TextView
+        android:id="@+id/jmhz_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/jmhz_item_img"
+        android:text="90后公司"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/jmhz_item_dingwei"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jmhz_item_title"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/jmhz_item_img"
+        android:src="@drawable/dingwei"
+        android:visibility="gone" />
+
+
+    <TextView
+        android:id="@+id/jmhz_item_dizhi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jmhz_item_title"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/jmhz_item_dingwei"
+        android:text="河北省石家庄市逛街"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/jmhz_item_xiangqing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jmhz_item_dingwei"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/jmhz_item_img"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="项目详情:-------"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/jmhz_item_yaoqiu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jmhz_item_xiangqing"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/jmhz_item_img"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="合作要求:----"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/jmhz_item_nums"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jmhz_item_yaoqiu"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="合作数量:99个"
+        android:layout_toRightOf="@+id/jmhz_item_img"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/jmhz_item_qixian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jmhz_item_nums"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/jmhz_item_img"
+        android:text="有效期限:2018-10-09"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+
+    <TextView
+        android:id="@+id/jmhz_item_hezuo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jmhz_item_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/corners_bg"
+        android:paddingLeft="30dp"
+        android:paddingTop="5dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="5dp"
+        android:text="加盟合作"
+        android:textColor="@color/white"
+        android:textSize="@dimen/shisi"
+        android:visibility="gone" />
+
+</RelativeLayout>

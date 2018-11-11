@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="worker_item_name" type="id" />
+    <item name="worker_item_age" type="id" />
+    <item name="worker_item_sex" type="id" />
+    <item name="worker_item_ruwangAge" type="id" />
+    <item name="worker_item_dizhi" type="id" />
+    <item name="worker_item_kongjian" type="id" />
+    <item name="worker_item_address" type="id" />
+    <item name="worker_item_touxiang" type="id" />
+    <item name="goods_tab" type="id" />
+    <item name="home_chanpin" type="id" />
+    <item name="cgxp_item_tuijian" type="id" />
+    <item name="cgxp_item_youhaoyou" type="id" />
+</resources>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.FoundFuWuActivity">
+
+    <LinearLayout
+        android:id="@+id/serves_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/serves_back"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="返回"
+                android:textColor="@color/white"
+                android:textSize="@dimen/shiliu" />
+
+            <TextView
+                android:id="@+id/serves_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="找服务"
+                android:textColor="@color/white"
+                android:textSize="@dimen/shiliu" />
+
+            <ImageView
+                android:id="@+id/img_search"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/seach"
+                android:padding="5dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/serves_search" />
+
+
+            <TextView
+                android:id="@+id/serves_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="5dp"
+                android:text="发布"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/goods_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/serves_ll"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/green"
+        app:tabIndicatorHeight="4dp"
+        app:tabMaxWidth="0dp"
+        app:tabTextAppearance="@style/MyTabLayoutTextAppearance" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/goods_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/serves_layout"
+        android:layout_below="@+id/goods_tab" />
+
+
+    <LinearLayout
+        android:id="@+id/serves_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/serves_xiaoxi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/xiaoxi" />
+
+        <TextView
+            android:id="@+id/serves_siliao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:text="私聊"
+            android:textColor="@color/black"
+            android:textSize="@dimen/shier" />
+
+
+        <ImageView
+            android:id="@+id/serves_gouwuche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/gouwuche"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/serves_caigouche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:text="采购车"
+            android:textColor="@color/black"
+            android:textSize="@dimen/shier"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/serves_wode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/wode"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/serves_my"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:text="我的"
+            android:textColor="@color/black"
+            android:textSize="@dimen/shier"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</RelativeLayout>

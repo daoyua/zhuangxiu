@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/address_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/shier"
+            android:textColor="@color/black"
+            android:text="收货人: "/>
+
+        <TextView
+            android:id="@+id/address_item_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/shier"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@+id/address_item_name"
+            android:layout_marginLeft="15dp"
+            android:text="联系方式: "/>
+
+
+        <TextView
+            android:id="@+id/address_item_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/shier"
+            android:text="详细地址: "
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/address_item_name"/>
+
+        <TextView
+            android:id="@+id/address_item_isMoren"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/shier"
+            android:textColor="@color/red"
+            android:layout_below="@+id/address_item_address"
+            android:layout_marginTop="5dp"
+            android:text="默认地址"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

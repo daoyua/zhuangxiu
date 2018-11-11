@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.FaBuWorkNextActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/green"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--<ImageView-->
+                <!--android:id="@+id/fabu_next_back"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:src="@drawable/fanhuianjian" />-->
+            <TextView
+                android:id="@+id/fabu_next_back"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="返回"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/shiliu"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textSize="@dimen/shiliu"
+                android:textColor="@color/white"
+                android:text="添加招募信息"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@drawable/vip8"/>
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/shisi"
+        android:textColor="@color/black"
+        android:text="从业工种"/>
+
+    <GridView
+        android:visibility="gone"
+        android:id="@+id/fabu_next_gv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:numColumns="4"
+        android:verticalSpacing="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/shisi"
+            android:textColor="@color/black"
+            android:text="从业工种"/>
+
+        <EditText
+            android:id="@+id/fabu_next_gongzhong"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/sousuok"
+            android:textSize="@dimen/shier"
+            android:textColor="@color/black"
+            android:hint="从业工种"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/fabu_next_tijiaoGz"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="提交工种"
+        android:textSize="@dimen/shier"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:background="@drawable/corners_small_bg"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/vip8"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/shisi"
+        android:textColor="@color/black"
+        android:text="具体工作"/>
+
+    <GridView
+        android:visibility="gone"
+        android:id="@+id/fabu_next_gv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:numColumns="4"
+        android:verticalSpacing="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/shisi"
+            android:textColor="@color/black"
+            android:text="需要人数(人)"/>
+
+        <EditText
+            android:id="@+id/fabu_next_num"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/sousuok"
+            android:textSize="@dimen/shier"
+            android:textColor="@color/black"
+            android:hint="该工种所需要的人数"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/shisi"
+            android:textColor="@color/black"
+            android:text="备     注"/>
+
+        <EditText
+            android:id="@+id/fabu_next_beizhu"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/sousuok"
+            android:textSize="@dimen/shier"
+            android:textColor="@color/black"
+            android:hint="项目介绍"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/fabu_next_fabu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/corners_small_bg"
+        android:textSize="@dimen/shisi"
+        android:textColor="@color/white"
+        android:text="发布"
+        android:gravity="center"
+        android:layout_marginTop="30dp"/>
+
+</LinearLayout>

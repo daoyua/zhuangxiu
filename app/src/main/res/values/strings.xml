@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">大时圈</string>
+    <string name="login">登录</string>
+    <string name="dialog_xiaotitle">一旦选择某种身份后\n将会无法进行更改\n请您再三确认后进行注册</string>
+</resources>

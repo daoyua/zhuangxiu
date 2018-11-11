@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="ten">10sp</dimen>
+    <dimen name="shier">12sp</dimen>//正常小文字描述
+    <dimen name="shisi">14sp</dimen>//正常文本描述字体
+    <dimen name="shiliu">16sp</dimen>//正常标题文本字体
+    <dimen name="shiba">18sp</dimen>//标题栏名称
+    <dimen name="ershi">20sp</dimen>
+    <dimen name="ershier">22sp</dimen>
+    <dimen name="ershisi">24sp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="gudieview_width">6dp</dimen>
+    <dimen name="gudieview_heigh">6dp</dimen>
+
+</resources>

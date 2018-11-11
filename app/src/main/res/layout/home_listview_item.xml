@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="160dp"
+    android:orientation="vertical">
+
+    <com.zx.zhuangxiu.view.RoundImageView
+        android:id="@+id/horizon_listview_img"
+        android:layout_width="130dp"
+        android:layout_height="160dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:scaleType="centerCrop"
+        android:background="@mipmap/logo_zhanwei"/>
+
+</LinearLayout>

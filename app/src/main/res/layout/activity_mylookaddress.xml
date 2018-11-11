@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MylookaddressActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/dssfsdfdsfds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/mylookaddress_back"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="返回"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/shiliu"/>
+
+        <TextView
+            android:id="@+id/titlename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:text="收货地址"
+            android:textColor="@color/white"
+            android:textSize="@dimen/shiliu" />
+        <TextView
+            android:id="@+id/mylookaddress_tianjias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="添加"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/shiliu"/>
+        </RelativeLayout>
+
+           <ListView
+               android:id="@+id/mylookaddress_listview"
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:dividerHeight="10dp"
+               android:divider="@color/viewbeijin"
+               android:layout_weight="1"
+               ></ListView>
+
+           <RelativeLayout
+               android:id="@+id/mylookaddress_tianjia"
+               android:layout_width="match_parent"
+               android:layout_height="40dp"
+               android:background="@color/green"
+               android:layout_marginTop="25dp"
+               >
+               <ImageView
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:layout_toLeftOf="@+id/tianjiadizhi"
+                   android:layout_marginRight="10dp"
+                   android:layout_centerVertical="true"
+                   android:src="@mipmap/logo_zhanwei"
+                   />
+               <TextView
+                   android:id="@+id/tianjiadizhi"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="@dimen/shisi"
+                   android:layout_centerInParent="true"
+                   android:layout_centerVertical="true"
+                   android:textColor="@color/black"
+                   android:text="新增地址"
+                   />
+           </RelativeLayout>
+</LinearLayout>

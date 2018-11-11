@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/imageview"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@mipmap/logo_zhanwei" />
+
+        <TextView
+            android:layout_toLeftOf="@+id/textok"
+            android:id="@+id/textbiaoti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imageview"
+            android:text="标题"
+            android:textColor="@color/black"
+            android:textSize="@dimen/shisi" />
+
+        <TextView
+            android:id="@+id/textjiejian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textbiaoti"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imageview"
+            android:text="简介"
+            android:textSize="@dimen/shier" />
+
+        <ImageView
+            android:id="@+id/imageviewdw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imageview"
+            android:src="@mipmap/dinw"
+            android:layout_alignBottom="@+id/imageview"/>
+
+        <TextView
+            android:id="@+id/textzongshu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/imageviewdw"
+            android:text="工作地址："
+            android:textColor="@color/black"
+            android:layout_alignBottom="@+id/imageview"
+            android:textSize="@dimen/shier" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_alignBottom="@+id/textzhuangtai"
+            android:layout_toLeftOf="@+id/textzhuangtai"
+            android:src="@mipmap/zan" />
+
+        <TextView
+            android:id="@+id/textzhuangtai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/imageview"
+            android:layout_marginRight="10dp"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="@dimen/shisi"
+            android:layout_toLeftOf="@+id/textok"/>
+
+        <TextView
+            android:id="@+id/textok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:text="招聘状态：未发布"
+            android:textSize="@dimen/shier" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/xiangxineirong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textColor="@color/black"
+        android:text="项目描述：-------"
+        android:textSize="@dimen/shier" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/qitabeihzu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="其他备注：----"
+        android:textSize="@dimen/shier" />
+</LinearLayout>

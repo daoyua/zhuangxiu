@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        >
+        <ImageView
+            android:id="@+id/zhunbeiitem_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:src="@mipmap/logo_zhanwei"
+            />
+        <TextView
+            android:id="@+id/zhunbeiitem_mingcheng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/zhunbeiitem_image"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="16dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="房屋装修"
+            />
+
+        <TextView
+            android:id="@+id/zhunbeiitem_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/zhunbeiitem_image"
+            android:layout_below="@+id/zhunbeiitem_mingcheng"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="14sp"
+            android:text="ss"
+            />
+        <TextView
+            android:id="@+id/nigong"
+            android:layout_marginRight="20dp"
+            android:layout_below="@+id/zhunbeiitem_address"
+            android:text="10"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:textColor="@color/green"
+            android:layout_below="@+id/nigong"
+            android:id="@+id/submit"
+            android:text="确认收货"
+            android:padding="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+
+</LinearLayout>

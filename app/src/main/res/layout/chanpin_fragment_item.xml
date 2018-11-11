@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@drawable/vip8" />
+
+    <RelativeLayout
+        android:id="@+id/chanpin_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <com.zx.zhuangxiu.view.RoundImageView
+            android:id="@+id/chanpin_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@mipmap/logo_zhanwei" />
+
+        <TextView
+            android:id="@+id/chanpin_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/chanpin_img"
+            android:text="------"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/chanpin_xiaotitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chanpin_title"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/chanpin_img"
+            android:text="-------"
+            android:layout_marginRight="25dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="@dimen/shier" />
+
+        <TextView
+            android:id="@+id/chanpin_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/chanpin_img"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/chanpin_img"
+            android:text="￥78"
+            android:textColor="@color/green"
+            android:textSize="@dimen/shisi" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/biaoqian"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:id="@+id/dingwei"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dingwei"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/dingwei"
+            android:id="@+id/chanpin_item_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="地址: -------"
+            android:textColor="@color/black"
+            android:textSize="@dimen/shier" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/vip8" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:id="@+id/dianzanll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:descendantFocusability="blocksDescendants">
+
+            <ImageView
+                android:id="@+id/zan_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/zan" />
+
+            <TextView
+                android:id="@+id/chanpin_item_zan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="478978"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shisi" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pinglunll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:descendantFocusability="blocksDescendants">
+
+            <ImageView
+                android:id="@+id/chanpin_item_commment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/pinglun" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="评论"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shisi" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/chanpin_item_fenxiang"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:descendantFocusability="blocksDescendants">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fenxiang" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="分享"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shisi" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
