@@ -40,13 +40,24 @@
 
 
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/worker_search"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
+                android:layout_marginRight="40dp"
                 android:src="@drawable/sousuo" />
-
+            <TextView
+                android:gravity="center"
+                android:id="@+id/worker_fabu"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/shisi"
+                android:textColor="@color/white"
+                android:layout_alignParentRight="true"
+                android:visibility="visible"
+                android:text="发布"
+                android:layout_centerVertical="true"/>
         </RelativeLayout>
 
     </LinearLayout>

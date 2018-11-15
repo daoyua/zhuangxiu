@@ -390,7 +390,7 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
     public void Submit() {
         Log.e("TAG", "anInt" + anInt + ">>>>>>aa" + aa);
         String nameString = mTvName.getText().toString().trim();
-        String addressString = mTvAddress.getText().toString().trim();
+        String addressString = mTvAddress.getText().toString().trim();//公司地址
         String areaString = mTvArea.getText().toString().trim();
         String priceString = mTvPrice.getText().toString().trim();
         String otherString = mTvOther.getText().toString().trim();
@@ -401,15 +401,41 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
             stringBuffer.append(datas.get(i) + ",");
         }
         imageurl = stringBuffer.toString();
-        if (!TextUtils.isEmpty(nameString)
-                && !TextUtils.isEmpty(addressString)
-                && !TextUtils.isEmpty(areaString)
-                && !TextUtils.isEmpty(priceString)
-                && !TextUtils.isEmpty(otherString)
-                && !TextUtils.isEmpty(startString)
-                && !TextUtils.isEmpty(endString)
-                && !TextUtils.isEmpty(imageurl)
-                ) {
+
+        if(TextUtils.isEmpty(nameString)){
+            Toast.makeText(FaBuFuWuActivity.this, "公司名称没填写", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(TextUtils.isEmpty(addressString)){
+            Toast.makeText(FaBuFuWuActivity.this, "公司地址没填写", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(TextUtils.isEmpty(otherString)){
+            Toast.makeText(FaBuFuWuActivity.this, "服务内容没填写", Toast.LENGTH_LONG).show();
+            return;
+        }
+//        if(TextUtils.isEmpty(nameString)){
+//            Toast.makeText(FaBuFuWuActivity.this, "公司名称没填写", Toast.LENGTH_LONG).show();
+//            return;
+//        }
+        if(TextUtils.isEmpty(startString)){
+            Toast.makeText(FaBuFuWuActivity.this, "起始时间没填写", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(TextUtils.isEmpty(endString)){
+            Toast.makeText(FaBuFuWuActivity.this, "结束没填写", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+//        if (!TextUtils.isEmpty(nameString)
+//                && !TextUtils.isEmpty(addressString)
+//                && !TextUtils.isEmpty(areaString)
+//                && !TextUtils.isEmpty(priceString)
+//                && !TextUtils.isEmpty(otherString)
+//                && !TextUtils.isEmpty(startString)
+//                && !TextUtils.isEmpty(endString)
+//                && !TextUtils.isEmpty(imageurl)
+//                ) {
             String fabu = URLS.fabu(URLS.getUser_id(), nameString, addressString, areaString, priceString, otherString, imageurl, anInt, startString, endString, aa);
 //            FormBody formBody = new FormBody.Builder()
 //                    .add("userId", URLS.getUser_id() + "")
@@ -454,10 +480,10 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
 
                 }
             });*/
-        } else {
-            Toast.makeText(this, "请完善服务需求", Toast.LENGTH_SHORT).show();
-        }
-
+//        } else {
+//            Toast.makeText(this, "请完善服务需求", Toast.LENGTH_SHORT).show();
+//        }
+//
     }
 
     @Override

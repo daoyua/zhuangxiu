@@ -6,4 +6,7 @@
     <root-path
         name="rc_root_path"
         path="" />
+    <external-files-path name="extfiles" path="autoupdatecache/" />
+    <external-cache-path name="extcachs" path="autoupdatecache/" />
+    <cache-path name="intcachs" path="autoupdatecache/" />
 </paths>

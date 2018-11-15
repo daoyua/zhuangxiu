@@ -19,7 +19,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -137,7 +136,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         //商品品论列表
         getPingLunInfo(0, pkId);
         getmorenaddress();
-        content=this;
+        content = this;
     }
 
     private void initView() {
@@ -190,7 +189,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                             userUrl = URLS.HTTP + userUrl;
                         }
                         URLS.setYOUR(userName);
-                        RongIM.getInstance().refreshUserInfoCache(new UserInfo(sellerId+"", userName, Uri.parse(userUrl)));
+                        RongIM.getInstance().refreshUserInfoCache(new UserInfo(sellerId + "", userName, Uri.parse(userUrl)));
                         RongIM.getInstance().setMessageAttachedUserInfo(true);
                         RongIM.getInstance().startPrivateChat(content, sellerId + "", "客服");
                     }

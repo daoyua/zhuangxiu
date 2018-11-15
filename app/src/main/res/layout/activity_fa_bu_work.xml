@@ -68,7 +68,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="项目名称"
+                android:text="*项目名称"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
 
@@ -95,7 +95,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="项目地址"
+                android:text="*项目地址"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
 
@@ -115,6 +115,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*公司名称"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shisi" />
+
+            <EditText
+                android:id="@+id/fabu_zhiwei"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:hint="公司名称"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shier"
+                android:theme="@style/MyEditText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:orientation="horizontal">
@@ -122,7 +149,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="联系人"
+                android:text="*联系人"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
 
@@ -149,7 +176,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="联系电话"
+                android:text="*联系电话"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
 
@@ -176,7 +203,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="招聘条件"
+                android:text="*招工内容"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
 
@@ -185,7 +212,62 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:hint="招聘条件"
+                android:hint="招工内容"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shier"
+                android:theme="@style/MyEditText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*工资"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shisi" />
+
+            <EditText
+                android:id="@+id/money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:hint="只能输入数字，若无请写0"
+                android:inputType="number|numberDecimal"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shier"
+                android:theme="@style/MyEditText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="工作待遇"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shisi" />
+
+            <EditText
+                android:id="@+id/treatment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:hint="工作待遇"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shier"
                 android:theme="@style/MyEditText" />
@@ -219,60 +301,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="工作待遇"
-                android:textColor="@color/black"
-                android:textSize="@dimen/shisi" />
-
-            <EditText
-                android:id="@+id/treatment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:hint="工作待遇"
-                android:textColor="@color/black"
-                android:textSize="@dimen/shier"
-                android:theme="@style/MyEditText" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="工资"
-                android:textColor="@color/black"
-                android:textSize="@dimen/shisi" />
-
-            <EditText
-                android:id="@+id/money"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:hint="只能输入数字，若无请写0"
-                android:inputType="number|numberDecimal"
-                android:textColor="@color/black"
-                android:textSize="@dimen/shier"
-                android:theme="@style/MyEditText" />
-
-        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -364,33 +392,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="公司名称"
-                android:textColor="@color/black"
-                android:textSize="@dimen/shisi" />
-
-            <EditText
-                android:id="@+id/fabu_zhiwei"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:hint="职位描述"
-                android:textColor="@color/black"
-                android:textSize="@dimen/shier"
-                android:theme="@style/MyEditText" />
-
-        </LinearLayout>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -408,7 +409,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="开工时间"
+                android:text="*开工时间"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
 
@@ -435,7 +436,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="完工时间"
+                android:text="*完工时间"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
 

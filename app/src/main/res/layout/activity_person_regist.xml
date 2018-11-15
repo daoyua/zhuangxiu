@@ -49,27 +49,6 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/bitian" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:text="必填信息"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/shisi" />
-
-            </LinearLayout>
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="姓     名"
+                    android:text="*姓     名"
                     android:textColor="@color/black"
                     android:textSize="@dimen/shier" />
 
@@ -134,7 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="性     别"
+                    android:text="*性     别"
                     android:textColor="@color/black"
                     android:textSize="@dimen/shier" />
 
@@ -162,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="年     龄"
+                    android:text="*年     龄"
                     android:textColor="@color/black"
                     android:textSize="@dimen/shier" />
 
@@ -219,7 +198,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="入网工龄"
+                    android:text="*入网工龄"
                     android:textColor="@color/black"
                     android:textSize="@dimen/shier" />
 
@@ -344,7 +323,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="联系电话"
+                    android:text="*联系电话"
                     android:textColor="@color/black"
                     android:textSize="@dimen/shier" />
 
@@ -372,8 +351,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginTop="5dp"
                     android:text="身份证号"
                     android:textColor="@color/black"
                     android:textSize="@dimen/shier" />
@@ -387,11 +367,34 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*个人技能"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/shier" />
+
+                <EditText
+                    android:id="@+id/egerenjienng"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/sousuok"
+                    android:textSize="@dimen/shisi" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
                     android:id="@+id/person_regist_gongzhong"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="从业工种:"
+                    android:text="*从业工种:"
                     android:textColor="@color/black"
                     android:textSize="@dimen/shier" />
 
@@ -403,7 +406,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/shape_button"
                     android:button="@color/gray"
-                    android:checked="true"
+                    android:checked="false"
                     android:gravity="center"
                     android:text="石材类"
                     android:textColor="@drawable/radiobutton_textcolor"
@@ -654,16 +657,6 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@color/lightGray"
-                android:padding="10dp"
-                android:text="选填信息"
-                android:textColor="@color/black"
-                android:textSize="@dimen/shisi" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -691,29 +684,6 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/vip8" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="个人技能"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/shier" />
-
-                <EditText
-                    android:id="@+id/egerenjienng"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="15dp"
-                    android:background="@drawable/sousuok"
-                    android:textSize="@dimen/shisi" />
-
-            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -780,8 +750,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15sp"
-                android:layout_marginTop="40dp"
                 android:layout_marginRight="15sp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/corners_small_bg"
                 android:gravity="center"
                 android:padding="10dp"

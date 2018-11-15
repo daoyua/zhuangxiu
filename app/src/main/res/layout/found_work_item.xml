@@ -50,11 +50,12 @@
             android:visibility="gone"
             />
         <TextView
+            android:visibility="gone"
             android:id="@+id/shouye_work_item_gzjy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/shier"
-            android:text="不限"
+            android:text="工作经验不限"
             android:layout_marginTop="8dp"
             android:layout_below="@+id/shouye_work_item_title"
             android:layout_toRightOf="@+id/shouye_work_item_xiaotitle"

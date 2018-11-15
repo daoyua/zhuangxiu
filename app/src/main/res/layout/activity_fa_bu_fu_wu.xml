@@ -57,7 +57,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="公司名称"
+                android:text="*公司名称"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
 
@@ -120,7 +120,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="公司地址"
+                android:text="*公司地址"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
 
@@ -141,9 +141,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -207,7 +208,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="所需类型"
+                android:text="*所需类型"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
 
@@ -305,7 +306,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="服务内容"
+                android:text="*服务内容"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
 
@@ -333,7 +334,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="时间范围"
+                android:text="*时间范围"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
 

@@ -71,6 +71,7 @@ public class FoundWorkerActivity extends AppCompatActivity implements View.OnCli
 
     private SmartRefreshLayout mRefresh;
     private int page = 0;
+    private TextView worker_fabu;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -87,9 +88,11 @@ public class FoundWorkerActivity extends AppCompatActivity implements View.OnCli
         worker_rb2 = (RadioButton) findViewById(R.id.worker_rb2);
         worker_rb3 = (RadioButton) findViewById(R.id.worker_rb3);
         worker_banner = (ImageView) findViewById(R.id.worker_banner);
+        worker_fabu = (TextView) findViewById(R.id.worker_fabu);
         worker_back = (TextView) findViewById(R.id.worker_back);
         worker_search = (ImageView) findViewById(R.id.worker_search);
 
+        worker_fabu.setOnClickListener(this);
         worker_search.setOnClickListener(this);
         worker_rb1.setOnClickListener(this);
         worker_rb2.setOnClickListener(this);
@@ -121,7 +124,11 @@ public class FoundWorkerActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
-            case R.id.worker_rb1:
+            case R.id.worker_fabu:
+                intent.setClass(FoundWorkerActivity.this, FaBuWorkActivity.class);
+                startActivity(intent);
+                break;
+                case R.id.worker_rb1:
                 shouYeZgrTwoList.clear();
                 getWorkerList(0);
                 page = 0;

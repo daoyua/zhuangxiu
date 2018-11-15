@@ -167,39 +167,87 @@ public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickL
         Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.fabu_work_next:
-                StringBuffer stringBuffer = new StringBuffer();
-                for (int i = 0; i < datas.size(); i++) {
-                    stringBuffer.append(datas.get(i) + ",");
-                }
-                imageurl = stringBuffer.toString();
-                String nameString = fabu_name.getText().toString();
-                String linkmanString = linkman.getText().toString();
-                String phoneString = phone.getText().toString();
-                String tiaojianString = fabu_tiaojian.getText().toString();
-                String addressString = fabu_address.getText().toString();
-                String educationString = education.getText().toString();
-                String treatmentString = treatment.getText().toString();
-                String moneyString = money.getText().toString();
-                String mianjiString = fabu_mianji.getText().toString();
-                String zhiweiString = fabu_zhiwei.getText().toString();
-                String kString = fabu_kaigongtime.getText().toString();
-                String wString = fabu_wangongtime.getText().toString();
-                String s = gongzhong.getText().toString();
-                if (!TextUtils.isEmpty(imageurl)
-                        && !TextUtils.isEmpty(nameString)
-                        && !TextUtils.isEmpty(linkmanString)
-                        && !TextUtils.isEmpty(phoneString)
-                        && !TextUtils.isEmpty(tiaojianString)
-                        && !TextUtils.isEmpty(addressString)
-                        && !TextUtils.isEmpty(educationString)
-                        && !TextUtils.isEmpty(treatmentString)
-                        && !TextUtils.isEmpty(moneyString)
-                        && !TextUtils.isEmpty(mianjiString)
-                        && !TextUtils.isEmpty(zhiweiString)
-                        && !TextUtils.isEmpty(kString)
-                        && !TextUtils.isEmpty(wString)
-                        && !TextUtils.isEmpty(s)
-                        ) {
+                postWork();
+
+
+                break;
+            case R.id.fabu_work_back:
+                this.finish();
+                break;
+            case R.id.fabu_img:
+                showDialogList();
+                break;
+
+        }
+    }
+
+    private void postWork() {
+        StringBuffer stringBuffer = new StringBuffer();
+        for (int i = 0; i < datas.size(); i++) {
+            stringBuffer.append(datas.get(i) + ",");
+        }
+        imageurl = stringBuffer.toString();
+        String nameString = fabu_name.getText().toString();
+        String linkmanString = linkman.getText().toString();
+        String phoneString = phone.getText().toString();
+        String tiaojianString = fabu_tiaojian.getText().toString();
+        String addressString = fabu_address.getText().toString();
+        String educationString = education.getText().toString();
+        String treatmentString = treatment.getText().toString();
+        String moneyString = money.getText().toString();
+        String mianjiString = fabu_mianji.getText().toString();
+        String zhiweiString = fabu_zhiwei.getText().toString();
+        String kString = fabu_kaigongtime.getText().toString();
+        String wString = fabu_wangongtime.getText().toString();
+        String s = gongzhong.getText().toString();
+        if (TextUtils.isEmpty(nameString)) {
+            Toast.makeText(FaBuWorkActivity.this, "项目名称还没填写", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (TextUtils.isEmpty(addressString)) {
+            Toast.makeText(FaBuWorkActivity.this, "项目地址还没填写", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (TextUtils.isEmpty(linkmanString)) {
+            Toast.makeText(FaBuWorkActivity.this, "联系人还没填写", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (TextUtils.isEmpty(phoneString)) {
+            Toast.makeText(FaBuWorkActivity.this, "联系电话还没填写", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (TextUtils.isEmpty(tiaojianString)) {
+            Toast.makeText(FaBuWorkActivity.this, "招工内容还没填写", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (TextUtils.isEmpty(moneyString)) {
+            Toast.makeText(FaBuWorkActivity.this, "工资还没填写", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (TextUtils.isEmpty(kString)) {
+            Toast.makeText(FaBuWorkActivity.this, "开工时间还没填写", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (TextUtils.isEmpty(kString)) {
+            Toast.makeText(FaBuWorkActivity.this, "完工时间还没填写", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+//                if (!TextUtils.isEmpty(imageurl)
+//                        && !TextUtils.isEmpty(nameString)
+//                        && !TextUtils.isEmpty(linkmanString)
+//                        && !TextUtils.isEmpty(phoneString)
+//                        && !TextUtils.isEmpty(tiaojianString)
+//                        && !TextUtils.isEmpty(addressString)
+//                        && !TextUtils.isEmpty(educationString)
+//                        && !TextUtils.isEmpty(treatmentString)
+//                        && !TextUtils.isEmpty(moneyString)
+//                        && !TextUtils.isEmpty(mianjiString)
+//                        && !TextUtils.isEmpty(zhiweiString)
+//                        && !TextUtils.isEmpty(kString)
+//                        && !TextUtils.isEmpty(wString)
+//                        && !TextUtils.isEmpty(s)
+//                        ) {
                     /*
                     *
                     *
@@ -219,58 +267,51 @@ public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickL
                 +"&endTime="+endTime;
                     *
                     * */
-                    String url = URLS.SaveJob();
+        String url = URLS.SaveJob();
 
-                    FormBody formBody = new FormBody.Builder()
-                            .add("userId", URLS.getUser_id() + "")
-                            .add("name", nameString)
-                            .add("linkman", linkmanString)
-                            .add("telenumber", phoneString)
-                            .add("address", addressString)
-                            .add("acreage", mianjiString)
-                            .add("synopsis", zhiweiString)
-                            .add("jobRequire", tiaojianString)
-                            .add("education", educationString)
-                            .add("treatment", treatmentString)
-                            .add("wages", moneyString)
-                            .add("imgUrl",datas.get(0))
-                            .add("detailUrl", imageurl)
-                            .add("startTime", kString)
-                            .add("endTime", wString)
-                            .add("worktypes", s)
-                            .build();
+        FormBody formBody;
+        FormBody.Builder add = new FormBody.Builder()
+                .add("userId", URLS.getUser_id() + "")
+                .add("name", nameString)
+                .add("linkman", linkmanString)
+                .add("telenumber", phoneString)
+                .add("address", addressString)
+                .add("acreage", mianjiString)
+                .add("synopsis", zhiweiString)
+                .add("jobRequire", tiaojianString)
+                .add("education", educationString)
+                .add("treatment", treatmentString)
+                .add("wages", moneyString)
 
-
-                    OkHttpUtils.post(url, formBody, new OkHttpUtils.ResultCallback<BaseBean>() {
-                        @Override
-                        public void onSuccess(BaseBean response) {
-                            if (response.getResult() == 1) {
-                                Toast.makeText(FaBuWorkActivity.this, "发布成功", Toast.LENGTH_SHORT).show();
-                                setResult(RESULT_OK);
-                                finish();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Exception e) {
-
-                        }
-                    });
-
-                }else {
-                    Toast.makeText(this, "请完善", Toast.LENGTH_SHORT).show();
-                }
-
-
-                break;
-            case R.id.fabu_work_back:
-                this.finish();
-                break;
-            case R.id.fabu_img:
-                showDialogList();
-                break;
+                .add("detailUrl", imageurl)
+                .add("startTime", kString)
+                .add("endTime", wString)
+                .add("worktypes", s);
+        if (datas.size() > 0) {
+            add.add("imgUrl", datas.get(0));
         }
+
+        formBody = add.build();
+
+
+        OkHttpUtils.post(url, formBody, new OkHttpUtils.ResultCallback<BaseBean>() {
+            @Override
+            public void onSuccess(BaseBean response) {
+                if (response.getResult() == 1) {
+                    Toast.makeText(FaBuWorkActivity.this, "发布成功", Toast.LENGTH_SHORT).show();
+                    setResult(RESULT_OK);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+
+            }
+        });
+
     }
+
 
     private void showDialogList() {
         LayoutInflater inflater = LayoutInflater.from(FaBuWorkActivity.this);
@@ -367,6 +408,7 @@ public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickL
         upLoadImage(file);
 
     }
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
@@ -389,9 +431,9 @@ public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickL
         return onTouchEvent(ev);
     }
 
-    public  boolean isShouldHideInput(View v, MotionEvent event) {
+    public boolean isShouldHideInput(View v, MotionEvent event) {
         if (v != null && (v instanceof EditText)) {
-            int[] leftTop = { 0, 0 };
+            int[] leftTop = {0, 0};
             //获取输入框当前的location位置
             v.getLocationInWindow(leftTop);
             int left = leftTop[0];
@@ -411,9 +453,9 @@ public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickL
 
     /* 上传图片*/
     private void upLoadImage(File file) {
-       final ProgressDialog progressDialog=new ProgressDialog(this);
-       progressDialog.setMessage("正在上传");
-       progressDialog.show();
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("正在上传");
+        progressDialog.show();
         MultipartBody.Builder builder = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("file", file.getName(),

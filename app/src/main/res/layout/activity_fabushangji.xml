@@ -56,15 +56,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/black"
                 android:layout_gravity="center_vertical"
-                android:textSize="@dimen/shisi"
-                android:text="公司名称："
-                />
+                android:layout_marginLeft="15dp"
+                android:text="*公司名称："
+                android:textColor="@color/black"
+                android:textSize="@dimen/shisi" />
             <EditText
                 android:theme="@style/MyEditText"
                 android:id="@+id/shangjifabu_gsname"
@@ -91,15 +91,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/black"
                 android:layout_gravity="center_vertical"
-                android:textSize="@dimen/shisi"
-                android:text="您的姓名："
-                />
+                android:layout_marginLeft="15dp"
+                android:text="*您的姓名："
+                android:textColor="@color/black"
+                android:textSize="@dimen/shisi" />
             <EditText
                 android:theme="@style/MyEditText"
                 android:id="@+id/shangjifabu_gerenname"
@@ -128,15 +128,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/black"
                 android:layout_gravity="center_vertical"
-                android:textSize="@dimen/shisi"
-                android:text="合作意向："
-                />
+                android:layout_marginLeft="15dp"
+                android:text="*合作意向："
+                android:textColor="@color/black"
+                android:textSize="@dimen/shisi" />
             <EditText
                 android:theme="@style/MyEditText"
                 android:id="@+id/shangjifabu_hzyq"
@@ -200,15 +200,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
                 android:layout_gravity="center_vertical"
-                android:textSize="@dimen/shisi"
+                android:layout_marginLeft="15dp"
+                android:text="*有效期限："
                 android:textColor="@color/black"
-                android:text="有效期限："
-                />
+                android:textSize="@dimen/shisi" />
             <EditText
                 android:theme="@style/MyEditText"
                 android:id="@+id/shangjifabu_youoxiaoqi"
@@ -235,15 +235,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
                 android:layout_gravity="center_vertical"
-                android:textSize="@dimen/shisi"
+                android:layout_marginLeft="15dp"
+                android:text="*联系电话："
                 android:textColor="@color/black"
-                android:text="联系电话："
-                />
+                android:textSize="@dimen/shisi" />
             <EditText
                 android:theme="@style/MyEditText"
                 android:id="@+id/shangjifabu_hezuoshuliang"

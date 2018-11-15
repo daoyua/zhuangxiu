@@ -22,6 +22,7 @@ import com.blankj.utilcode.util.PermissionUtils;
 import com.zx.zhuangxiu.OkHttpUtils;
 import com.zx.zhuangxiu.R;
 import com.zx.zhuangxiu.URLS;
+import com.zx.zhuangxiu.activity.base.TestActivity;
 import com.zx.zhuangxiu.fragment.BusinessPageFragment;
 import com.zx.zhuangxiu.fragment.FoundPageFragment;
 import com.zx.zhuangxiu.fragment.HomePageFragment;
@@ -222,6 +223,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.tab_rb_found:
                 switchItem(ITEM_FOUND);
+                mCurrentItem = ITEM_FOUND;
+                startActivity(new Intent(HomeActivity.this, TestActivity.class));
+//                BDAutoUpdateSDK.uiUpdateAction(this, new UICheckUpdateCallback() {
+//                    @Override
+//                    public void onNoUpdateFound() {
+//                        ToastUtil.showLong(HomeActivity.this,"没有更新");
+//                    }
+//
+//                    @Override
+//                    public void onCheckComplete() {
+//                        ToastUtil.showLong(HomeActivity.this,"检查完毕");
+//                    }
+//                });
 //                mRadioGroup.clearCheck();
 //                mActionBar.setTitle("VIP");
                 break;

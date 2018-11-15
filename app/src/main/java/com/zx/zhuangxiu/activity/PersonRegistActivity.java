@@ -93,11 +93,11 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
     private int fshenfenint = 0;
     private int sshenfenint = 0;
     private int headint = 0;
-    private String gz1 = "石材类";
-    private String gz2 = "";
-    private String gz3 = "";
-    private String gz4 = "";
-    private String gz5 = "";
+    private String gz1 = null;
+    private String gz2 = null;
+    private String gz3 = null;
+    private String gz4 =null;
+    private String gz5 = null;
     private CheckBox checkboxone, checkboxtwo, checkboxthree, checkboxfour, checkboxfive;
     private String imageurl;
     private String IDUrl;
@@ -204,7 +204,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                 if (checkboxone.isChecked()) {
                     gz1 = "石材类";
                 } else {
-                    gz1 = " ";
+                    gz1 = null;
                 }
             }
         });
@@ -214,7 +214,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                 if (checkboxtwo.isChecked()) {
                     gz2 = ",装修类";
                 } else {
-                    gz2 = " ";
+                    gz2 = null;
                 }
             }
         });
@@ -224,7 +224,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                 if (checkboxthree.isChecked()) {
                     gz3 = ",安装维修";
                 } else {
-                    gz3 = " ";
+                    gz3 =null;
                 }
             }
         });
@@ -234,7 +234,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                 if (checkboxfour.isChecked()) {
                     gz4 = ",家政保养";
                 } else {
-                    gz4 = " ";
+                    gz4 = null;
                 }
             }
         });
@@ -244,7 +244,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                 if (checkboxfive.isChecked()) {
                     gz5 = ",其他类型";
                 } else {
-                    gz5 = " ";
+                    gz5 = null;
                 }
             }
         });
@@ -335,9 +335,11 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                 //|| TextUtils.isEmpty(IDUrl1) 身份证正反
                 if (TextUtils.isEmpty(nameString)) {//姓名
                     Toast.makeText(PersonRegistActivity.this, "请填写姓名", Toast.LENGTH_LONG).show();
+                    return;
                 }
                 if (TextUtils.isEmpty(phoneString)) {//电话
                     Toast.makeText(PersonRegistActivity.this, "请填写电话", Toast.LENGTH_LONG).show();
+                    return;
                 }
 //                if (TextUtils.isEmpty(nameString) || TextUtils.isEmpty(phoneString) || TextUtils.isEmpty(IDUrl) || TextUtils.isEmpty(IDHoldUrl) || TextUtils.isEmpty(IDUrl1)) {
 //                    Toast.makeText(PersonRegistActivity.this, "请填写完整必填信息或重新选择上传的图片", Toast.LENGTH_LONG).show();

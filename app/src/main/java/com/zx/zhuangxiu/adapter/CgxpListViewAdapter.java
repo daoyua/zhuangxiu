@@ -140,7 +140,7 @@ public class CgxpListViewAdapter extends BaseAdapter {
     }
 
     public void show(Activity context,int p) {
-        View view = View.inflate(context, R.layout.image, null);
+        View view = View.inflate(mContext, R.layout.image, null);
         ImageView imageView = view.findViewById(R.id.image);
 
         String imgUrls = mList.get(p).getImg();

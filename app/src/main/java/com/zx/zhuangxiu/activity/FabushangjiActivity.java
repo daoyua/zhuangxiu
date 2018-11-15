@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,7 +25,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blankj.utilcode.util.PermissionUtils;
-import com.blankj.utilcode.util.RegexUtils;
 import com.zx.zhuangxiu.ECApplication;
 import com.zx.zhuangxiu.ImageYS;
 import com.zx.zhuangxiu.OkHttpUtils;
@@ -96,7 +96,7 @@ public class FabushangjiActivity extends AppCompatActivity implements View.OnCli
         hezuoyaoqiu = findViewById(R.id.shangjifabu_hzyq);//合作要求
         xiangxijieshao = findViewById(R.id.shangjifabu_xiangxijs);//详细介绍
         youxiaoqi = findViewById(R.id.shangjifabu_youoxiaoqi);//有效期限
-        hezuoshuliang = findViewById(R.id.shangjifabu_hezuoshuliang);//合作数量
+        hezuoshuliang = findViewById(R.id.shangjifabu_hezuoshuliang);//合作电话
         xiangmutupian = findViewById(R.id.shangjifabu_img1);//项目图片
         yingyezheng = findViewById(R.id.shangjifabu_img2);//营业执照
         yingyezhaopian = findViewById(R.id.shangjifabu_img3);//营业图片
@@ -208,10 +208,29 @@ public class FabushangjiActivity extends AppCompatActivity implements View.OnCli
         String myouxiaoqi = youxiaoqi.getText().toString().trim();
         String mhezuoshuliang = hezuoshuliang.getText().toString().trim();
         String mrenzhnegfei = renzhengfeitext.getText().toString().trim();
-
-
-        if (!mgongsiname.equals("") && !mgerenname.equals("") && !mhezuoyaoqiu.equals("") && !mxiangxijieshao.equals("")
-                && !myouxiaoqi.equals("") && !mhezuoshuliang.equals("") && RegexUtils.isMobileExact(mhezuoshuliang)&& !mrenzhnegfei.equals("")) {
+        if (TextUtils.isEmpty(mgongsiname)) {
+            ToastUtil.showShort(getApplicationContext(), "公司名称没填");
+            return;
+        }
+        if (TextUtils.isEmpty(mgerenname)) {
+            ToastUtil.showShort(getApplicationContext(), "你的姓名没填");
+            return;
+        }
+        if (TextUtils.isEmpty(mhezuoyaoqiu)) {
+            ToastUtil.showShort(getApplicationContext(), "合作要求没填");
+            return;
+        }
+        if (TextUtils.isEmpty(myouxiaoqi)) {
+            ToastUtil.showShort(getApplicationContext(), "有限期限没填");
+            return;
+        }
+        if (TextUtils.isEmpty(mhezuoshuliang)) {
+            ToastUtil.showShort(getApplicationContext(), "联系电话没填");
+            return;
+        }
+//
+//        if (!mgongsiname.equals("") && !mgerenname.equals("") && !mhezuoyaoqiu.equals("") && !mxiangxijieshao.equals("")
+//                && !myouxiaoqi.equals("") && !mhezuoshuliang.equals("") && RegexUtils.isMobileExact(mhezuoshuliang) && !mrenzhnegfei.equals("")) {
 
             String url = URLS.getshangjifabu(mgongsiname, mgerenname, mhezuoyaoqiu, mxiangxijieshao, myouxiaoqi, mhezuoshuliang,
                     XMURL, "", YEURL, mrenzhnegfei, URLS.getUser_id());
@@ -231,10 +250,11 @@ public class FabushangjiActivity extends AppCompatActivity implements View.OnCli
                     ToastUtil.showShort(getApplicationContext(), "上传失败");
                 }
             });
-        } else {
-            ToastUtil.showShort(getApplicationContext(), "请输入完整的信息");
         }
-    }
+//        else {
+//            ToastUtil.showShort(getApplicationContext(), "请输入完整的信息");
+//        }
+//    }
 
     //转化file文件
     public void changebitmap(Bitmap bitmap) {
@@ -303,7 +323,7 @@ public class FabushangjiActivity extends AppCompatActivity implements View.OnCli
 
             @Override
             public void onFailure(Exception e) {
-            progressDialog.dismiss();
+                progressDialog.dismiss();
             }
         });
     }

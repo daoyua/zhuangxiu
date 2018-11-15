@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -78,6 +77,7 @@ public class FoundWorkActivity extends AppCompatActivity implements View.OnClick
         }
     };
     private SmartRefreshLayout mRefresh;
+    private TextView bt_provid_work;
 
 
     @Override
@@ -219,6 +219,7 @@ public class FoundWorkActivity extends AppCompatActivity implements View.OnClick
             case R.id.work_back:
                 this.finish();
                 break;
+
             case R.id.work_fabu:
                 intent.setClass(FoundWorkActivity.this, FaBuWorkActivity.class);
                 startActivityForResult(intent,1000);
@@ -238,20 +239,17 @@ public class FoundWorkActivity extends AppCompatActivity implements View.OnClick
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode==RESULT_OK){
-            switch (requestCode){
-                case 1000:
-                    getWorkInfo();
-                    break;
-            }
-        }
-
-
-
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode==RESULT_OK){
+//            switch (requestCode){
+//                case 1000:
+//                    getWorkInfo();
+//                    break;
+//            }
+//        }
+//    }
 
     /**
      * 点赞
