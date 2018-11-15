@@ -151,7 +151,9 @@ public class BusinessPageFragment extends Fragment implements View.OnClickListen
 
                 break;
             case 2:
-                startActivity(new Intent(getActivity(),FaBuFuWuActivity.class));
+                Intent intent = new Intent(getActivity(), FaBuFuWuActivity.class);
+                intent.putExtra("type",1);
+                startActivity(intent);
                 break;
             case 3:
                 startActivity(new Intent(getActivity(),FabushangjiActivity.class));

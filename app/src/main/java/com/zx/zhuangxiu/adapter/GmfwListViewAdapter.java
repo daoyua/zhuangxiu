@@ -1,7 +1,6 @@
 package com.zx.zhuangxiu.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
@@ -22,10 +21,8 @@ import com.zx.zhuangxiu.activity.MapActivity;
 import com.zx.zhuangxiu.activity.WXFXActivity;
 import com.zx.zhuangxiu.model.BusinessGmfwBean;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import io.rong.imkit.RongIM;
@@ -82,8 +79,10 @@ public class GmfwListViewAdapter extends BaseAdapter {
             holder.gmfw_item_title.setText("" + mList.get(position).getName());
             holder.gmfw_item_size.setText("距离：" + mList.get(position).getArea() + "km");
             holder.gmfw_item_dizhi.setText("" + mList.get(position).getAddress());
-            holder.gmfw_item_xiangmu.setText("服务内容：" + mList.get(position).getName());
-            holder.gmfw_item_yaoqiu.setText("项目要求：" + mList.get(position).getRequires());
+//            holder.gmfw_item_xiangmu.setText("服务内容：" + mList.get(position).getName());
+//            holder.gmfw_item_yaoqiu.setText("项目要求：" + mList.get(position).getRequires());
+            holder.gmfw_item_xiangmu.setText("服务内容：" + mList.get(position).getRequires());
+            holder.gmfw_item_yaoqiu.setText("项目要求：" + mList.get(position).getName());
 
 
             holder.gmfw_item_time.setText("开工时间 : " + demo2(mList.get(position).getStartTime()));

@@ -94,7 +94,7 @@ public class WorkerListviewAdapter extends BaseAdapter {
             if (!imageurl.startsWith("http://")&&!imageurl.startsWith("https://")){
                 imageurl=URLS.HTTP+imageurl;
             }
-            Picasso.with(mContext).load( imageurl).error(R.mipmap.head_normal).placeholder(R.mipmap.head_normal).into(holder.worker_item_touxiang);
+            Picasso.with(mContext).load( imageurl).error(R.mipmap.logo_zhanwei).placeholder(R.mipmap.logo_zhanwei).into(holder.worker_item_touxiang);
             holder.ruwangAge.setText(collectList.getYearNum()+"年");
         }
 

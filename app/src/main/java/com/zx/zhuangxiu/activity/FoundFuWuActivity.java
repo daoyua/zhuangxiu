@@ -104,6 +104,7 @@ public class FoundFuWuActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.serves_search:
                 intent.setClass(FoundFuWuActivity.this, FaBuFuWuActivity.class);
+                intent.putExtra("type",0);
                 startActivity(intent);
                 break;
             case R.id.img_search:

@@ -112,7 +112,7 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
 
     private final int IMAGE_RESULT_CODE = 2;// 表示打开照相机
     private final int PICK = 1;// 选择图片库
-//    private ArrayAdapter<FWBean.DataBean.ClassListBean> arr_adapter;
+    //    private ArrayAdapter<FWBean.DataBean.ClassListBean> arr_adapter;
     private SpinnerAdapter arr_adapter;
     private ArrayAdapter<String> arr_adapter1;
     private String imageurl;
@@ -125,6 +125,7 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fa_bu_fu_wu);
+        aa = getIntent().getIntExtra("type", 0);
         initView();
     }
 
@@ -222,7 +223,7 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
         });
 
 //        arr_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mList);
-        arr_adapter = new SpinnerAdapter(this,mList);
+        arr_adapter = new SpinnerAdapter(this, mList);
 
 //        arr_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(arr_adapter);
@@ -241,23 +242,23 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
         arr_adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, mList1);
         arr_adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner1.setAdapter(arr_adapter1);
-        mSpinner1.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {//选择item的选择点击监听事件
-            public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                       int arg2, long arg3) {
-                mTvType1.setText(mList1.get(arg2));
-                switch (mList1.get(arg2)) {
-                    case "供应型":
-                        aa = 0;
-                        break;
-                    case "需求型":
-                        aa = 1;
-                        break;
-                }
-            }
+//        mSpinner1.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {//选择item的选择点击监听事件
+//            public void onItemSelected(AdapterView<?> arg0, View arg1,
+//                                       int arg2, long arg3) {
+//                mTvType1.setText(mList1.get(arg2));
+//                switch (mList1.get(arg2)) {
+//                    case "供应型":
+//                        aa = 0;
+//                        break;
+//                    case "需求型":
+//                        aa = 1;
+//                        break;
+//                }
+//            }
 
-            public void onNothingSelected(AdapterView<?> arg0) {
-            }
-        });
+//            public void onNothingSelected(AdapterView<?> arg0) {
+//            }
+//        });
     }
 
     //设置时间
