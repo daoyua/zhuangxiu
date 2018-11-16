@@ -1,10 +1,15 @@
 package com.zx.zhuangxiu.activity.base;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -19,7 +24,7 @@ import com.baidu.autoupdatesdk.CPUpdateDownloadCallback;
 import com.baidu.autoupdatesdk.UICheckUpdateCallback;
 import com.zx.zhuangxiu.R;
 
-public class TestActivity extends Activity implements View.OnClickListener {
+public class TestActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView txtLog;
 
@@ -41,9 +46,11 @@ public class TestActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_ui:
-                txtLog.setText("");
-                dialog.show();
-                BDAutoUpdateSDK.uiUpdateAction(this, new MyUICheckUpdateCallback());
+                if (getContactPermission()) {
+                    txtLog.setText("");
+                    dialog.show();
+                    BDAutoUpdateSDK.uiUpdateAction(this, new MyUICheckUpdateCallback());
+                }
                 break;
             case R.id.btn_silence:
                 txtLog.setText("");
@@ -57,6 +64,21 @@ public class TestActivity extends Activity implements View.OnClickListener {
             default:
                 break;
         }
+    }
+
+
+    private boolean getContactPermission() {
+        int back = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_PHONE_STATE);
+        int back1 = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_SETTINGS);
+
+        //查看是否获取到相关权限
+        if (back != PackageManager.PERMISSION_GRANTED) {
+            //如果没有获取到权限
+            ActivityCompat.requestPermissions(TestActivity.this, new String[]{Manifest.permission.READ_PHONE_STATE,Manifest.permission.WRITE_SETTINGS}, 10000);
+            /*向系统获取权限，10000是请求码，以便于下面进行验证时，区别不同的权限请求*/
+            return false; /*当前整个方法的作用是检查当前是否已经获得权限，所以这里只是申请了权限，但是并不知道到底能不能获取成功，所以返回 false ，并且需要实现OnRequestPermissionResult()来再次验证此次的获取结果并进行下一步操作。*/
+        }
+        return true;
     }
 
     @Override

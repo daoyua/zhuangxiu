@@ -1,6 +1,9 @@
 package com.zx.zhuangxiu.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -97,6 +100,7 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
     };
     private SmartRefreshLayout mRefresh;
     private RelativeLayout dianpu;
+    private TextView mypage_version;
 
     @Nullable
     @Override
@@ -190,6 +194,9 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
         message_num = view.findViewById(R.id.message_num);
         mypager_touxiang = (CircleImageView) view.findViewById(R.id.mypager_touxiang);//头像
         mypager_name = (TextView) view.findViewById(R.id.mypager_name);//姓名
+        //姓名
+        mypage_version = (TextView) view.findViewById(R.id.mypage_version);//版本号
+        mypage_version.setText(getLocalVersion(getActivity()));
         mypager_phone = (TextView) view.findViewById(R.id.mypager_phone);//手机号
         mypager_money = (TextView) view.findViewById(R.id.mypager_money);//钱包余额
         mLlMoney = (LinearLayout) view.findViewById(R.id.mypager_ll_money);//我的钱包(linearlayout点击事件)
@@ -221,7 +228,23 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
         });
 
     }
-
+    /* 获取本地软件版本号​
+     */
+    public static String getLocalVersion(Context ctx) {
+        int localVersion = 0;
+        String versionName = "";
+        try {
+            PackageInfo packageInfo = ctx.getApplicationContext()
+                    .getPackageManager()
+                    .getPackageInfo(ctx.getPackageName(), 0);
+            localVersion = packageInfo.versionCode;
+            versionName = packageInfo.versionName;
+            Log.d("TAG", "当前版本号：" + localVersion);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return versionName+":"+localVersion;
+    }
 
     @Override
     public void onClick(View view) {

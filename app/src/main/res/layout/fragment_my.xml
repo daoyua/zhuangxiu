@@ -398,5 +398,26 @@
 
 
         </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="版本号"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shisi" />
+
+            <TextView
+                android:id="@+id/mypage_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/biaoqian" />
+
+        </RelativeLayout>
     </LinearLayout>
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>
