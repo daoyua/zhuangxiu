@@ -120,6 +120,7 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
 
     int anInt = 21;
     int aa = 0;
+    private EditText tv_phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,6 +132,7 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
 
     private void initView() {
         mFabuWorkBack = (TextView) findViewById(R.id.fabu_work_back);
+        tv_phone = (EditText) findViewById(R.id.tv_phone);
         mTvName = (EditText) findViewById(R.id.tv_name);
         mGw = (MyGridView) findViewById(R.id.gw);
         mFabuImg = (ImageView) findViewById(R.id.fabu_img);
@@ -389,6 +391,7 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
 
     public void Submit() {
         Log.e("TAG", "anInt" + anInt + ">>>>>>aa" + aa);
+        String phone = tv_phone.getText().toString().trim();
         String nameString = mTvName.getText().toString().trim();
         String addressString = mTvAddress.getText().toString().trim();//公司地址
         String areaString = mTvArea.getText().toString().trim();
@@ -402,15 +405,19 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
         }
         imageurl = stringBuffer.toString();
 
-        if(TextUtils.isEmpty(nameString)){
+        if (TextUtils.isEmpty(nameString)) {
             Toast.makeText(FaBuFuWuActivity.this, "公司名称没填写", Toast.LENGTH_LONG).show();
             return;
         }
-        if(TextUtils.isEmpty(addressString)){
+        if (TextUtils.isEmpty(phone)) {
+            Toast.makeText(FaBuFuWuActivity.this, "联系电话没填写", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (TextUtils.isEmpty(addressString)) {
             Toast.makeText(FaBuFuWuActivity.this, "公司地址没填写", Toast.LENGTH_LONG).show();
             return;
         }
-        if(TextUtils.isEmpty(otherString)){
+        if (TextUtils.isEmpty(otherString)) {
             Toast.makeText(FaBuFuWuActivity.this, "服务内容没填写", Toast.LENGTH_LONG).show();
             return;
         }
@@ -418,11 +425,11 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
 //            Toast.makeText(FaBuFuWuActivity.this, "公司名称没填写", Toast.LENGTH_LONG).show();
 //            return;
 //        }
-        if(TextUtils.isEmpty(startString)){
+        if (TextUtils.isEmpty(startString)) {
             Toast.makeText(FaBuFuWuActivity.this, "起始时间没填写", Toast.LENGTH_LONG).show();
             return;
         }
-        if(TextUtils.isEmpty(endString)){
+        if (TextUtils.isEmpty(endString)) {
             Toast.makeText(FaBuFuWuActivity.this, "结束没填写", Toast.LENGTH_LONG).show();
             return;
         }
@@ -436,7 +443,7 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
 //                && !TextUtils.isEmpty(endString)
 //                && !TextUtils.isEmpty(imageurl)
 //                ) {
-            String fabu = URLS.fabu(URLS.getUser_id(), nameString, addressString, areaString, priceString, otherString, imageurl, anInt, startString, endString, aa);
+        String fabu = URLS.fabu(URLS.getUser_id(), nameString, addressString, areaString, priceString, otherString, imageurl, anInt, startString, endString, aa, phone);
 //            FormBody formBody = new FormBody.Builder()
 //                    .add("userId", URLS.getUser_id() + "")
 //                    .add("name", nameString)
@@ -450,20 +457,20 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
 //                    .add("endTime", endString)
 //                    .add("isNeed ", aa + "")
 //                    .build();
-            OkHttpUtils.get(fabu, new OkHttpUtils.ResultCallback<Fab>() {
-                @Override
-                public void onSuccess(Fab response) {
-                    if (response.getResult() == 1) {
-                        Toast.makeText(FaBuFuWuActivity.this, "发布成功", Toast.LENGTH_LONG).show();
-                        FaBuFuWuActivity.this.finish();
-                    }
+        OkHttpUtils.get(fabu, new OkHttpUtils.ResultCallback<Fab>() {
+            @Override
+            public void onSuccess(Fab response) {
+                if (response.getResult() == 1) {
+                    Toast.makeText(FaBuFuWuActivity.this, "发布成功", Toast.LENGTH_LONG).show();
+                    FaBuFuWuActivity.this.finish();
                 }
+            }
 
-                @Override
-                public void onFailure(Exception e) {
+            @Override
+            public void onFailure(Exception e) {
 
-                }
-            });
+            }
+        });
 
           /*  OkHttpUtils.post(fabu, formBody, new OkHttpUtils.ResultCallback<Fab>() {
                 @Override

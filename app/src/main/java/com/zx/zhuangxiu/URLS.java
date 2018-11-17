@@ -4,7 +4,8 @@ import com.zx.zhuangxiu.model.SubmitDdTwo;
 
 public class URLS {
 
-    public static final String HTTP = "http://47.93.215.205:9095";
+    public static final String HTTP = "http://47.75.53.109:9095";//测试
+//    public static final String HTTP = "http://47.93.215.205:9095";//正式
 //        public static final String HTTP = "http://192.168.2.141:9095";
     public static final String BANNER = "http://47.93.215.205:9095/api/homepage/sowingList";
     public static int user_id;
@@ -1112,8 +1113,10 @@ public class URLS {
     public static String fabu() {
         return URLS.HTTP + "/api/server/addServer";
     }
-    public static String fabu(int user_id,String name,String address,String area,String price ,String requires,String imgUrl,int serverType ,String startTime ,String endTime ,int isNeed){
-        return URLS.HTTP + "/api/server/addServer?userId="+user_id+"&name="+name+"&address="+address+"&area="+area+"&price="+price+"&requires="+requires+"&imgUrl="+imgUrl+"&serverType="+serverType+"&startTime="+startTime+"&endTime="+endTime+"&isNeed="+isNeed ;
+    public static String fabu(int user_id,String name,String address,String area,String price ,String requires,String imgUrl,int serverType ,String startTime ,String endTime ,int isNeed,String phone){
+        return URLS.HTTP + "/api/server/addServer?userId="+user_id+"&name="+name+"&address="+address+"&area="+area+"&price="
+                +price+"&requires="+requires+"&imgUrl="+imgUrl+"&serverType="
+                +serverType+"&startTime="+startTime+"&endTime="+endTime+"&isNeed="+isNeed+"&phone="+phone ;
     }
 // /api/business/addBusiness
     public static String addBusiness(int userId,String goodsname,String goodsinfo,String price,long num,String image,String time,long phone){

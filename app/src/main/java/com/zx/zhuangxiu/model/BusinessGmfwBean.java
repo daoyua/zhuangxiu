@@ -1,5 +1,7 @@
 package com.zx.zhuangxiu.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class BusinessGmfwBean {
@@ -85,6 +87,8 @@ public class BusinessGmfwBean {
         private long endTime;
         private int thumbsUp;
         private String requires;
+        @SerializedName("phone")
+        public String phone;
 
         public double getArea() {
             return area;

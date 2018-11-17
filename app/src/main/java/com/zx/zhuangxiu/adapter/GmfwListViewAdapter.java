@@ -18,8 +18,8 @@ import com.squareup.picasso.Picasso;
 import com.zx.zhuangxiu.R;
 import com.zx.zhuangxiu.URLS;
 import com.zx.zhuangxiu.activity.MapActivity;
-import com.zx.zhuangxiu.activity.WXFXActivity;
 import com.zx.zhuangxiu.model.BusinessGmfwBean;
+import com.zx.zhuangxiu.utils.MyUntils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -123,22 +123,24 @@ public class GmfwListViewAdapter extends BaseAdapter {
         holder.gmfw_item_youhaoyou.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RongIM.getInstance().startPrivateChat(mContext, mList.get(position).getUserId() + "", "客服");
+                RongIM.getInstance().startPrivateChat(mContext, mList.get(position).getUserId() + "", mList.get(position).getName());
             }
         });
 
         holder.gmfw_item_tuijian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, WXFXActivity.class);
-                mContext.startActivity(intent);
+//                Intent intent = new Intent(mContext, WXFXActivity.class);
+//                mContext.startActivity(intent);
+                BusinessGmfwBean.DataBean dataBean = mList.get(position);
+                MyUntils.call(mContext, dataBean.phone + "");
             }
         });
         holder.gmfw_item_dizhi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, MapActivity.class);
-                intent.putExtra("map",mList.get(position).getAddress());
+                intent.putExtra("map", mList.get(position).getAddress());
                 mContext.startActivity(intent);
             }
         });
