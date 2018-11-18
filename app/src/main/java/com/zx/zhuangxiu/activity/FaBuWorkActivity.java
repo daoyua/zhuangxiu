@@ -233,7 +233,7 @@ public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
         if (TextUtils.isEmpty(zhiweiString)) {
-            Toast.makeText(FaBuWorkActivity.this, "填写公司名称或个人", Toast.LENGTH_LONG).show();
+            Toast.makeText(FaBuWorkActivity.this, "请填写公司名称或个人", Toast.LENGTH_LONG).show();
             return;
         }
 

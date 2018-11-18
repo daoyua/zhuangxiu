@@ -93,7 +93,7 @@ public class FoundWorkListViewAdapter extends BaseAdapter{
             String s = MyUntils.timeStamp2Date(l, "yyyy-MM-dd HH:mm:ss");
             holder.shouye_work_data.setText(s);
             holder.jobRequire.setText(mList.get(position).jobRequire);
-            holder.worktypes.setText("工作种类："+mList.get(position).worktypes);
+            holder.worktypes.setText("工种："+mList.get(position).worktypes);
             holder.treatment.setText("工作待遇："+mList.get(position).treatment);
             holder.wages.setText("工资："+mList.get(position).wages);
 

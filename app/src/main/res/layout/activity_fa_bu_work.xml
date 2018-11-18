@@ -131,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:hint="公司名称"
+                android:hint="请输入公司名称或个人"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shier"
                 android:theme="@style/MyEditText" />
