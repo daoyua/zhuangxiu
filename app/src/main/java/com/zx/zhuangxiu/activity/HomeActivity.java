@@ -68,6 +68,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
     private TextView message_num;
     //    private ActionBar mActionBar;
 
@@ -250,6 +256,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private void showHomeFragment(Bundle savedInstanceState) {
         FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().addToBackStack(null);
+//        fragmentTransaction.addToBackStack(null);
         if (savedInstanceState != null) {
             mHomePageFragment = (HomePageFragment) fragmentManager.findFragmentByTag("home");
             mBusinessPageFragment = (BusinessPageFragment) fragmentManager.findFragmentByTag("business");

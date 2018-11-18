@@ -1,5 +1,7 @@
 package com.zx.zhuangxiu.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 /**
  * 首页-找工作
@@ -75,6 +77,23 @@ public class ShouYeZgzOne {
         private String synopsis;
         private String experience;
         private String city;
+
+        @SerializedName("addTime")  //发起时间
+        public String addTime;
+        @SerializedName("startTime")
+        public String startTime;
+        @SerializedName("endTime")
+        public String endTime;
+        @SerializedName("worktypes")  //工作种类
+        public String worktypes;
+        @SerializedName("telenumber")  //电话
+        public String telenumber;
+        @SerializedName("treatment")    //福利
+        public String treatment;
+        @SerializedName("jobRequire")  //工作要求
+        public String jobRequire;
+        @SerializedName("wages")  //工作要求
+        public String wages;
 
         public String getImgUrl() {
             return imgUrl;

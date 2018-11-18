@@ -72,6 +72,7 @@ public class ServiceFragment extends Fragment implements ItemClickListener {
     private String name;
     private int typeid;
     private SmartRefreshLayout mRefresh;
+    private String addTime;
 
 
     @Nullable
@@ -85,6 +86,7 @@ public class ServiceFragment extends Fragment implements ItemClickListener {
 //        position = bundle.getInt("name");
         typeid = bundle.getInt("type");
         name = bundle.getString("name");
+        addTime = bundle.getString("addTime");
 
         userID = URLS.getUser_id();
 //        Log.d("xxx", "找服务====接收type---"+type);

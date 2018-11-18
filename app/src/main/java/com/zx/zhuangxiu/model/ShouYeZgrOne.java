@@ -78,6 +78,7 @@ public class ShouYeZgrOne {
         private int number;
         private String workType;
 
+
         public String getWorkType() {
             return workType;
         }

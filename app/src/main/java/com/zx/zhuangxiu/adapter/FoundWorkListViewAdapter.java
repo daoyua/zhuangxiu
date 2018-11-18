@@ -20,6 +20,7 @@ import com.zx.zhuangxiu.activity.FoundWorkDetailsActivity;
 import com.zx.zhuangxiu.activity.MapActivity;
 import com.zx.zhuangxiu.activity.WXFXActivity;
 import com.zx.zhuangxiu.model.ShouYeZgzOne;
+import com.zx.zhuangxiu.utils.MyUntils;
 import com.zx.zhuangxiu.view.RoundImageView;
 
 import java.util.List;
@@ -68,6 +69,13 @@ public class FoundWorkListViewAdapter extends BaseAdapter{
             holder.work_details = (TextView) convertView.findViewById(R.id.shouye_work_item_details);
             holder.work_item_address = (TextView) convertView.findViewById(R.id.shouye_work_item_dizhi);
             holder.shouye_work_item_tv = (TextView) convertView.findViewById(R.id.shouye_work_item_tv);
+
+            holder.shouye_work_data = (TextView) convertView.findViewById(R.id.shouye_work_data);
+            holder.jobRequire = (TextView) convertView.findViewById(R.id.shouye_work_item_require);
+            holder.worktypes = (TextView) convertView.findViewById(R.id.shouye_work_item_worktypes);
+            holder.treatment = (TextView) convertView.findViewById(R.id.shouye_work_item_treatment);
+            holder.wages = (TextView) convertView.findViewById(R.id.shouye_work_item_wages);
+
             holder.work_img = (RoundImageView) convertView.findViewById(R.id.shouye_work_item_img);
             holder.shouye_work_item_ll = (LinearLayout) convertView.findViewById(R.id.shouye_work_item_ll);
             holder.dianzanlayout = convertView.findViewById(R.id.work_dianzanll);//点赞
@@ -80,6 +88,15 @@ public class FoundWorkListViewAdapter extends BaseAdapter{
         }
 
         if (mList.size() != 0) {
+            String addTime = mList.get(position).addTime;
+            long l = Long.parseLong(addTime);
+            String s = MyUntils.timeStamp2Date(l, "yyyy-MM-dd HH:mm:ss");
+            holder.shouye_work_data.setText(s);
+            holder.jobRequire.setText(mList.get(position).jobRequire);
+            holder.worktypes.setText("工作种类："+mList.get(position).worktypes);
+            holder.treatment.setText("福利："+mList.get(position).treatment);
+            holder.wages.setText("工资："+mList.get(position).wages);
+
             holder.work_item_title.setText(""+mList.get(position).getName());
             holder.xueli.setText("学历："+mList.get(position).getEducation());
             holder.work_item_xiaotitle.setText("工作地点："+mList.get(position).getAddress());
@@ -157,7 +174,8 @@ public class FoundWorkListViewAdapter extends BaseAdapter{
     public class ViewHolder {
 
         RoundImageView work_img;
-        TextView work_item_title, work_item_xiaotitle, work_details, work_item_address, shouye_work_item_tv,gongzuojingyan,xueli,dianzannum;
+        TextView work_item_title, work_item_xiaotitle, work_details, work_item_address, shouye_work_item_tv,gongzuojingyan,xueli,dianzannum
+                ,shouye_work_data,worktypes,telenumber,treatment,jobRequire,wages;
         LinearLayout shouye_work_item_ll,fenxianglayout,dianzanlayout,pinglunlayout;
 
     }

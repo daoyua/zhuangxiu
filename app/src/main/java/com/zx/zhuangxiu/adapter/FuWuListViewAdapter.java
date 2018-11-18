@@ -89,6 +89,7 @@ public class FuWuListViewAdapter extends BaseAdapter{
             holder.fuwu_item_xiaotitle = (TextView) convertView.findViewById(R.id.fuwu_xiaotitle);
             holder.fuwu_item_address = (TextView) convertView.findViewById(R.id.fuwu_item_address);
             holder.fuwu_item_zanTv = (TextView)convertView.findViewById(R.id.fuwu_item_zanTv) ;
+            holder.shouye_fuwu_data = (TextView)convertView.findViewById(R.id.shouye_fuwu_data) ;
             holder.fuwu_img = (RoundImageView) convertView.findViewById(R.id.fuwu_img);
             holder.fuwu_item_zan = (ImageView)convertView.findViewById(R.id.fuwu_item_zan);
             holder.fuwu_item_pl = (ImageView)convertView.findViewById(R.id.fuwu_item_pl);
@@ -106,6 +107,7 @@ public class FuWuListViewAdapter extends BaseAdapter{
             holder.fuwu_item_xiaotitle.setText("服务内容: "+mList.get(position).getRequires());
             holder.fuwu_item_zanTv.setText(""+mList.get(position).getThumbsup());
             holder.fuwu_item_address.setText("地址: "+mList.get(position).getAddress());
+            holder.shouye_fuwu_data.setText(mList.get(position).addTime);
             id = mList.get(position).getId();
             mList.get(position).getThumbsup();
             String imgUrl = mList.get(position).getImgUrl();
@@ -267,7 +269,7 @@ public class FuWuListViewAdapter extends BaseAdapter{
 
         RoundImageView fuwu_img;
         ImageView fuwu_item_zan, fuwu_item_pl;
-        TextView fuwu_item_title, fuwu_item_xiaotitle, fuwu_item_address, fuwu_item_zanTv;
+        TextView fuwu_item_title, fuwu_item_xiaotitle, fuwu_item_address, fuwu_item_zanTv,shouye_fuwu_data;
         RelativeLayout fuwu_rl;
         LinearLayout dianzanll,pinglunll,fenxiangll;
 

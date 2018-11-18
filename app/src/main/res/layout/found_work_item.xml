@@ -8,126 +8,178 @@
         android:id="@+id/shouye_work_item_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/white"
         android:layout_marginTop="10dp"
-        >
+        android:background="@color/white"
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
 
-        <com.zx.zhuangxiu.view.RoundImageView
-            android:id="@+id/shouye_work_item_img"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@mipmap/logo_zhanwei"/>
+            <com.zx.zhuangxiu.view.RoundImageView
+                android:id="@+id/shouye_work_item_img"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@mipmap/logo_zhanwei" />
+
+            <TextView
+                android:id="@+id/shouye_work_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/shouye_work_item_img"
+                android:text="高级技工"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shisi" />
+
+
+            <TextView
+                android:id="@+id/shouye_work_item_xiaotitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shouye_work_item_title"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/shouye_work_item_img"
+                android:text="北京"
+                android:textSize="@dimen/shier"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/shouye_work_item_gzjy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shouye_work_item_title"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/shouye_work_item_xiaotitle"
+                android:text="工作经验不限"
+                android:textSize="@dimen/shier"
+                android:visibility="gone" />
+
+            <TextView
+
+                android:id="@+id/shouye_work_item_xueli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shouye_work_item_title"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/shouye_work_item_gzjy"
+                android:text="学历"
+                android:textSize="@dimen/shier" />
+            <TextView
+
+                android:id="@+id/shouye_work_item_treatment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shouye_work_item_xueli"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/shouye_work_item_gzjy"
+                android:text="福利"
+                android:textSize="@dimen/shier" />
+            <TextView
+
+                android:id="@+id/shouye_work_item_wages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shouye_work_item_treatment"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/shouye_work_item_gzjy"
+                android:text="工资"
+                android:textSize="@dimen/shier" />
+            <TextView
+                android:id="@+id/shouye_work_item_dizhi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shouye_work_item_wages"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/shouye_work_item_img"
+                android:gravity="center"
+                android:text="河北省石家庄市中华世纪大街广场G座"
+                android:textSize="@dimen/shier" />
+            <!--android:layout_below="@+id/shouye_work_item_xueli"-->
+
+            <TextView
+                android:id="@+id/shouye_work_item_worktypes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shouye_work_item_dizhi"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/shouye_work_item_img"
+                android:text="worktypes"
+                android:textSize="@dimen/shier" />
+            <TextView
+                android:id="@+id/shouye_work_item_require"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shouye_work_item_worktypes"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/shouye_work_item_img"
+                android:text="工作要求"
+                android:textSize="@dimen/shier" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/biaoqian"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/shouye_work_item_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_button"
+                android:padding="5dp"
+                android:text="企业版"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shier"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+
 
         <TextView
-            android:id="@+id/shouye_work_item_title"
-            android:layout_width="wrap_content"
+            android:id="@+id/shouye_work_item_details"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/shisi"
+            android:padding="10dp"
+            android:text="公司名称:-------"
             android:textColor="@color/black"
-            android:layout_marginTop="5dp"
-            android:text="高级技工"
-            android:layout_toRightOf="@+id/shouye_work_item_img"
-            android:layout_marginLeft="10dp"/>
-
-
-
+            android:textSize="@dimen/shier" />
         <TextView
-            android:id="@+id/shouye_work_item_xiaotitle"
-            android:layout_width="wrap_content"
+            android:id="@+id/shouye_work_data"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/shier"
-            android:text="北京"
-            android:layout_marginTop="8dp"
-            android:layout_below="@+id/shouye_work_item_title"
-            android:layout_toRightOf="@+id/shouye_work_item_img"
-            android:layout_marginLeft="10dp"
-            android:visibility="gone"
-            />
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/shouye_work_item_gzjy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/shier"
-            android:text="工作经验不限"
-            android:layout_marginTop="8dp"
-            android:layout_below="@+id/shouye_work_item_title"
-            android:layout_toRightOf="@+id/shouye_work_item_xiaotitle"
-            android:layout_marginLeft="10dp"/>
-        <TextView
-            android:id="@+id/shouye_work_item_xueli"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/shier"
-            android:text="学历"
-            android:layout_marginTop="8dp"
-            android:layout_below="@+id/shouye_work_item_title"
-            android:layout_toRightOf="@+id/shouye_work_item_gzjy"
-            android:layout_marginLeft="5dp"/>
-
-
-        <TextView
-            android:id="@+id/shouye_work_item_dizhi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="河北省石家庄市中华世纪大街广场G座"
-            android:layout_toRightOf="@+id/shouye_work_item_img"
-            android:layout_below="@+id/shouye_work_item_xueli"
+            android:gravity="right"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="8dp"
-            android:textSize="@dimen/shier"
-            android:gravity="center"/>
+            android:layout_marginRight="8dp"
+            android:text="发起时间"
+            android:textSize="@dimen/shier" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/biaoqian"
-            android:layout_centerVertical="true"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/shouye_work_item_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_button"
-            android:padding="5dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text="企业版"
-            android:textColor="@color/black"
-            android:textSize="@dimen/shier"
-            android:visibility="gone"/>
-
-    </RelativeLayout>
-
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@drawable/vip8"/>
-
-    <TextView
-        android:id="@+id/shouye_work_item_details"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/shier"
-        android:textColor="@color/black"
-        android:padding="10dp"
-        android:text="公司名称:-------"/>
-
-    </LinearLayout>
-
+        android:background="@drawable/vip8" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:background="@color/white"
+        android:orientation="horizontal"
         android:padding="10dp">
 
         <LinearLayout
@@ -135,9 +187,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:descendantFocusability="blocksDescendants"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:descendantFocusability="blocksDescendants">
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/zan_img"
@@ -161,9 +213,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:descendantFocusability="blocksDescendants"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:descendantFocusability="blocksDescendants">
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/chanpin_item_commment"
@@ -186,10 +238,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal"
             android:background="@color/white"
-            android:descendantFocusability="blocksDescendants">
+            android:descendantFocusability="blocksDescendants"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"

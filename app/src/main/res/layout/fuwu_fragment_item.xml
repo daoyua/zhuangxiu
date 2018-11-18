@@ -82,7 +82,15 @@
             android:textColor="@color/black"/>
 
     </RelativeLayout>
-
+    <TextView
+        android:id="@+id/shouye_fuwu_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="8dp"
+        android:text="发起时间"
+        android:textSize="@dimen/shier" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

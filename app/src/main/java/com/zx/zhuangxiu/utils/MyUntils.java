@@ -9,6 +9,9 @@ import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MyUntils {
     public static final int REQUEST_CALL_PERMISSION = 10111; //拨号请求码
 
@@ -44,6 +47,14 @@ public class MyUntils {
                 activity.startActivity(intent);
             }
         }
+    }
+
+    public static String timeStamp2Date(long time, String format) {
+        if (format == null || format.isEmpty()) {
+            format = "yyyy-MM-dd HH:mm:ss";
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(new Date(time));
     }
 
 

@@ -65,6 +65,9 @@ public class WorkerListviewAdapter extends BaseAdapter {
             holder.dizhi = (TextView) convertView.findViewById(R.id.worker_item_suozaidi);
             holder.kongjian = (TextView) convertView.findViewById(R.id.worker_item_gerenkongjian);
             holder.address = (TextView) convertView.findViewById(R.id.worker_item_dingweiaddress);
+
+            holder.shouye_worker_data = (TextView) convertView.findViewById(R.id.shouye_worker_data);
+
             holder.worker_item_ll = (LinearLayout) convertView.findViewById(R.id.worker_item_ll);
             holder.worker_item_touxiang = (RoundImageView)convertView.findViewById(R.id.worker_item_touxiang);
             holder.work_type=convertView.findViewById(R.id.work_types);
@@ -90,6 +93,9 @@ public class WorkerListviewAdapter extends BaseAdapter {
             holder.sex.setText(collectList.getSex());
             holder.dianzannum.setText(""+collectList.getNumber());
             holder.work_type.setText(collectList.getWorkType());
+
+            holder.shouye_worker_data.setText(collectList.getRegistrationDate());
+
             String imageurl = collectList.getUserUrl();
             if (!imageurl.startsWith("http://")&&!imageurl.startsWith("https://")){
                 imageurl=URLS.HTTP+imageurl;
@@ -176,7 +182,8 @@ public class WorkerListviewAdapter extends BaseAdapter {
 
     public class ViewHolder {
         RoundImageView worker_item_touxiang;
-        TextView name, age, sex, ruwangAge, dizhi, kongjian, address,dianzannum ,work_type;
+        TextView name, age, sex, ruwangAge, dizhi, kongjian, address,dianzannum ,work_type
+                ,shouye_worker_data;
         LinearLayout worker_item_ll,dianzanlayout,pinglunlayout,fenxianglayout;
 
     }

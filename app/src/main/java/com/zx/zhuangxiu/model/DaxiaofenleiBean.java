@@ -50,6 +50,7 @@ public class DaxiaofenleiBean {
         private int id;
         private String detailUrl;
 
+
         public String getCname() {
             return cname;
         }

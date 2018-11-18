@@ -1,5 +1,7 @@
 package com.zx.zhuangxiu.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -103,13 +105,14 @@ public class SyFuWuss {
 
             private String imgUrl;
             private String address;
-            private String addTime;
             private int isalone;
             private int isgood;
             private String name;
             private int id;
             private int thumbsup;
             private String requires;
+            @SerializedName("addTime")
+            public String addTime;
 
             public String getImgUrl() {
                 return imgUrl;
