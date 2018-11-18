@@ -82,7 +82,7 @@ public class FoundFuWuActivity extends AppCompatActivity implements View.OnClick
         serves_back.setOnClickListener(this);
 
         serves_title = (TextView)findViewById(R.id.serves_title);
-        serves_title.setText(""+title);
+        serves_title.setText("专业服务");
 
         mGoodsTab = (TabLayout) findViewById(R.id.goods_tab);
         goodsViewPager = (ViewPager) findViewById(R.id.goods_viewpager);

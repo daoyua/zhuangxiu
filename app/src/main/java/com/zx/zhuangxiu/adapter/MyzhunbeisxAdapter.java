@@ -1,7 +1,6 @@
 package com.zx.zhuangxiu.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +13,10 @@ import com.squareup.picasso.Picasso;
 import com.zx.zhuangxiu.OkHttpUtils;
 import com.zx.zhuangxiu.R;
 import com.zx.zhuangxiu.URLS;
-import com.zx.zhuangxiu.model.BannerBean;
 import com.zx.zhuangxiu.model.BaseBean;
 import com.zx.zhuangxiu.model.MyOrderBean;
-import com.zx.zhuangxiu.model.MydingdansBean;
 
 import java.util.List;
-
-import okhttp3.FormBody;
 
 public class MyzhunbeisxAdapter extends BaseAdapter {
 
@@ -74,7 +69,7 @@ public class MyzhunbeisxAdapter extends BaseAdapter {
                     holder.submit.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            A(mlist.get(i).getId(),i);
+                            A(mlist.get(i).getId(), i);
                         }
                     });
                 } else {

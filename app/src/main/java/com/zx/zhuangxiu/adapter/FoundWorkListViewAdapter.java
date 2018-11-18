@@ -94,7 +94,7 @@ public class FoundWorkListViewAdapter extends BaseAdapter{
             holder.shouye_work_data.setText(s);
             holder.jobRequire.setText(mList.get(position).jobRequire);
             holder.worktypes.setText("工作种类："+mList.get(position).worktypes);
-            holder.treatment.setText("福利："+mList.get(position).treatment);
+            holder.treatment.setText("工作待遇："+mList.get(position).treatment);
             holder.wages.setText("工资："+mList.get(position).wages);
 
             holder.work_item_title.setText(""+mList.get(position).getName());
@@ -102,7 +102,7 @@ public class FoundWorkListViewAdapter extends BaseAdapter{
             holder.work_item_xiaotitle.setText("工作地点："+mList.get(position).getAddress());
             holder.gongzuojingyan.setText("工作经验："+mList.get(position).getExperience());
             holder.work_details.setText("公司名称: "+mList.get(position).getSynopsis());
-            holder.work_item_address.setText("地址: "+mList.get(position).getAddress());
+            holder.work_item_address.setText("项目地址: "+mList.get(position).getAddress());
             holder.dianzannum.setText(""+mList.get(position).getNumber());
             String imgUrl = mList.get(position).getImgUrl();
             Picasso.with(mContext).load(URLS.HTTP+imgUrl).error(R.mipmap.logo_zhanwei).fit().into(holder.work_img);

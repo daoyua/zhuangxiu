@@ -232,6 +232,10 @@ public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(FaBuWorkActivity.this, "完工时间还没填写", Toast.LENGTH_LONG).show();
             return;
         }
+        if (TextUtils.isEmpty(zhiweiString)) {
+            Toast.makeText(FaBuWorkActivity.this, "填写公司名称或个人", Toast.LENGTH_LONG).show();
+            return;
+        }
 
 //                if (!TextUtils.isEmpty(imageurl)
 //                        && !TextUtils.isEmpty(nameString)

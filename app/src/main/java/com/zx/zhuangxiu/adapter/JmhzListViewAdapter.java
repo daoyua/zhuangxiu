@@ -85,7 +85,7 @@ public class JmhzListViewAdapter extends BaseAdapter {
             holder.jmhz_item_xiangqing.setText("详情介绍:" + mList.get(position).getInfo());
             holder.jmhz_item_yaoqiu.setText("合作要求:" + mList.get(position).getRequire());
             String time = ToTime.getDateTimeFromMillisecond(mList.get(position).getCreattime());
-            holder.jmhz_item_qixian.setText("创建时间:" + time);
+            holder.jmhz_item_qixian.setText("发布时间:" + time);
             holder.jmhz_item_nums.setText("联系电话:" + mList.get(position).getNum());
             String imgUrls = mList.get(position).getBusinessimg();
             if (!TextUtils.isEmpty(imgUrls)) {

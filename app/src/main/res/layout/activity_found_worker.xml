@@ -34,9 +34,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:textSize="@dimen/shiliu"
+                android:text="找工人"
                 android:textColor="@color/white"
-                android:text="找工人"/>
+                android:textSize="@dimen/shiliu" />
 
 
             <ImageView

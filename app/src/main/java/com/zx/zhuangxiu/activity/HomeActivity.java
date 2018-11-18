@@ -22,7 +22,6 @@ import com.blankj.utilcode.util.PermissionUtils;
 import com.zx.zhuangxiu.OkHttpUtils;
 import com.zx.zhuangxiu.R;
 import com.zx.zhuangxiu.URLS;
-import com.zx.zhuangxiu.activity.base.TestActivity;
 import com.zx.zhuangxiu.fragment.BusinessPageFragment;
 import com.zx.zhuangxiu.fragment.FoundPageFragment;
 import com.zx.zhuangxiu.fragment.HomePageFragment;
@@ -82,7 +81,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        showHomeFragment(savedInstanceState);
+//        showHomeFragment(savedInstanceState);
 
         setContentView(R.layout.activity_home);
         initViews();
@@ -165,6 +164,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         message_num = findViewById(R.id.message_num);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
     private void switchItem(int itemId) {
         switch (itemId) {
             case ITEM_My:
@@ -230,7 +234,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tab_rb_found:
                 switchItem(ITEM_FOUND);
                 mCurrentItem = ITEM_FOUND;
-                startActivity(new Intent(HomeActivity.this, TestActivity.class));
+//                startActivity(new Intent(HomeActivity.this, TestActivity.class));
+
 //                BDAutoUpdateSDK.uiUpdateAction(this, new UICheckUpdateCallback() {
 //                    @Override
 //                    public void onNoUpdateFound() {

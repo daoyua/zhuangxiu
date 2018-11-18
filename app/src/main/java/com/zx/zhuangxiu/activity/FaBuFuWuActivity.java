@@ -24,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -121,6 +122,8 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
     int anInt = 21;
     int aa = 0;
     private EditText tv_phone;
+    private RelativeLayout fabu_fuwu_type;
+    private TextView fabu_fuwu_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,6 +134,12 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initView() {
+        fabu_fuwu_type = (RelativeLayout) findViewById(R.id.fabu_fuwu_type);
+        fabu_fuwu_title = (TextView) findViewById(R.id.fabu_fuwu_title);
+        if (aa == 1) {
+            fabu_fuwu_type.setVisibility(View.GONE);
+            fabu_fuwu_title.setText("发布需求");
+        }
         mFabuWorkBack = (TextView) findViewById(R.id.fabu_work_back);
         tv_phone = (EditText) findViewById(R.id.tv_phone);
         mTvName = (EditText) findViewById(R.id.tv_name);

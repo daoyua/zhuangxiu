@@ -51,8 +51,8 @@
                 android:layout_weight="1"
                 android:button="@null"
                 android:checked="true"
-                android:text="需求商品"
                 android:gravity="center"
+                android:text="商品需求"
                 android:textColor="@drawable/radiobutton_textcolor"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -64,11 +64,11 @@
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
-                android:text="需求服务"
+                android:text="服务需求"
                 android:textColor="@drawable/radiobutton_textcolor"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:visibility="visible"/>
+                android:visibility="visible" />
 
             <RadioButton
                 android:id="@+id/business_rb3"
@@ -77,7 +77,7 @@
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
-                android:text="平台合作"
+                android:text="合作加盟"
                 android:textColor="@drawable/radiobutton_textcolor"
                 android:textSize="14sp"
                 android:textStyle="bold" />
