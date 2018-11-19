@@ -92,8 +92,8 @@
         android:id="@+id/gmfw_item_xiangmu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="服务项目:北海花园纳斯达克哈哈"
-        android:visibility="gone"
+        android:text="服务内容"
+
         android:textColor="@color/black"
         android:textSize="12sp" />
 
@@ -102,6 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:visibility="gone"
         android:text="项目要求:哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
         android:textColor="@color/black"
         android:textSize="12sp" />

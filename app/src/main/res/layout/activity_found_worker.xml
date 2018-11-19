@@ -40,7 +40,7 @@
 
 
             <ImageView
-                android:visibility="gone"
+                android:visibility="visible"
                 android:id="@+id/worker_search"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             <TextView
                 android:gravity="center"
                 android:id="@+id/worker_fabu"
-                android:layout_width="60dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/shisi"
                 android:textColor="@color/white"
