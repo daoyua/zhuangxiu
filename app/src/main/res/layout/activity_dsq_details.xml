@@ -46,13 +46,22 @@
           android:layout_height="match_parent">
           <TextView
               android:id="@+id/dsq_xiaotitle"
-              android:layout_width="wrap_content"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:padding="10dp"
               android:text=""
               android:textColor="@color/black"
               android:textSize="@dimen/shisi"
               android:textStyle="bold" />
+          <TextView
+              android:id="@+id/dsq_xiao_detail"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="10dp"
+              android:text="正文"
+              android:textColor="@color/black"
+              android:textSize="@dimen/shisi"
+               />
           <ImageView
               android:id="@+id/dsq_tupian"
               android:layout_width="match_parent"

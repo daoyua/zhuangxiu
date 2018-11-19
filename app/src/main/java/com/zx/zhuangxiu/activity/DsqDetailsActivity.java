@@ -50,6 +50,7 @@ public class DsqDetailsActivity extends AppCompatActivity implements View.OnClic
     private MylistView img_list;
     private List <String> list=new ArrayList<>();
     private ImageAdapter imageAdapter;
+    private TextView dsq_xiao_detail;
 
 
     @Override
@@ -67,6 +68,7 @@ public class DsqDetailsActivity extends AppCompatActivity implements View.OnClic
         dsq_back.setOnClickListener(this);
         dsq_title = (TextView) findViewById(R.id.dsq_title);
         dsq_xiaotitle = (TextView) findViewById(R.id.dsq_xiaotitle);
+        dsq_xiao_detail = (TextView) findViewById(R.id.dsq_xiao_detail);
         html = (TextView) findViewById(R.id.html);
         dsq_image = findViewById(R.id.dsq_tupian);
         xqview = findViewById(R.id.sv_main);
@@ -117,6 +119,7 @@ public class DsqDetailsActivity extends AppCompatActivity implements View.OnClic
 
 //                    loadWEB(response.getData().getImginfo());
                     dsq_xiaotitle.setText("" + response.getData().getTitle());
+                    dsq_xiao_detail.setText("" + response.getData().getImginfo());
                     Picasso.with(DsqDetailsActivity.this).load(URLS.HTTP+response.getData().getImg()).error(R.mipmap.logo_zhanwei).into(dsq_image);
                     String detailUrl = response.getData().getDetailUrl();
                     String[] split = detailUrl.split(",");
