@@ -154,7 +154,7 @@
                 android:layout_below="@+id/suozaidi"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
-                android:text="个人空间:"
+                android:text="个人技能:"
                 android:textSize="@dimen/shisi" />
 
             <TextView

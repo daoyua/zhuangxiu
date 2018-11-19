@@ -96,7 +96,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
     private String gz1 = null;
     private String gz2 = null;
     private String gz3 = null;
-    private String gz4 =null;
+    private String gz4 = null;
     private String gz5 = null;
     private CheckBox checkboxone, checkboxtwo, checkboxthree, checkboxfour, checkboxfive;
     private String imageurl;
@@ -224,7 +224,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                 if (checkboxthree.isChecked()) {
                     gz3 = ",安装维修";
                 } else {
-                    gz3 =null;
+                    gz3 = null;
                 }
             }
         });
@@ -376,43 +376,59 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                     Toast.makeText(this, "请输入个人技能，简单介绍下你会什么", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String workType = gz1 + gz2 + gz3 + gz4 + gz5;
-                String url = URLS.regeste(1, shooujihao, oppid, token, nameString, phoneString, stringsheng + stringshi + stringxian, UserUrl, workType,
-                        IDUrl + "," + IDUrl1, IDHoldUrl, "", "",
-                        egerenjienng.getText().toString(), egerenkongjian.getText().toString(),
-                        ekoubei.getText().toString(), "", "",
-                        sex, s, age
-                );
-                OkHttpUtils.get(url, new OkHttpUtils.ResultCallback<RegisteBean>() {
-                    @Override
-                    public void onSuccess(RegisteBean response) {
+                StringBuilder workType = new StringBuilder();
+                if (!TextUtils.isEmpty(gz1) ){
+                    workType.append(gz1);
+                }
+                if (!TextUtils.isEmpty(gz2) ){
+                    workType.append(gz2);
+                }
+                if (!TextUtils.isEmpty(gz3) ){
+                    workType.append(gz3);
+                }
+                if (!TextUtils.isEmpty(gz4) ){
+                    workType.append(gz4);
+                }
+                if (!TextUtils.isEmpty(gz5) ){
+                    workType.append(gz5);
+                }
+//            String workType = gz1 + gz2 + gz3 + gz4 + gz5;
+            String url = URLS.regeste(1, shooujihao, oppid, token, nameString, phoneString, stringsheng + stringshi + stringxian, UserUrl, workType.toString(),
+                    IDUrl + "," + IDUrl1, IDHoldUrl, "", "",
+                    egerenjienng.getText().toString(), egerenkongjian.getText().toString(),
+                    ekoubei.getText().toString(), "", "",
+                    sex, s, age
+            );
+            OkHttpUtils.get(url, new OkHttpUtils.ResultCallback<RegisteBean>() {
+                @Override
+                public void onSuccess(RegisteBean response) {
 
-                        if (response.getResult() == 1) {
-                            final int userId = response.getData().getUserId();
-                            //获取sharedPreferences对象
-                            SharedPreferences sharedPreferences = getSharedPreferences("zx", Context.MODE_PRIVATE);
-                            //获取editor对象
-                            SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
-                            editor.putInt("userId", userId);
-                            //提交
-                            editor.commit();//提交修改
-                            URLS.setUser_id(userId);
-                            Toast.makeText(PersonRegistActivity.this, "注册成功", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(PersonRegistActivity.this, HomeActivity.class);
-                            intent.putExtra("UserID", userId);
-                            startActivity(intent);
-                            PersonRegistActivity.this.finish();
-                        }
-
+                    if (response.getResult() == 1) {
+                        final int userId = response.getData().getUserId();
+                        //获取sharedPreferences对象
+                        SharedPreferences sharedPreferences = getSharedPreferences("zx", Context.MODE_PRIVATE);
+                        //获取editor对象
+                        SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
+                        editor.putInt("userId", userId);
+                        //提交
+                        editor.commit();//提交修改
+                        URLS.setUser_id(userId);
+                        Toast.makeText(PersonRegistActivity.this, "注册成功", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(PersonRegistActivity.this, HomeActivity.class);
+                        intent.putExtra("UserID", userId);
+                        startActivity(intent);
+                        PersonRegistActivity.this.finish();
                     }
 
-                    @Override
-                    public void onFailure(Exception e) {
+                }
 
-                    }
-                });
+                @Override
+                public void onFailure(Exception e) {
 
-                break;
+                }
+            });
+
+            break;
 
         }
 
