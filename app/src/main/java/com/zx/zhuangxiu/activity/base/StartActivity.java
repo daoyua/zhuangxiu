@@ -73,6 +73,6 @@ public class StartActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
+        handler=null;
     }
 }
