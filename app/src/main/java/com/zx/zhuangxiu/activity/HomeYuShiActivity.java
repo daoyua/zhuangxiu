@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -139,6 +140,7 @@ public class HomeYuShiActivity extends AppCompatActivity implements View.OnClick
     private void getlubotu() {
 
         String url1 = URLS.xianshifenlei(lunboid);
+        Log.e("lunboid:",lunboid+"");
         OkHttpUtils.get(url1, new OkHttpUtils.ResultCallback<LunbofenleiBean>() {
             @Override
             public void onSuccess(LunbofenleiBean response) {
