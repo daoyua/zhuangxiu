@@ -147,7 +147,12 @@ public class HomeYuShiActivity extends AppCompatActivity implements View.OnClick
                     mlist.add(response.getData());
                     for (int i = 0; i < mlist.size(); i++) {
                         List<String> imageurl = new ArrayList<>();
-                        String im = mlist.get(i).getDetailUrl();
+                        LunbofenleiBean.DataBean dataBean = mlist.get(i);
+                        if (dataBean == null) {
+                            ToastUtil.show(HomeYuShiActivity.this, "没有数据", Toast.LENGTH_LONG);
+                            return;
+                        }
+                        String im = dataBean.getDetailUrl();
                         if (im != null && im.length() > 0 && im.contains(",")) {
                             String[] imagh = im.split(",");
                             for (String img : imagh) {
@@ -247,7 +252,7 @@ public class HomeYuShiActivity extends AppCompatActivity implements View.OnClick
         OkHttpUtils.get(url, new OkHttpUtils.ResultCallback<SyProductOne>() {
             @Override
             public void onSuccess(SyProductOne response) {
-                if (mRefresh!=null){
+                if (mRefresh != null) {
                     mRefresh.finishRefresh();
                 }
                 if (response.getResult() == 1) {
@@ -262,7 +267,7 @@ public class HomeYuShiActivity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onFailure(Exception e) {
-                if (mRefresh!=null){
+                if (mRefresh != null) {
                     mRefresh.finishRefresh();
                 }
             }

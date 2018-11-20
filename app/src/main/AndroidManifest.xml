@@ -66,10 +66,10 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <meta-data
             android:name="BDAPPID"
-            android:value="14828353" />
+            android:value="14879676" />
         <meta-data
             android:name="BDAPPKEY"
-            android:value="3GLCv2FGZp3mG70jcPhcdwbkrjGeL4rg" />
+            android:value="xG1ZNbDInILjjwqa7AUtR0kOQDcwpwGW" />
 
         <activity android:name=".activity.base.StartActivity">
             <intent-filter>
