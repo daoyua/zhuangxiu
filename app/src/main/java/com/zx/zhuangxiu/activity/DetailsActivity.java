@@ -318,17 +318,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                                     imageurl.add(URLS.HTTP + img);
                                 }
                             }
-                            String broadcastUrl = response.getData().getBroadcastUrl();
 
-                            if (!TextUtils.isEmpty(broadcastUrl)) {
-                                String[] split = broadcastUrl.split(",");
-                                for (int i1 = 0; i1 < split.length; i1++) {
-                                    pinglunlist.add(split[i1]);
-                                }
-                            }
-
-                            detailsListViewAdapter = new ImageAdapter(DetailsActivity.this, pinglunlist);
-                            detailsinfo_listview.setAdapter(detailsListViewAdapter);
                             //设置内置样式，共有六种可以点入方法内逐一体验使用。
                             banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
                             //设置图片加载器，图片加载器在下方
@@ -349,6 +339,17 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                             banner.start();
 
                         }
+                        String broadcastUrl = response.getData().getDetailMsg();
+
+                        if (!TextUtils.isEmpty(broadcastUrl)) {
+                            String[] split = broadcastUrl.split(",");
+                            for (int i1 = 0; i1 < split.length; i1++) {
+                                pinglunlist.add(split[i1]);
+                            }
+                        }
+
+                        detailsListViewAdapter = new ImageAdapter(DetailsActivity.this, pinglunlist);
+                        detailsinfo_listview.setAdapter(detailsListViewAdapter);
 //                        getshangpinguige();
                     }
 

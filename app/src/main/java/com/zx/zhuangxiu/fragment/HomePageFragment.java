@@ -132,7 +132,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener, 
     Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
-            if (page==anInt){
+            if (page == anInt) {
                 mRefresh.finishRefresh();
             }
             return false;
@@ -210,9 +210,9 @@ public class HomePageFragment extends Fragment implements View.OnClickListener, 
         home_jinpai_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(getActivity(),FoundFu2WuActivity.class);
-                Bundle bundle=new Bundle();
-                bundle.putString("title","金牌服务");
+                Intent intent = new Intent(getActivity(), FoundFu2WuActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("title", "金牌服务");
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -220,9 +220,9 @@ public class HomePageFragment extends Fragment implements View.OnClickListener, 
         home_dingzhi_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(getActivity(),FoundFu3WuActivity.class);
-                Bundle bundle=new Bundle();
-                bundle.putString("title","私人定制");
+                Intent intent = new Intent(getActivity(), FoundFu3WuActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("title", "私人定制");
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -319,7 +319,8 @@ public class HomePageFragment extends Fragment implements View.OnClickListener, 
 
             @Override
             public void onFailure(Exception e) {
-                handler.sendEmptyMessage(page++);            }
+                handler.sendEmptyMessage(page++);
+            }
         });
     }
 
@@ -401,7 +402,8 @@ public class HomePageFragment extends Fragment implements View.OnClickListener, 
 
             @Override
             public void onFailure(Exception e) {
-                handler.sendEmptyMessage(page++);            }
+                handler.sendEmptyMessage(page++);
+            }
         });
     }
 
@@ -420,7 +422,8 @@ public class HomePageFragment extends Fragment implements View.OnClickListener, 
             @Override
             public void onFailure(Exception e) {
                 Log.e("TAG", e.getMessage());
-                handler.sendEmptyMessage(page++);            }
+                handler.sendEmptyMessage(page++);
+            }
         });
 
     }
@@ -465,7 +468,8 @@ public class HomePageFragment extends Fragment implements View.OnClickListener, 
 
             @Override
             public void onFailure(Exception e) {
-                handler.sendEmptyMessage(page++);            }
+                handler.sendEmptyMessage(page++);
+            }
         });
     }
 
@@ -515,8 +519,8 @@ public class HomePageFragment extends Fragment implements View.OnClickListener, 
                 intent.setClass(getActivity(), HomeYuShiActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("title", "石材玉石");
-                bundle.putInt("weizhi", 7);
-                bundle.putInt("lunboid", 7);
+                bundle.putInt("weizhi", 39);
+                bundle.putInt("lunboid", 39);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -533,8 +537,8 @@ public class HomePageFragment extends Fragment implements View.OnClickListener, 
                 intent.setClass(getActivity(), HomeYuShiActivity.class);
                 Bundle bundle2 = new Bundle();
                 bundle2.putString("title", "酒店用品");
-                bundle2.putInt("weizhi", 12);
-                bundle2.putInt("lunboid", 12);
+                bundle2.putInt("weizhi", 40);
+                bundle2.putInt("lunboid", 40);
                 intent.putExtras(bundle2);
                 startActivity(intent);
                 break;
