@@ -337,8 +337,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                                 .start();*/
                             banner.setImages(imageurl);
                             banner.start();
-
+//haha测试
                         }
+
                         String broadcastUrl = response.getData().getDetailMsg();
 
                         if (!TextUtils.isEmpty(broadcastUrl)) {
