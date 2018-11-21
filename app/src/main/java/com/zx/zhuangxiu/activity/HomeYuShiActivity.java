@@ -258,6 +258,7 @@ public class HomeYuShiActivity extends AppCompatActivity implements View.OnClick
                     mRefresh.finishRefresh();
                 }
                 if (response.getResult() == 1) {
+                    syProductTwoList.removeAll(syProductTwoList);
                     syProductTwoList.addAll(response.getData());
 //                    Log.d("xxx", "直接进入-----syProductTwoList----"+syProductTwoList);
                     mYuShiListViewAdapter = new YuShiListViewAdapter(HomeYuShiActivity.this, syProductTwoList, HomeYuShiActivity.this);
