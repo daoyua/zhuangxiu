@@ -116,7 +116,7 @@ public class JmhzListViewAdapter extends BaseAdapter {
             holder.gmhz_item_phone.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    long phone = mList.get(position).getNum();
+                    String phone = mList.get(position).getNum();
                     MyUntils.call(mContext, phone + "");
                 }
             });

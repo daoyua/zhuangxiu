@@ -59,7 +59,7 @@ public class BusinessJmhzBean {
 
         private String address;
         private String businessimg;
-        private long num;
+        private String num;
         private long creattime;
         private String require;
         private int userId;
@@ -88,11 +88,11 @@ public class BusinessJmhzBean {
             this.businessimg = businessimg;
         }
 
-        public long getNum() {
+        public String getNum() {
             return num;
         }
 
-        public void setNum(int num) {
+        public void setNum(String num) {
             this.num = num;
         }
 
