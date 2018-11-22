@@ -87,7 +87,7 @@ public class JmhzListViewAdapter extends BaseAdapter {
             String time = ToTime.getDateTimeFromMillisecond(mList.get(position).getCreattime());
             holder.jmhz_item_qixian.setText("发布时间:" + time);
             holder.jmhz_item_nums.setText("联系电话:" + mList.get(position).getNum());
-            String imgUrls = mList.get(position).getBusinessimg();
+            String imgUrls = mList.get(position).getItemimg();
             if (!TextUtils.isEmpty(imgUrls)) {
                 if (imgUrls.contains(",")) {
                     String[] split = imgUrls.split(",");
@@ -142,6 +142,7 @@ public class JmhzListViewAdapter extends BaseAdapter {
     public void show(Activity context, int p) {
         View view = View.inflate(context, R.layout.image, null);
         ImageView imageView = view.findViewById(R.id.image);
+//        String imgUrls = mList.get(p).getItemimg();
         String imgUrls = mList.get(p).getBusinessimg();
         if (!TextUtils.isEmpty(imgUrls)) {
             if (imgUrls.contains(",")) {
