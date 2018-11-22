@@ -142,8 +142,8 @@ public class JmhzListViewAdapter extends BaseAdapter {
     public void show(Activity context, int p) {
         View view = View.inflate(context, R.layout.image, null);
         ImageView imageView = view.findViewById(R.id.image);
-//        String imgUrls = mList.get(p).getItemimg();
-        String imgUrls = mList.get(p).getBusinessimg();
+        String imgUrls = mList.get(p).getItemimg();
+//        String imgUrls = mList.get(p).getBusinessimg();
         if (!TextUtils.isEmpty(imgUrls)) {
             if (imgUrls.contains(",")) {
                 String[] split = imgUrls.split(",");
