@@ -22,6 +22,7 @@ import com.blankj.utilcode.util.PermissionUtils;
 import com.zx.zhuangxiu.OkHttpUtils;
 import com.zx.zhuangxiu.R;
 import com.zx.zhuangxiu.URLS;
+import com.zx.zhuangxiu.UpdateUtils;
 import com.zx.zhuangxiu.fragment.BusinessPageFragment;
 import com.zx.zhuangxiu.fragment.FoundPageFragment;
 import com.zx.zhuangxiu.fragment.HomePageFragment;
@@ -81,9 +82,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        showHomeFragment(savedInstanceState);
+        showHomeFragment(savedInstanceState);
 
         setContentView(R.layout.activity_home);
+        //自动更新
+        new UpdateUtils().UpdataApk(this);
         initViews();
         // 显示首页
         switchItem(ITEM_HOME);
@@ -147,7 +150,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             }
         }, Conversation.ConversationType.PRIVATE);
 
-
+//        CheckPermission();
     }
 
 

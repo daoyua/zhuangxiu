@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.zx.zhuangxiu">
 
-    <!-- <uses-permission android:name="android.permission.WRITE_SETTINGS"></uses-permission> -->
-
+     <!--<uses-permission android:name="android.permission.WRITE_SETTINGS"></uses-permission>-->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -66,10 +66,10 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <meta-data
             android:name="BDAPPID"
-            android:value="14879676" />
+            android:value="14882073" />
         <meta-data
             android:name="BDAPPKEY"
-            android:value="xG1ZNbDInILjjwqa7AUtR0kOQDcwpwGW" />
+            android:value="pD6u8LwMNfii0GOlg9TceElrmT38XoXw" />
 
         <activity android:name=".activity.base.StartActivity">
             <intent-filter>
@@ -331,7 +331,7 @@
                     android:scheme="rong" />
             </intent-filter>
         </activity>
-
+<!--com.zx.zhuangxiu.fileprovider-->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.zx.zhuangxiu.FileProvider"
@@ -340,9 +340,9 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/rc_file_path" />
-            <!-- <meta-data -->
-            <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-            <!-- android:resource="@xml/bdp_update_filepaths"/> -->
+             <!--<meta-data-->
+             <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+             <!--android:resource="@xml/bdp_update_filepaths"/>-->
         </provider>
 
         <activity android:name=".activity.FuWuShopActivity" />

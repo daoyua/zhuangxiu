@@ -500,6 +500,8 @@ public class HomePageFragment extends Fragment implements View.OnClickListener, 
                 startActivity(intent);
                 break;
             case R.id.home_work://找工作
+//                intent.setClass(getActivity(), TestActivity.class);
+//                startActivity(intent);
                 intent.setClass(getActivity(), FoundWorkActivity.class);
                 startActivity(intent);
                 break;
