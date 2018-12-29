@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.base.AutoMapAddressActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/auto_back"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="取消"
+            android:textColor="@color/white"
+            android:textSize="@dimen/shiliu" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="添加地址"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/shiliu" />
+
+        <TextView
+            android:id="@+id/auto_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="@dimen/shisi" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:singleLine="true"
+        android:id="@+id/auto_edit"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:imeOptions="actionSearch"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+
+    <com.amap.api.maps2d.MapView
+        android:id="@+id/map"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.amap.api.maps2d.MapView>
+</LinearLayout>

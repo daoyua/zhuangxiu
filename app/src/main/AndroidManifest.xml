@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.zx.zhuangxiu">
 
-     <!--<uses-permission android:name="android.permission.WRITE_SETTINGS"></uses-permission>-->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <!-- <uses-permission android:name="android.permission.WRITE_SETTINGS"></uses-permission> -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -78,7 +78,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PhoneLoginActivity"></activity>
+        <activity android:name=".activity.PhoneLoginActivity" />
         <activity
             android:name=".activity.base.TestActivity"
             android:screenOrientation="portrait" />
@@ -331,7 +331,7 @@
                     android:scheme="rong" />
             </intent-filter>
         </activity>
-<!--com.zx.zhuangxiu.fileprovider-->
+        <!-- com.zx.zhuangxiu.fileprovider -->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.zx.zhuangxiu.FileProvider"
@@ -340,15 +340,16 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/rc_file_path" />
-             <!--<meta-data-->
-             <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
-             <!--android:resource="@xml/bdp_update_filepaths"/>-->
+            <!-- <meta-data -->
+            <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
+            <!-- android:resource="@xml/bdp_update_filepaths"/> -->
         </provider>
 
         <activity android:name=".activity.FuWuShopActivity" />
         <activity android:name=".activity.FaBuFuWuActivity" />
         <activity android:name=".activity.FaBuShngPinActivity" />
         <activity android:name=".activity.OrderActivity" />
+        <activity android:name=".activity.base.AutoMapAddressActivity"></activity>
     </application>
 
 </manifest>

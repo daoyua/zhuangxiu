@@ -50,6 +50,7 @@ import com.zx.zhuangxiu.activity.JiamemghezuoActivity;
 import com.zx.zhuangxiu.activity.MyDianPuActivity;
 import com.zx.zhuangxiu.activity.SouSuoActivity;
 import com.zx.zhuangxiu.activity.XiaoXiNoticeActivity;
+import com.zx.zhuangxiu.activity.base.AutoMapAddressActivity;
 import com.zx.zhuangxiu.adapter.HorizontalListViewAdapter;
 import com.zx.zhuangxiu.adapter.JinPaiListViewAdapter;
 import com.zx.zhuangxiu.adapter.SiRenDzListviewAdapter;
@@ -158,6 +159,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener, 
         mContext = getActivity();
         mBanner = view.findViewById(R.id.banner);
         weizhi = (TextView) view.findViewById(R.id.tweizhi);
+        weizhi.setOnClickListener(this);
         home_service = (LinearLayout) view.findViewById(R.id.home_service);  //找服务
         home_work = (LinearLayout) view.findViewById(R.id.home_work);  //找工作
         home_gongren = (LinearLayout) view.findViewById(R.id.home_gongren);  //找工人
@@ -491,7 +493,15 @@ public class HomePageFragment extends Fragment implements View.OnClickListener, 
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
-            case R.id.home_service://找服务
+            case R.id.tweizhi://地图选择地址
+                intent.setClass(getActivity(), AutoMapAddressActivity.class);
+//                Bundle bundle0 = new Bundle();
+//                bundle0.putInt("type", 1);
+//                bundle0.putString("title", "找服务");
+//                intent.putExtras(bundle0);
+                startActivity(intent);
+                break;
+                case R.id.home_service://找服务
                 intent.setClass(getActivity(), FoundFuWuActivity.class);
                 Bundle bundle0 = new Bundle();
                 bundle0.putInt("type", 1);
