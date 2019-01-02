@@ -1,4 +1,4 @@
-package com.zx.zhuangxiu.activity.base;
+package com.zx.zhuangxiu.activity.automap;
 
 import android.content.Intent;
 import android.location.Location;
@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,9 @@ import com.amap.api.maps2d.CameraUpdate;
 import com.amap.api.maps2d.CameraUpdateFactory;
 import com.amap.api.maps2d.MapView;
 import com.amap.api.maps2d.UiSettings;
+import com.amap.api.maps2d.model.LatLng;
+import com.amap.api.maps2d.model.Marker;
+import com.amap.api.maps2d.model.MarkerOptions;
 import com.amap.api.maps2d.model.MyLocationStyle;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
@@ -41,6 +46,11 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
     private UiSettings mUiSettings;//定义一个UiSettings对象
     private EditText auto_edit;
     private Location myLocation;
+    private ListView auto_list;
+    private AutoMapListAdapter adapter;
+    private ArrayList<PoiItem> pois;
+    private PoiItem currentpoi;
+    private Marker marker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +80,39 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
     }
 
     private void initview() {
+        auto_list = findViewById(R.id.auto_list);
         auto_edit = findViewById(R.id.auto_edit);
         auto_edit.setOnEditorActionListener(this);
         findViewById(R.id.auto_back).setOnClickListener(this);
         findViewById(R.id.auto_save).setOnClickListener(this);
+
+        auto_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(pois.size()>0){
+                    auto_list.setVisibility(View.INVISIBLE);
+                    mMapView.setVisibility(View.VISIBLE);
+                    currentpoi = pois.get(position);
+                    auto_edit.setText(currentpoi.getTitle()+ currentpoi.getSnippet());
+                    LatLonPoint latLonPoint = currentpoi.getLatLonPoint();
+                    LatLng latLonPoint1=new LatLng(latLonPoint.getLatitude(),latLonPoint.getLongitude());
+                    CameraUpdate cameraUpdate=CameraUpdateFactory.newLatLng(latLonPoint1);
+                    CameraUpdate cameraUpdate1=CameraUpdateFactory.zoomTo(14);
+                    //TODO
+                    aMap.animateCamera(cameraUpdate);
+                    aMap.animateCamera(cameraUpdate1);
+
+                    aMap.animateCamera(cameraUpdate);
+                    LatLng latLng = new LatLng(latLonPoint.getLatitude(),latLonPoint.getLongitude());
+                    marker = aMap.addMarker(new MarkerOptions().position(latLng).title("北京").snippet("DefaultMarker"));
+
+                }else{
+                    Toast.makeText(AutoMapAddressActivity.this, "没有搜索结果", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
     }
 
     private void initmap() {
@@ -82,7 +121,7 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
         myLocationStyle.interval(2000); //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
 
         myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE);//定位一次，且将视角移动到地图中心点。
-
+        myLocationStyle.showMyLocation(false);
         aMap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
 //        aMap.getUiSettings().setMyLocationButtonEnabled(true);//设置默认定位按钮是否显示，非必需设置。
         aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
@@ -94,6 +133,8 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
             @Override
             public void onMyLocationChange(Location location) {
                 myLocation = location;
+                LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
+                marker = aMap.addMarker(new MarkerOptions().position(latLng).title("北京").snippet("DefaultMarker"));
                 Toast.makeText(AutoMapAddressActivity.this, location.getLongitude() + ":" + location.getLatitude(), Toast.LENGTH_LONG).show();
                 initGeocodeSearch(myLocation);//坐标转地址
             }
@@ -137,14 +178,12 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-
             case R.id.auto_save:
                 if (myLocation == null) {
                     Toast.makeText(AutoMapAddressActivity.this, "没有定位到", Toast.LENGTH_LONG).show();
                     return;
                 }
                 Intent intent = new Intent();
-
                 myLocation.getLongitude();
                 intent.putExtra("lat", myLocation.getLatitude());
                 intent.putExtra("lon", myLocation.getLongitude());
@@ -175,6 +214,7 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
         switch (actionId) {
             case EditorInfo.IME_ACTION_SEARCH:
                 searchAddress(v.getText().toString());
+
                 break;
             case EditorInfo.IME_ACTION_SEND:
                 System.out.println("send a email: " + v.getText());
@@ -198,8 +238,13 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
         poiSearch.setOnPoiSearchListener(new PoiSearch.OnPoiSearchListener() {
             @Override
             public void onPoiSearched(PoiResult poiResult, int i) {
-                ArrayList<PoiItem> pois = poiResult.getPois();
+                auto_list.setVisibility(View.VISIBLE);
+                mMapView.setVisibility(View.INVISIBLE);
+                pois = poiResult.getPois();
                 Toast.makeText(AutoMapAddressActivity.this, pois.toString(), Toast.LENGTH_LONG).show();
+                adapter = new AutoMapListAdapter(AutoMapAddressActivity.this, pois);
+
+                auto_list.setAdapter(adapter);
             }
 
             @Override

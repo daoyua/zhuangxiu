@@ -50,7 +50,7 @@ import com.zx.zhuangxiu.activity.JiamemghezuoActivity;
 import com.zx.zhuangxiu.activity.MyDianPuActivity;
 import com.zx.zhuangxiu.activity.SouSuoActivity;
 import com.zx.zhuangxiu.activity.XiaoXiNoticeActivity;
-import com.zx.zhuangxiu.activity.base.AutoMapAddressActivity;
+import com.zx.zhuangxiu.activity.automap.AutoMapAddressActivity;
 import com.zx.zhuangxiu.adapter.HorizontalListViewAdapter;
 import com.zx.zhuangxiu.adapter.JinPaiListViewAdapter;
 import com.zx.zhuangxiu.adapter.SiRenDzListviewAdapter;

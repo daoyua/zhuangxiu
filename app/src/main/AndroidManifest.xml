@@ -349,7 +349,7 @@
         <activity android:name=".activity.FaBuFuWuActivity" />
         <activity android:name=".activity.FaBuShngPinActivity" />
         <activity android:name=".activity.OrderActivity" />
-        <activity android:name=".activity.base.AutoMapAddressActivity"></activity>
+        <activity android:name=".activity.automap.AutoMapAddressActivity"></activity>
     </application>
 
 </manifest>

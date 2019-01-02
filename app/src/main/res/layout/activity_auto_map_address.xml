@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.base.AutoMapAddressActivity">
+    tools:context=".activity.automap.AutoMapAddressActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,9 +26,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="添加地址"
             android:focusable="true"
             android:focusableInTouchMode="true"
+            android:text="添加地址"
             android:textColor="@color/white"
             android:textSize="@dimen/shiliu" />
 
@@ -45,17 +45,32 @@
     </RelativeLayout>
 
     <EditText
-        android:singleLine="true"
         android:id="@+id/auto_edit"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:imeOptions="actionSearch"
+        android:layout_height="50dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:imeOptions="actionSearch"
+        android:singleLine="true" />
 
-    <com.amap.api.maps2d.MapView
-        android:id="@+id/map"
-
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.amap.api.maps2d.MapView>
+        android:layout_height="match_parent">
+
+        <com.amap.api.maps2d.MapView
+            android:id="@+id/map"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></com.amap.api.maps2d.MapView>
+
+        <ListView
+            android:divider="#000000"
+            android:dividerHeight="2dp"
+            android:id="@+id/auto_list"
+            android:visibility="gone"
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+    </FrameLayout>
+
 </LinearLayout>
