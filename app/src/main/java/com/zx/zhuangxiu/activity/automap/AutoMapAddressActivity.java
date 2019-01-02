@@ -83,6 +83,7 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
         auto_list = findViewById(R.id.auto_list);
         auto_edit = findViewById(R.id.auto_edit);
         auto_edit.setOnEditorActionListener(this);
+        findViewById(R.id.clear_search).setOnClickListener(this);
         findViewById(R.id.auto_back).setOnClickListener(this);
         findViewById(R.id.auto_save).setOnClickListener(this);
 
@@ -90,6 +91,7 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(pois.size()>0){
+                    marker.destroy();
                     auto_list.setVisibility(View.INVISIBLE);
                     mMapView.setVisibility(View.VISIBLE);
                     currentpoi = pois.get(position);
@@ -187,10 +189,14 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
                 myLocation.getLongitude();
                 intent.putExtra("lat", myLocation.getLatitude());
                 intent.putExtra("lon", myLocation.getLongitude());
+                intent.putExtra("add", auto_edit.getText());
                 setResult(888, intent);
 
             case R.id.auto_back:
                 finish();
+                break;
+                case R.id.clear_search:
+                    auto_edit.setText("");
                 break;
         }
     }

@@ -43,15 +43,30 @@
             android:textSize="@dimen/shisi" />
 
     </RelativeLayout>
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <EditText
         android:id="@+id/auto_edit"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="60dp"
         android:imeOptions="actionSearch"
         android:singleLine="true" />
+    <TextView
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/clear_search"
+        android:text="清空"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        />
+</RelativeLayout>
+
 
     <FrameLayout
         android:layout_width="match_parent"
