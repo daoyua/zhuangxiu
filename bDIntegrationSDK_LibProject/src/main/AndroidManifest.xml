@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.baidu.integrationsdk.lib"
+    android:versionCode="1"
+    android:versionName="1.0" >
+     
+
+    <application  >
+        
+        <meta-data android:name="BDAPPID" android:value="14882073"/>
+        <meta-data android:name="BDAPPKEY" android:value="pD6u8LwMNfii0GOlg9TceElrmT38XoXw"/>
+        
+	 
+        
+    </application>
+
+</manifest>
