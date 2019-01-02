@@ -18,6 +18,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.blankj.utilcode.util.PermissionUtils;
 import com.zx.zhuangxiu.OkHttpUtils;
 import com.zx.zhuangxiu.R;
@@ -27,6 +31,7 @@ import com.zx.zhuangxiu.fragment.BusinessPageFragment;
 import com.zx.zhuangxiu.fragment.FoundPageFragment;
 import com.zx.zhuangxiu.fragment.HomePageFragment;
 import com.zx.zhuangxiu.fragment.MyPageFragment;
+import com.zx.zhuangxiu.model.AddressService;
 import com.zx.zhuangxiu.model.IMBean;
 
 import java.util.List;
@@ -35,7 +40,7 @@ import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
     public static final int ITEM_HOME = 1;   //首页精选
     public static final int ITEM_FOUND = 2; // 发现
     public static final int ITEM_BUSINESS = 3; // 商机
@@ -52,17 +57,17 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private int mCurrentItem;
     private long mExitToastTime;
     private Fragment frag = new HomePageFragment();
-    private Handler handler=new Handler(){
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if (msg.what>0&&msg.what<=99){
+            if (msg.what > 0 && msg.what <= 99) {
                 message_num.setVisibility(View.VISIBLE);
-                message_num.setText(msg.what+"");
-            }else if (msg.what>99){
+                message_num.setText(msg.what + "");
+            } else if (msg.what > 99) {
                 message_num.setVisibility(View.VISIBLE);
-                message_num.setText(msg.what+"");
-            }else if (msg.what==0){
+                message_num.setText(msg.what + "");
+            } else if (msg.what == 0) {
                 message_num.setVisibility(View.GONE);
             }
 
@@ -90,7 +95,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         initViews();
         // 显示首页
         switchItem(ITEM_HOME);
-        String ss=URLS.HTTP+"/api/IM/IMregister?userId="+URLS.getUser_id()+"&nickname="+"13"+"&headImg="+"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png";
+        String ss = URLS.HTTP + "/api/IM/IMregister?userId=" + URLS.getUser_id() + "&nickname=" + "13" + "&headImg=" + "https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png";
         OkHttpUtils.get(ss, new OkHttpUtils.ResultCallback<IMBean>() {
             @Override
             public void onSuccess(IMBean response) {
@@ -99,6 +104,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onTokenIncorrect() {
                     }
+
                     @Override
                     public void onSuccess(String userId) {
 
@@ -143,14 +149,70 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onMessageIncreased(int i) {
                 Message obtain = Message.obtain();
-                obtain.what=i;
+                obtain.what = i;
                 handler.sendMessage(obtain);
-                Log.e("TAG",i+"");
+                Log.e("TAG", i + "");
 
             }
         }, Conversation.ConversationType.PRIVATE);
 
 //        CheckPermission();
+
+        updateAddress();
+    }
+
+    AMapLocationClient mlocationClient;
+    AMapLocationClientOption mLocationOption;
+
+    private void updateAddress() {
+
+        if (mlocationClient == null) {
+            //初始化定位
+            mlocationClient = new AMapLocationClient(this);
+            //初始化定位参数
+            mLocationOption = new AMapLocationClientOption();
+            //设置定位回调监听
+            mlocationClient.setLocationListener(new AMapLocationListener() {
+                @Override
+                public void onLocationChanged(AMapLocation aMapLocation) {
+//                    Toast.makeText(HomeActivity.this, aMapLocation.getLongitude() + ":" + aMapLocation.getLatitude(), Toast.LENGTH_LONG).show();
+                    updateAddressServer(aMapLocation.getLongitude() + "", aMapLocation.getLatitude() + "");
+
+                    if (mlocationClient != null) {
+                        mlocationClient.stopLocation();
+                        mlocationClient.onDestroy();
+                    }
+                    mlocationClient = null;
+                }
+            });
+            //设置为高精度定位模式
+            mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+            //设置定位参数
+            mlocationClient.setLocationOption(mLocationOption);
+            // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
+            // 注意设置合适的定位时间的间隔（最小间隔支持为2000ms），并且在合适时间调用stopLocation()方法来取消定位请求
+            // 在定位结束后，在合适的生命周期调用onDestroy()方法
+            // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
+            mlocationClient.startLocation();//启动定位
+        }
+
+
+    }
+
+    private void updateAddressServer(String lon, String lat) {
+        String ss = URLS.updateDynamicAddress( lat, lon);
+        OkHttpUtils.get(ss, new OkHttpUtils.ResultCallback<AddressService>() {
+            @Override
+            public void onSuccess(AddressService response) {
+
+                Toast.makeText(HomeActivity.this, response.getMsg(), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Toast.makeText(HomeActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 
@@ -212,7 +274,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     public void switchContent(Fragment from, Fragment to, String tag) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if (to != null && from != null){
+        if (to != null && from != null) {
             if (!to.isAdded()) {    // 先判断是否被add过
                 transaction.hide(from).add(R.id.rb_container, to, tag).commit(); // 隐藏当前的fragment，add下一个到Activity中
             } else {
@@ -288,6 +350,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.onKeyDown(keyCode, event);
     }
+
     //点击两次退出
     public void exit() {
         if ((System.currentTimeMillis() - mExitToastTime) > 2000) {
@@ -306,7 +369,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-  /*      *//*在这里，我们通过碎片管理器中的Tag，就是每个碎片的名称，来获取对应的fragment*//*
+        /*      *//*在这里，我们通过碎片管理器中的Tag，就是每个碎片的名称，来获取对应的fragment*//*
         Fragment person = getSupportFragmentManager().findFragmentByTag("person");
         *//*然后在碎片中调用重写的onActivityResult方法*//*
         person.onActivityResult(requestCode, resultCode, data);*/

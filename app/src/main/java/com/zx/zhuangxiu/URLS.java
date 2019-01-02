@@ -4,8 +4,8 @@ import com.zx.zhuangxiu.model.SubmitDdTwo;
 
 public class URLS {
 
-//    public static final String HTTP = "http://47.75.53.109:9095";//测试
-    public static final String HTTP = "http://47.93.215.205:9095";//正式
+    public static final String HTTP = "http://47.75.53.109:9095";//测试
+//    public static final String HTTP = "http://47.93.215.205:9095";//正式
 //        public static final String HTTP = "http://192.168.2.141:9095";
     public static final String BANNER = HTTP+"/api/homepage/sowingList";
 //    public static final String BANNER = HTTP+"http://47.93.215.205:9095/api/homepage/sowingList";
@@ -727,7 +727,10 @@ public class URLS {
      *
      * */
 
-    public static String regeste(int type, String phone, String openID, String access_token, String name, String linkman, String address, String userUrl, String workType, String IDurl, String IdHold, String license, String shopUrl, String selfSkills, String space, String evaluate, String companyType, String engageIn, String sex, String workYears, String age) {
+    public static String regeste(int type, String phone, String openID, String access_token, String name, String linkman, String address,
+                                 String userUrl, String workType, String IDurl, String IdHold, String license, String shopUrl,
+                                 String selfSkills, String space, String evaluate, String companyType, String engageIn, String sex,
+                                 String workYears, String age,String longitude,String latitude) {
         String getyz = HTTP + "/api/login/register?" +
                 "type=" + type +
                 "&telenumber=" + phone +
@@ -749,7 +752,9 @@ public class URLS {
                 "&sex=" + sex +
                 "&workYears=" + workYears +
                 "&age=" + age +
-                "&engageIn=" + engageIn;
+                "&engageIn=" + engageIn+
+                "&longitude=" + longitude+
+                "&latitude=" + latitude;
         return getyz;
     }
 
@@ -1128,4 +1133,30 @@ public class URLS {
                 goodsinfo+"&price="+price+"&num="+num+"&img="+image+"&endtime="+time+"&phone="+phone;
     }
 
+    /**
+     * 修改地址
+     * @param dynamicLongitude
+     * @param dynamicLatitude
+     * @return
+     */
+    public static String updateDynamicAddress(String dynamicLongitude,String dynamicLatitude){
+
+        return URLS.HTTP+
+                "/api/Personal/updateAddress?userId="+
+                getUser_id()+"&dynamicLongitude="+dynamicLongitude+"&dynamicLatitude="+dynamicLatitude;
+    }
+    /**
+     * 修改地址
+     * @param address
+     * @param longitude
+     * @param latitude
+     * @return
+     */
+    public static String updateAddress(String address,String longitude,String latitude){
+
+        return URLS.HTTP+
+                "/api/Personal/updateAddress?userId="+
+                getUser_id()+"&address="+address+"&longitude="+
+                longitude+"&latitude="+latitude;
+    }
 }

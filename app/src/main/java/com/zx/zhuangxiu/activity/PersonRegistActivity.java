@@ -36,6 +36,7 @@ import com.zx.zhuangxiu.ImageYS;
 import com.zx.zhuangxiu.OkHttpUtils;
 import com.zx.zhuangxiu.R;
 import com.zx.zhuangxiu.URLS;
+import com.zx.zhuangxiu.activity.automap.AutoMapAddressActivity;
 import com.zx.zhuangxiu.adapter.PersonGridViewAdapter;
 import com.zx.zhuangxiu.model.Guo;
 import com.zx.zhuangxiu.model.ImageBean;
@@ -71,6 +72,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
     private AlertDialog dialog;
     private final int IMAGE_RESULT_CODE = 2;// 表示打开照相机
     private final int PICK = 1;// 选择图片库
+    private final int ADDRESS = 222;// 选择地址
     private int imagetap;//判断是那个控件点击了
     private String gz = "石材类";
     //地址选择开始
@@ -109,6 +111,10 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
     String sex = "";
     private String oppid = "";
     private String token = "";
+    private TextView register_person_address_tv;
+    private double lat;
+    private double lon;
+    private String resultAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +129,8 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void initView() {
+        //省
+        register_person_address_tv = findViewById(R.id.register_person_address_tv);
         ssheng = (Spinner) findViewById(R.id.ssheng);//省
         sshi = (Spinner) findViewById(R.id.sshi);//市
         sxian = (Spinner) findViewById(R.id.sxian);//县
@@ -184,6 +192,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
         isshenfen.setOnClickListener(this);//手持身份证
         ihead.setOnClickListener(this);//头像
         person_regist_back.setOnClickListener(this);
+        findViewById(R.id.register_person_address_tv).setOnClickListener(this);
         geren_zhuce.setOnClickListener(this);
         time.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -298,6 +307,10 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.register_person_address_tv://地址
+                Intent intent = new Intent(PersonRegistActivity.this, AutoMapAddressActivity.class);
+                startActivityForResult(intent, ADDRESS);
+                break;
             case R.id.person_regist_back:
                 this.finish();
                 break;
@@ -317,7 +330,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                 imagetap = 3;
                 showDialogList();
                 break;
-            case R.id.geren_zhuce:
+            case R.id.geren_zhuce: //zhuce
                 String nameString = ename.getText().toString().trim();
                 String shenfennumString = shenfennum.getText().toString().trim();
                 String phoneString = ephone.getText().toString().trim();
@@ -376,59 +389,64 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                     Toast.makeText(this, "请输入个人技能，简单介绍下你会什么", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (TextUtils.isEmpty(register_person_address_tv.getText().toString())) {
+                    Toast.makeText(this, "请输入地址", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 StringBuilder workType = new StringBuilder();
-                if (!TextUtils.isEmpty(gz1) ){
+                if (!TextUtils.isEmpty(gz1)) {
                     workType.append(gz1);
                 }
-                if (!TextUtils.isEmpty(gz2) ){
+                if (!TextUtils.isEmpty(gz2)) {
                     workType.append(gz2);
                 }
-                if (!TextUtils.isEmpty(gz3) ){
+                if (!TextUtils.isEmpty(gz3)) {
                     workType.append(gz3);
                 }
-                if (!TextUtils.isEmpty(gz4) ){
+                if (!TextUtils.isEmpty(gz4)) {
                     workType.append(gz4);
                 }
-                if (!TextUtils.isEmpty(gz5) ){
+                if (!TextUtils.isEmpty(gz5)) {
                     workType.append(gz5);
                 }
-//            String workType = gz1 + gz2 + gz3 + gz4 + gz5;
-            String url = URLS.regeste(1, shooujihao, oppid, token, nameString, phoneString, stringsheng + stringshi + stringxian, UserUrl, workType.toString(),
-                    IDUrl + "," + IDUrl1, IDHoldUrl, "", "",
-                    egerenjienng.getText().toString(), egerenkongjian.getText().toString(),
-                    ekoubei.getText().toString(), "", "",
-                    sex, s, age
-            );
-            OkHttpUtils.get(url, new OkHttpUtils.ResultCallback<RegisteBean>() {
-                @Override
-                public void onSuccess(RegisteBean response) {
 
-                    if (response.getResult() == 1) {
-                        final int userId = response.getData().getUserId();
-                        //获取sharedPreferences对象
-                        SharedPreferences sharedPreferences = getSharedPreferences("zx", Context.MODE_PRIVATE);
-                        //获取editor对象
-                        SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
-                        editor.putInt("userId", userId);
-                        //提交
-                        editor.commit();//提交修改
-                        URLS.setUser_id(userId);
-                        Toast.makeText(PersonRegistActivity.this, "注册成功", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(PersonRegistActivity.this, HomeActivity.class);
-                        intent.putExtra("UserID", userId);
-                        startActivity(intent);
-                        PersonRegistActivity.this.finish();
+//            String workType = gz1 + gz2 + gz3 + gz4 + gz5;
+                String url = URLS.regeste(1, shooujihao, oppid, token, nameString, phoneString, resultAdd + stringshi + stringxian, UserUrl, workType.toString(),
+                        IDUrl + "," + IDUrl1, IDHoldUrl, "", "",
+                        egerenjienng.getText().toString(), egerenkongjian.getText().toString(),
+                        ekoubei.getText().toString(), "", "",
+                        sex, s, age, lon + "", lat + ""
+                );
+                OkHttpUtils.get(url, new OkHttpUtils.ResultCallback<RegisteBean>() {
+                    @Override
+                    public void onSuccess(RegisteBean response) {
+
+                        if (response.getResult() == 1) {
+                            final int userId = response.getData().getUserId();
+                            //获取sharedPreferences对象
+                            SharedPreferences sharedPreferences = getSharedPreferences("zx", Context.MODE_PRIVATE);
+                            //获取editor对象
+                            SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
+                            editor.putInt("userId", userId);
+                            //提交
+                            editor.commit();//提交修改
+                            URLS.setUser_id(userId);
+                            Toast.makeText(PersonRegistActivity.this, "注册成功", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(PersonRegistActivity.this, HomeActivity.class);
+                            intent.putExtra("UserID", userId);
+                            startActivity(intent);
+                            PersonRegistActivity.this.finish();
+                        }
+
                     }
 
-                }
+                    @Override
+                    public void onFailure(Exception e) {
 
-                @Override
-                public void onFailure(Exception e) {
+                    }
+                });
 
-                }
-            });
-
-            break;
+                break;
 
         }
 
@@ -493,6 +511,22 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
+            case ADDRESS://地址
+                if (resultCode == 888) {
+//                    intent.putExtra("lat", myLocation.getLatitude());
+//                    intent.putExtra("lon", myLocation.getLongitude());
+//                    intent.putExtra("add", auto_edit.getText());
+                    Bundle extras = data.getExtras();
+                    resultAdd = extras.getString("add");
+                    lat = extras.getDouble("lat", 0);
+                    lon = extras.getDouble("lon", 0);
+                    if (!TextUtils.isEmpty(resultAdd)) {
+                        register_person_address_tv.setText(resultAdd);
+                    }
+
+//                   Double lat= data.getDoubleExtra("lon",0);
+                }
+                break;
             // 表示 调用照相机拍照
             case IMAGE_RESULT_CODE:
                 if (resultCode == RESULT_OK) {

@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -51,11 +54,15 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
     private ArrayList<PoiItem> pois;
     private PoiItem currentpoi;
     private Marker marker;
+    private String addrequest;
+    private LatLonPoint currentLatLng =new LatLonPoint(0,0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auto_map_address);
+        addrequest = getIntent().getStringExtra("addrequest");
+
         //获取地图控件引用
         mMapView = (MapView) findViewById(R.id.map);
         //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，创建地图
@@ -65,7 +72,18 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
             aMap = mMapView.getMap();
         }
         initview();
-        initmap();
+        if(  TextUtils.isEmpty(addrequest)){
+            initmap();
+        }
+//    有地址的情况下修改
+        else{
+          String  lons = getIntent().getStringExtra("lon");
+         double lon= Double.valueOf(lons);
+          String  lats = getIntent().getStringExtra("lat");
+            double lat= Double.valueOf(lats);
+            updateMap(addrequest,lon,lat);
+        }
+//        updateMap("望京",39.896561,116.511039);
 
     }
 
@@ -78,7 +96,8 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
 
         geocoderSearch.getFromLocationAsyn(query);
     }
-
+boolean isEditChange=false;
+boolean isOnitem=false;
     private void initview() {
         auto_list = findViewById(R.id.auto_list);
         auto_edit = findViewById(R.id.auto_edit);
@@ -91,22 +110,18 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(pois.size()>0){
+                    isEditChange=false;
+                    isOnitem=true;
                     marker.destroy();
                     auto_list.setVisibility(View.INVISIBLE);
                     mMapView.setVisibility(View.VISIBLE);
                     currentpoi = pois.get(position);
-                    auto_edit.setText(currentpoi.getTitle()+ currentpoi.getSnippet());
-                    LatLonPoint latLonPoint = currentpoi.getLatLonPoint();
-                    LatLng latLonPoint1=new LatLng(latLonPoint.getLatitude(),latLonPoint.getLongitude());
-                    CameraUpdate cameraUpdate=CameraUpdateFactory.newLatLng(latLonPoint1);
-                    CameraUpdate cameraUpdate1=CameraUpdateFactory.zoomTo(14);
-                    //TODO
-                    aMap.animateCamera(cameraUpdate);
-                    aMap.animateCamera(cameraUpdate1);
 
-                    aMap.animateCamera(cameraUpdate);
-                    LatLng latLng = new LatLng(latLonPoint.getLatitude(),latLonPoint.getLongitude());
-                    marker = aMap.addMarker(new MarkerOptions().position(latLng).title("北京").snippet("DefaultMarker"));
+
+                    currentLatLng = currentpoi.getLatLonPoint();
+
+                    updateMap(currentpoi.getTitle()+ currentpoi.getSnippet(),currentLatLng.getLatitude(),currentLatLng.getLongitude());
+
 
                 }else{
                     Toast.makeText(AutoMapAddressActivity.this, "没有搜索结果", Toast.LENGTH_LONG).show();
@@ -114,7 +129,43 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
 
             }
         });
+        auto_edit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(isOnitem){
+                    isEditChange=false;
+                    return;
+                }
+                isEditChange=true;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+    private void updateMap(String s, double latitude, double longitude) {
+        currentLatLng.setLatitude(latitude);
+        currentLatLng.setLongitude(longitude);
+        auto_edit.setText(s);
+        LatLng latLonPoint1=new LatLng(latitude,longitude);
+        CameraUpdate cameraUpdate=CameraUpdateFactory.newLatLng(latLonPoint1);
+        CameraUpdate cameraUpdate1=CameraUpdateFactory.zoomTo(14);
+        //TODO
+        aMap.animateCamera(cameraUpdate);
+        aMap.animateCamera(cameraUpdate1);
+
+        aMap.animateCamera(cameraUpdate);
+        LatLng latLng = new LatLng(latitude,longitude);
+        marker = aMap.addMarker(new MarkerOptions().position(latLng).title("北京").snippet("DefaultMarker"));
+        isOnitem=false;
     }
 
     private void initmap() {
@@ -132,18 +183,27 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
         mUiSettings.setZoomGesturesEnabled(true);
 
         aMap.setOnMyLocationChangeListener(new AMap.OnMyLocationChangeListener() {
+
             @Override
             public void onMyLocationChange(Location location) {
                 myLocation = location;
-                LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
-                marker = aMap.addMarker(new MarkerOptions().position(latLng).title("北京").snippet("DefaultMarker"));
-                Toast.makeText(AutoMapAddressActivity.this, location.getLongitude() + ":" + location.getLatitude(), Toast.LENGTH_LONG).show();
+
+                LatLng currentLatLngs = new LatLng(location.getLatitude(),location.getLongitude());
+                currentLatLng.setLatitude(currentLatLngs.latitude);
+                currentLatLng.setLongitude(currentLatLngs.longitude);
+                marker = aMap.addMarker(new MarkerOptions().position(currentLatLngs).title("北京").snippet("DefaultMarker"));
+
+                CameraUpdate cameraUpdate=CameraUpdateFactory.newLatLng(new LatLng(currentLatLng.getLatitude(),currentLatLng.getLongitude()));
+                CameraUpdate cameraUpdate1=CameraUpdateFactory.zoomTo(14);
+                aMap.animateCamera(cameraUpdate1);
+                aMap.animateCamera(cameraUpdate);
+//                Toast.makeText(AutoMapAddressActivity.this, location.getLongitude() + ":" + location.getLatitude(), Toast.LENGTH_LONG).show();
                 initGeocodeSearch(myLocation);//坐标转地址
             }
         });
 
-        CameraUpdate mCameraUpdat = CameraUpdateFactory.zoomTo(14);
-        aMap.moveCamera(mCameraUpdat);
+//        CameraUpdate mCameraUpdat = CameraUpdateFactory.zoomTo(14);
+//        aMap.moveCamera(mCameraUpdat);
 
     }
 
@@ -181,15 +241,18 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.auto_save:
-                if (myLocation == null) {
+                if (currentLatLng == null) {
                     Toast.makeText(AutoMapAddressActivity.this, "没有定位到", Toast.LENGTH_LONG).show();
                     return;
                 }
+                if(isEditChange){
+                    Toast.makeText(AutoMapAddressActivity.this, "你已经修改了地址内容，请点击搜索后，才能点击确定修改成功", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 Intent intent = new Intent();
-                myLocation.getLongitude();
-                intent.putExtra("lat", myLocation.getLatitude());
-                intent.putExtra("lon", myLocation.getLongitude());
-                intent.putExtra("add", auto_edit.getText());
+                intent.putExtra("lat", currentLatLng.getLatitude()+"");
+                intent.putExtra("lon", currentLatLng.getLongitude()+"");
+                intent.putExtra("add", auto_edit.getText().toString());
                 setResult(888, intent);
 
             case R.id.auto_back:
@@ -197,6 +260,7 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
                 break;
                 case R.id.clear_search:
                     auto_edit.setText("");
+
                 break;
         }
     }
@@ -206,7 +270,8 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
     public void onRegeocodeSearched(RegeocodeResult regeocodeResult, int i) {
         RegeocodeAddress regeocodeAddress = regeocodeResult.getRegeocodeAddress();
         auto_edit.setText(regeocodeAddress.getFormatAddress());
-        Toast.makeText(AutoMapAddressActivity.this, regeocodeAddress.getFormatAddress(), Toast.LENGTH_LONG).show();
+        isEditChange=false;
+//        Toast.makeText(AutoMapAddressActivity.this, regeocodeAddress.getFormatAddress(), Toast.LENGTH_LONG).show();
     }
 
     //地址转坐标
@@ -220,7 +285,7 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
         switch (actionId) {
             case EditorInfo.IME_ACTION_SEARCH:
                 searchAddress(v.getText().toString());
-
+                isEditChange=false;
                 break;
             case EditorInfo.IME_ACTION_SEND:
                 System.out.println("send a email: " + v.getText());
@@ -247,10 +312,11 @@ public class AutoMapAddressActivity extends AppCompatActivity implements View.On
                 auto_list.setVisibility(View.VISIBLE);
                 mMapView.setVisibility(View.INVISIBLE);
                 pois = poiResult.getPois();
-                Toast.makeText(AutoMapAddressActivity.this, pois.toString(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(AutoMapAddressActivity.this, pois.toString(), Toast.LENGTH_LONG).show();
                 adapter = new AutoMapListAdapter(AutoMapAddressActivity.this, pois);
 
                 auto_list.setAdapter(adapter);
+
             }
 
             @Override

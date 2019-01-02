@@ -7,6 +7,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
+    android:descendantFocusability="afterDescendants"
     tools:context=".activity.PersonRegistActivity">
 
     <RelativeLayout
@@ -40,10 +41,12 @@
     </RelativeLayout>
 
     <ScrollView
+        android:descendantFocusability="afterDescendants"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:descendantFocusability="afterDescendants"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -359,7 +362,41 @@
                     android:textSize="@dimen/shier" />
 
             </RelativeLayout>
+            <RelativeLayout
+                android:clickable="true"
+                android:id="@+id/register_person_address_rl"
+                android:descendantFocusability="afterDescendants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp">
 
+                <TextView
+                    android:clickable="true"
+                    android:id="@+id/register_person_address_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:hint="请输入您的地址"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/shier"
+                    android:theme="@style/MyEditText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:text="*地址"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/shier" />
+
+            </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

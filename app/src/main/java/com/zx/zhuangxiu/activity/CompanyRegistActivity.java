@@ -241,7 +241,7 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
 
                 String url = URLS.regeste(2, shooujihao, oppid, token, nameString, phoneString,addressString, UserUrl, "", IDUrl+","+IDUrl1
                         , "", Licenseurl, ShopUrl, "", ekongjian.getText().toString().trim(), ekoubei.getText().toString().trim(), tapy, mFuWuCount.getText().toString()
-                ,"","","");
+                ,"","","","","");
                 OkHttpUtils.get(url, new OkHttpUtils.ResultCallback<RegisteBean>() {
                     @Override
                     public void onSuccess(RegisteBean response) {
