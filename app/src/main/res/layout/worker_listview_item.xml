@@ -125,33 +125,33 @@
                 android:textSize="@dimen/shisi"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/suozaidi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/work_type"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="15dp"
-                android:text="所在地:"
-                android:textSize="@dimen/shisi" />
+            <!--<TextView-->
+                <!--android:id="@+id/suozaidi"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/work_type"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:text="所在地:"-->
+                <!--android:textSize="@dimen/shisi" />-->
 
-            <TextView
-                android:id="@+id/worker_item_suozaidi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/work_type"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="15dp"
-                android:layout_toRightOf="@+id/suozaidi"
-                android:text=""
-                android:textSize="@dimen/shisi"
-                android:textStyle="bold" />
+            <!--<TextView-->
+                <!--android:id="@+id/worker_item_suozaidi"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/work_type"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:layout_toRightOf="@+id/suozaidi"-->
+                <!--android:text=""-->
+                <!--android:textSize="@dimen/shisi"-->
+                <!--android:textStyle="bold" />-->
 
             <TextView
                 android:id="@+id/gerenkongjian"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/suozaidi"
+                android:layout_below="@+id/work_type"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
                 android:text="个人技能:"
@@ -161,7 +161,7 @@
                 android:id="@+id/worker_item_gerenkongjian"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/suozaidi"
+                android:layout_below="@+id/work_type"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="15dp"
                 android:layout_toRightOf="@+id/gerenkongjian"

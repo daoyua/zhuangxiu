@@ -33,6 +33,7 @@ import com.zx.zhuangxiu.ImageYS;
 import com.zx.zhuangxiu.OkHttpUtils;
 import com.zx.zhuangxiu.R;
 import com.zx.zhuangxiu.URLS;
+import com.zx.zhuangxiu.activity.automap.AutoMapAddressActivity;
 import com.zx.zhuangxiu.model.ImageBean;
 import com.zx.zhuangxiu.model.RegisteBean;
 
@@ -102,8 +103,12 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
     private String ShopUrl;
     private String UserUrl;
     private String shooujihao;
-    private String oppid ="";
-    private String token="";
+    private String oppid = "";
+    private String token = "";
+    private TextView sj_address;
+    private String resultAdd;
+    private double lat;
+    private double lon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +124,8 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
 
     private void initView() {
 
+        //法人身份证号码
+        sj_address = (TextView) findViewById(R.id.sj_address);
         eshenfennum = (EditText) findViewById(R.id.eshenfennum);//法人身份证号码
         mFuWuCount = (EditText) findViewById(R.id.company_regist_count);//经营产品
         ename = (EditText) findViewById(R.id.ename);//姓名
@@ -142,6 +149,7 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
         gongsi_zhuce = (TextView) findViewById(R.id.gongsi_zhuce);//注册按钮
 
 
+        sj_address.setOnClickListener(this);//地址
         iyingye.setOnClickListener(this);//营业执照
         izshenfen.setOnClickListener(this);//身份证正面
         ifshenfen.setOnClickListener(this); //身份证反面
@@ -178,10 +186,16 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
 
     }
 
+    private final int ADDRESS = 222;// 选择地址
+
     @Override
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
+            case R.id.sj_address:
+                intent = new Intent(CompanyRegistActivity.this, AutoMapAddressActivity.class);
+                startActivityForResult(intent, ADDRESS);
+                break;
             case R.id.company_regist_rb1:
                 tapy = "0";
                 break;
@@ -213,20 +227,25 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
                 break;
             case R.id.gongsi_zhuce:
 
+                String address = sj_address.getText().toString().trim();
                 String nameString = ename.getText().toString().trim();
                 String timeString = mTime.getText().toString().trim();
                 String addressString = edizhi.getText().toString().trim();
                 String phoneString = ephone.getText().toString().trim();
                 String shenfennumString = eshenfennum.getText().toString().trim();
+                if(TextUtils.isEmpty(address)){
+                    Toast.makeText(CompanyRegistActivity.this, "请填写地址", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 if (TextUtils.isEmpty(nameString)
-                        ||TextUtils.isEmpty(timeString)
-                        ||TextUtils.isEmpty(addressString)
-                        ||TextUtils.isEmpty(phoneString)
-                        ||TextUtils.isEmpty(shenfennumString)
-                        ||TextUtils.isEmpty(Licenseurl)
-                        ||TextUtils.isEmpty(IDUrl)
-                        ||TextUtils.isEmpty(IDUrl1)
-                        ||TextUtils.isEmpty(ShopUrl) ||TextUtils.isEmpty(tapy)){
+                        || TextUtils.isEmpty(timeString)
+                        || TextUtils.isEmpty(addressString)
+                        || TextUtils.isEmpty(phoneString)
+                        || TextUtils.isEmpty(shenfennumString)
+                        || TextUtils.isEmpty(Licenseurl)
+                        || TextUtils.isEmpty(IDUrl)
+                        || TextUtils.isEmpty(IDUrl1)
+                        || TextUtils.isEmpty(ShopUrl) || TextUtils.isEmpty(tapy)) {
                     Toast.makeText(CompanyRegistActivity.this, "请填写完整必填信息或重新选择上传的图片", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -239,9 +258,9 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
                     return;
                 }
 
-                String url = URLS.regeste(2, shooujihao, oppid, token, nameString, phoneString,addressString, UserUrl, "", IDUrl+","+IDUrl1
+                String url = URLS.regeste(2, shooujihao, oppid, token, nameString, phoneString, addressString, UserUrl, "", IDUrl + "," + IDUrl1
                         , "", Licenseurl, ShopUrl, "", ekongjian.getText().toString().trim(), ekoubei.getText().toString().trim(), tapy, mFuWuCount.getText().toString()
-                ,"","","","","");
+                        , "", "", "", "", "");
                 OkHttpUtils.get(url, new OkHttpUtils.ResultCallback<RegisteBean>() {
                     @Override
                     public void onSuccess(RegisteBean response) {
@@ -257,7 +276,7 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
                             URLS.setUser_id(userId);
                             Toast.makeText(CompanyRegistActivity.this, "注册成功", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(CompanyRegistActivity.this, HomeActivity.class);
-                            intent.putExtra("UserID",userId);
+                            intent.putExtra("UserID", userId);
                             startActivity(intent);
                             CompanyRegistActivity.this.finish();
                         }
@@ -344,6 +363,22 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             // 表示 调用照相机拍照
+            case ADDRESS://地址
+                if (resultCode == 888) {
+//                    intent.putExtra("lat", myLocation.getLatitude());
+//                    intent.putExtra("lon", myLocation.getLongitude());
+//                    intent.putExtra("add", auto_edit.getText());
+                    Bundle extras = data.getExtras();
+                    resultAdd = extras.getString("add");
+                    lat = extras.getDouble("lat", 0);
+                    lon = extras.getDouble("lon", 0);
+                    if (!TextUtils.isEmpty(resultAdd)) {
+                        sj_address.setText(resultAdd);
+                    }
+
+//                   Double lat= data.getDoubleExtra("lon",0);
+                }
+                break;
             case IMAGE_RESULT_CODE:
                 if (resultCode == RESULT_OK) {
                     Bundle bundle = data.getExtras();
@@ -419,7 +454,7 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
     //转化file文件
     public void changebitmap(Bitmap bitmap) {
         BufferedOutputStream out = null;
-        File file = new File(getCacheDir(), System.currentTimeMillis()+".png");
+        File file = new File(getCacheDir(), System.currentTimeMillis() + ".png");
         try {
             out = new BufferedOutputStream(new FileOutputStream(file));
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
@@ -435,16 +470,16 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
                 upLoadImage(file);
                 break;
             case 1://身份正反面
-               upLoadImage(file);
+                upLoadImage(file);
                 break;
             case 2://身份证反面
                 upLoadImage(file);
                 break;
             case 3://企业。店铺照片
-                 upLoadImage(file);
+                upLoadImage(file);
                 break;
             case 4://头像
-                 upLoadImage(file);
+                upLoadImage(file);
                 break;
             default:
                 break;
@@ -454,7 +489,7 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
 
     /* 上传图片*/
     private void upLoadImage(File file) {
-        final ProgressDialog progressDialog=new ProgressDialog(this);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("正在上传");
         progressDialog.show();
         MultipartBody.Builder builder = new MultipartBody.Builder()
@@ -469,21 +504,21 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
                 if (imageBean.getResult() == 1) {
                     progressDialog.dismiss();
                     imageurl = imageBean.getData().getUrl();
-                    switch (imagetap){
+                    switch (imagetap) {
                         case 0://营业执照
-                            Licenseurl =imageurl;
+                            Licenseurl = imageurl;
                             break;
                         case 1://身份正反面
-                            IDUrl=imageurl;
+                            IDUrl = imageurl;
                             break;
                         case 2://身份证反面
-                            IDUrl1=imageurl;
+                            IDUrl1 = imageurl;
                             break;
                         case 3://企业。店铺照片
-                            ShopUrl=imageurl;
+                            ShopUrl = imageurl;
                             break;
                         case 4://头像
-                            UserUrl =imageurl;
+                            UserUrl = imageurl;
                             break;
                     }
 

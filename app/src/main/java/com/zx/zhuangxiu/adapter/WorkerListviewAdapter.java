@@ -62,7 +62,7 @@ public class WorkerListviewAdapter extends BaseAdapter {
             holder.age = (TextView) convertView.findViewById(R.id.worker_item_nianling);
             holder.sex = (TextView) convertView.findViewById(R.id.worker_item_xingbie);
             holder.ruwangAge = (TextView) convertView.findViewById(R.id.worker_item_gongling);
-            holder.dizhi = (TextView) convertView.findViewById(R.id.worker_item_suozaidi);
+//            holder.dizhi = (TextView) convertView.findViewById(R.id.worker_item_suozaidi);
             holder.kongjian = (TextView) convertView.findViewById(R.id.worker_item_gerenkongjian);
             holder.address = (TextView) convertView.findViewById(R.id.worker_item_dingweiaddress);
 
@@ -87,7 +87,7 @@ public class WorkerListviewAdapter extends BaseAdapter {
             ShouYeZgrOne.DataBean collectList = mList.get(position);
             holder.name.setText("" + collectList.getRealname());
             holder.age.setText(" " + collectList.getAge()+ "岁");
-            holder.dizhi.setText("" + collectList.getAddress());
+//            holder.dizhi.setText("" + collectList.getAddress());
             holder.kongjian.setText("" + collectList.getSpace());
             holder.address.setText("" + collectList.getAddress());
             holder.sex.setText(collectList.getSex());
@@ -182,8 +182,8 @@ public class WorkerListviewAdapter extends BaseAdapter {
 
     public class ViewHolder {
         RoundImageView worker_item_touxiang;
-        TextView name, age, sex, ruwangAge, dizhi, kongjian, address,dianzannum ,work_type
-                ,shouye_worker_data;
+        TextView name, age, sex, ruwangAge, kongjian, address,dianzannum ,work_type
+                ,shouye_worker_data;//, dizhi
         LinearLayout worker_item_ll,dianzanlayout,pinglunlayout,fenxianglayout;
 
     }

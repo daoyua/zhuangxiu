@@ -285,7 +285,7 @@ boolean isOnitem=false;
         switch (actionId) {
             case EditorInfo.IME_ACTION_SEARCH:
                 searchAddress(v.getText().toString());
-                isEditChange=false;
+//                isEditChange=false;
                 break;
             case EditorInfo.IME_ACTION_SEND:
                 System.out.println("send a email: " + v.getText());

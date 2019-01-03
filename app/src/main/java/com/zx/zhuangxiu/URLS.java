@@ -244,7 +244,7 @@ public class URLS {
      *  http://47.93.215.205:8081/zxWeb/findWorker/selectWorker?pkId=3&findType=1
      * */
     public static String syFoundWorkerShow(int typeId) {
-        String getyz = HTTP + "/api/LookWork/most?type=" + typeId;
+        String getyz = HTTP + "/api/LookWork/most?type=" + typeId+"&userId="+getUser_id();
         return getyz;
     }
 
