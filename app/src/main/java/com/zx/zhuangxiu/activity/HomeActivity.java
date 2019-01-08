@@ -23,6 +23,7 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.blankj.utilcode.util.PermissionUtils;
+import com.zx.zhuangxiu.Constants;
 import com.zx.zhuangxiu.OkHttpUtils;
 import com.zx.zhuangxiu.R;
 import com.zx.zhuangxiu.URLS;
@@ -200,12 +201,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void updateAddressServer(String lon, String lat) {
-        String ss = URLS.updateDynamicAddress( lat, lon);
+        String ss = URLS.updateDynamicAddress( lon, lat);
+        Constants.lat=lat;
+        Constants.lon=lon;
         OkHttpUtils.get(ss, new OkHttpUtils.ResultCallback<AddressService>() {
             @Override
             public void onSuccess(AddressService response) {
 
-                Toast.makeText(HomeActivity.this, response.getMsg(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(HomeActivity.this, response.getMsg(), Toast.LENGTH_LONG).show();
             }
 
             @Override

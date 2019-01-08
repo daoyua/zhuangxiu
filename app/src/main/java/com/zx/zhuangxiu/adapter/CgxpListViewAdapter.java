@@ -56,6 +56,7 @@ public class CgxpListViewAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = LayoutInflater.from(mContext).inflate(R.layout.cgxp_fragment_item, null);
+            holder.cgxp_item_distance = (TextView) convertView.findViewById(R.id.cgxp_item_distance);
             holder.cgxp_item_title = (TextView) convertView.findViewById(R.id.cgxp_item_title);
             holder.cgxp_item_yaoqiu = (TextView) convertView.findViewById(R.id.cgxp_item_yaoqiu);
             holder.cgxp_item_yongtu = (TextView) convertView.findViewById(R.id.cgxp_item_yongtu);
@@ -78,6 +79,10 @@ public class CgxpListViewAdapter extends BaseAdapter {
 
 //            holder.cgxp_item_yongtu.setText("电话:" +333333);
             holder.cgxp_item_yongtu.setText("电话:" +phone);
+//            if(mList.get(position).getDistance()!=null){
+                holder.cgxp_item_distance.setText("距离你" +mList.get(position).getDistance()+"米");
+//            }
+
             holder.cgxp_item_price.setText("理想价位:￥" + mList.get(position).getPrice());
             holder.cgxp_item_nums.setText("数量:" + mList.get(position).getNum() + "个");
             String riqi = ToTime.getDateTimeFromMillisecond(mList.get(position).getEndtime());
@@ -191,7 +196,8 @@ public class CgxpListViewAdapter extends BaseAdapter {
     public class ViewHolder {
 
         RoundImageView cgxp_item_img;
-        TextView cgxp_item_title, cgxp_item_yaoqiu, cgxp_item_yongtu, cgxp_item_price, cgxp_item_nums, cgxp_item_riqi, cgxp_item_tuijian, cgxp_item_youhaoyou;
+        TextView cgxp_item_title, cgxp_item_yaoqiu, cgxp_item_yongtu, cgxp_item_price, cgxp_item_nums, cgxp_item_riqi, cgxp_item_tuijian, cgxp_item_youhaoyou
+                ,cgxp_item_distance;
 
     }
 

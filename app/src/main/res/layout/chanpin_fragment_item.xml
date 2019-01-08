@@ -56,6 +56,16 @@
             android:text="￥78"
             android:textColor="@color/green"
             android:textSize="@dimen/shisi" />
+        <TextView
+
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40dp"
+            android:id="@+id/chanpin_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/chanpin_img"
+            android:text="距离"
+            android:textSize="@dimen/shisi" />
 
         <ImageView
             android:layout_width="wrap_content"

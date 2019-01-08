@@ -26,7 +26,6 @@ import com.zx.zhuangxiu.activity.WXFXActivity;
 import com.zx.zhuangxiu.model.SyProductOne;
 import com.zx.zhuangxiu.view.RoundImageView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ChanPinlistviewAdapter extends BaseAdapter {
@@ -68,6 +67,7 @@ public class ChanPinlistviewAdapter extends BaseAdapter {
             holder = new ViewHolder();
             convertView = LayoutInflater.from(mContext).inflate(R.layout.chanpin_fragment_item, null);
             holder.chanpin_item_title = (TextView) convertView.findViewById(R.id.chanpin_title);
+            holder.chanpin_distance = (TextView) convertView.findViewById(R.id.chanpin_distance);
             holder.chanpin_item_xiaotitle = (TextView) convertView.findViewById(R.id.chanpin_xiaotitle);
             holder.chanpin_price = (TextView) convertView.findViewById(R.id.chanpin_price);
             holder.chanpin_item_address = (TextView) convertView.findViewById(R.id.chanpin_item_address);
@@ -87,6 +87,7 @@ public class ChanPinlistviewAdapter extends BaseAdapter {
         if (mList!=null) {
             holder.chanpin_item_title.setText("" + mList.get(position).getCdname());
             holder.chanpin_item_xiaotitle.setText("简介: " + mList.get(position).getSimple());
+            holder.chanpin_distance.setText("距离你: " + mList.get(position).getDistance()+"米");
             holder.chanpin_price.setText("￥" + mList.get(position).getPrice());
             holder.chanpin_item_address.setText("" + mList.get(position).getAddress());
             holder.chanpin_item_zan.setText("" + mList.get(position).getUpnum());
@@ -167,7 +168,8 @@ public class ChanPinlistviewAdapter extends BaseAdapter {
 
         RoundImageView chanpin_img;
         ImageView zan_img, chanpin_item_commment;
-        TextView chanpin_item_title, chanpin_item_xiaotitle, chanpin_price, chanpin_item_address, chanpin_item_zan;
+        TextView chanpin_item_title, chanpin_item_xiaotitle, chanpin_price, chanpin_item_address,
+        chanpin_distance, chanpin_item_zan;
         LinearLayout chanpin_item_fenxiang, pinglunll, dianzanll;
         RelativeLayout chanpin_rl;
     }

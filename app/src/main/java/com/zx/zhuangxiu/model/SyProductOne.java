@@ -71,7 +71,16 @@ public class SyProductOne {
         private int id;
         private int IsThumbsUp;
         private String picture;
+        private String distance;
         private int upnum;
+
+        public String getDistance() {
+            return distance;
+        }
+
+        public void setDistance(String distance) {
+            this.distance = distance;
+        }
 
         public String getAddress() {
             return address;

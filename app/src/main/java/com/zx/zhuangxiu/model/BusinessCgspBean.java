@@ -74,7 +74,16 @@ public class BusinessCgspBean {
         private int id;
         private int isdelete;
         private String goodsinfo;
+        private String distance;
         private int userId;
+
+        public String getDistance() {
+            return distance;
+        }
+
+        public void setDistance(String distance) {
+            this.distance = distance;
+        }
 
         public String getImg() {
             return img;

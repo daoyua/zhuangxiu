@@ -71,6 +71,15 @@ public class BusinessJmhzBean {
         private int id;
         private String username;
         private String info;
+        private String distance;
+
+        public String getDistance() {
+            return distance;
+        }
+
+        public void setDistance(String distance) {
+            this.distance = distance;
+        }
 
         public String getAddress() {
             return address;

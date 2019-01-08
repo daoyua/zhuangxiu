@@ -59,6 +59,7 @@ public class GmfwListViewAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = LayoutInflater.from(mContext).inflate(R.layout.gmfw_fragment_item, null);
+            holder.gmfw_item_distance = (TextView) convertView.findViewById(R.id.gmfw_item_distance);
             holder.gmfw_item_title = (TextView) convertView.findViewById(R.id.gmfw_item_title);
             holder.gmfw_item_size = (TextView) convertView.findViewById(R.id.gmfw_item_size);
             holder.gmfw_item_dizhi = (TextView) convertView.findViewById(R.id.gmfw_item_dizhi);
@@ -83,6 +84,7 @@ public class GmfwListViewAdapter extends BaseAdapter {
 //            holder.gmfw_item_yaoqiu.setText("项目要求：" + mList.get(position).getRequires());
             holder.gmfw_item_xiangmu.setText("服务内容：" + mList.get(position).getRequires());
             holder.gmfw_item_yaoqiu.setText("项目要求：" + mList.get(position).getName());
+            holder.gmfw_item_distance.setText("距离你：" + mList.get(position).getDistance()+"米");
 
 
             holder.gmfw_item_time.setText("开工时间 : " + demo2(mList.get(position).getStartTime()));
@@ -201,7 +203,8 @@ public class GmfwListViewAdapter extends BaseAdapter {
 
         ImageView gmfw_item_img;
         TextView gmfw_item_title, gmfw_item_size, gmfw_item_dizhi, gmfw_item_xiangmu, gmfw_item_yaoqiu, gmfw_item_time,
-                gmfw_item_wangongtime, gmfw_item_tuijian, gmfw_item_youhaoyou;
+                gmfw_item_wangongtime, gmfw_item_tuijian, gmfw_item_youhaoyou
+                ,gmfw_item_distance;
 
     }
 }

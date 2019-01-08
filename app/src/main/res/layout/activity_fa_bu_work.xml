@@ -85,6 +85,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/fabu_work_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -99,7 +100,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
 
-            <EditText
+            <TextView
                 android:id="@+id/fabu_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

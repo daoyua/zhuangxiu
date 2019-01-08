@@ -89,6 +89,23 @@ public class BusinessGmfwBean {
         private String requires;
         @SerializedName("phone")
         public String phone;
+        public String distance;
+
+        public String getDistance() {
+            return distance;
+        }
+
+        public void setDistance(String distance) {
+            this.distance = distance;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
 
         public double getArea() {
             return area;

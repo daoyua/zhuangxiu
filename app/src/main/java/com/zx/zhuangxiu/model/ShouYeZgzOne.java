@@ -77,6 +77,15 @@ public class ShouYeZgzOne {
         private String synopsis;
         private String experience;
         private String city;
+        private String distance;
+
+        public String getDistance() {
+            return distance;
+        }
+
+        public void setDistance(String distance) {
+            this.distance = distance;
+        }
 
         @SerializedName("addTime")  //发起时间
         public String addTime;

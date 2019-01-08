@@ -194,15 +194,32 @@
                 android:text=""
                 android:textSize="@dimen/shisi" />
         </LinearLayout>
-        <TextView
-            android:id="@+id/shouye_worker_data"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="8dp"
-            android:text="发起时间"
-            android:textSize="@dimen/shier" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+
+                android:id="@+id/workdlist_disdance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="8dp"
+                android:text="距离"
+
+                android:textSize="@dimen/shier" />
+            <TextView
+               android:layout_alignParentRight="true"
+                android:id="@+id/shouye_worker_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+
+                android:layout_marginRight="8dp"
+                android:text="发起时间"
+                android:textSize="@dimen/shier" />
+        </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

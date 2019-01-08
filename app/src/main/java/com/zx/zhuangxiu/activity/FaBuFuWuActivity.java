@@ -35,6 +35,7 @@ import com.zx.zhuangxiu.ImageYS;
 import com.zx.zhuangxiu.OkHttpUtils;
 import com.zx.zhuangxiu.R;
 import com.zx.zhuangxiu.URLS;
+import com.zx.zhuangxiu.activity.automap.AutoMapAddressActivity;
 import com.zx.zhuangxiu.adapter.GridViewAddImgesAdpter;
 import com.zx.zhuangxiu.adapter.SpinnerAdapter;
 import com.zx.zhuangxiu.model.FWBean;
@@ -69,7 +70,7 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
     /**
      * 项目地址
      */
-    private EditText mTvAddress;
+    private TextView mTvAddress;
     /**
      * 项目面积（平米），若无请写0
      */
@@ -125,6 +126,9 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
     private RelativeLayout fabu_fuwu_type;
     private TextView fabu_fuwu_title;
     private TextView tv_txt;
+    private String resultAdd;
+    private String lat;
+    private String lon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,15 +137,20 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
         aa = getIntent().getIntExtra("type", 0);
         initView();
     }
-
+boolean isShouye=false;//是否为首页的发布服务
     private void initView() {
+        findViewById(R.id.fabu_fuwu_address_ll).setOnClickListener(this);
         fabu_fuwu_type = (RelativeLayout) findViewById(R.id.fabu_fuwu_type);
         fabu_fuwu_title = (TextView) findViewById(R.id.fabu_fuwu_title);
 //        tv_txt = (TextView) findViewById(R.id.tv_txt);
+//        fabu_fuwu_type.setVisibility(View.GONE);
+//        fabu_fuwu_title.setText("发布需求");
         if (aa == 1) {
             fabu_fuwu_type.setVisibility(View.GONE);
             fabu_fuwu_title.setText("发布需求");
-
+            isShouye=false;
+        }else{
+            isShouye=true;
         }
 //        else{
 //            tv_txt.setText("服务类型");
@@ -151,7 +160,7 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
         mTvName = (EditText) findViewById(R.id.tv_name);
         mGw = (MyGridView) findViewById(R.id.gw);
         mFabuImg = (ImageView) findViewById(R.id.fabu_img);
-        mTvAddress = (EditText) findViewById(R.id.tv_address);
+        mTvAddress = (TextView) findViewById(R.id.tv_address);
         mTvArea = (EditText) findViewById(R.id.tv_area);
         mTvPrice = (EditText) findViewById(R.id.tv_price);
         mTvType = (EditText) findViewById(R.id.tv_type);
@@ -222,43 +231,46 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
         mList1.add("供应型");
         mList1.add("需求型");
 
-        OkHttpUtils.get(URLS.HTTP + "/api/server/serverList", new OkHttpUtils.ResultCallback<FWBean>() {
-            @Override
-            public void onSuccess(FWBean response) {
-                if (response.getResult() == 1) {
-                    List<FWBean.DataBean.ClassListBean> classList = response.getData().getClassList();
-                    mList.addAll(classList);
-                    arr_adapter.notifyDataSetChanged();
+        if(isShouye){
+            OkHttpUtils.get(URLS.HTTP + "/api/server/serverList?userId="+URLS.getUser_id(), new OkHttpUtils.ResultCallback<FWBean>() {
+                @Override
+                public void onSuccess(FWBean response) {
+                    if (response.getResult() == 1) {
+                        List<FWBean.DataBean.ClassListBean> classList = response.getData().getClassList();
+                        mList.addAll(classList);
+                        arr_adapter.notifyDataSetChanged();
+                    }
+
                 }
 
-            }
+                @Override
+                public void onFailure(Exception e) {
 
-            @Override
-            public void onFailure(Exception e) {
-
-            }
-        });
+                }
+            });
 
 //        arr_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, mList);
-        arr_adapter = new SpinnerAdapter(this, mList);
+            arr_adapter = new SpinnerAdapter(this, mList);
 
 //        arr_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinner.setAdapter(arr_adapter);
-        mSpinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {//选择item的选择点击监听事件
-            public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                       int arg2, long arg3) {
-                mTvType.setText(mList.get(arg2).getCname());
-                anInt = mList.get(arg2).getId();
-            }
+            mSpinner.setAdapter(arr_adapter);
+            mSpinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {//选择item的选择点击监听事件
+                public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                           int arg2, long arg3) {
+                    mTvType.setText(mList.get(arg2).getCname());
+                    anInt = mList.get(arg2).getId();
+                }
 
-            public void onNothingSelected(AdapterView<?> arg0) {
-                mTvType.setText("");
-            }
-        });
+                public void onNothingSelected(AdapterView<?> arg0) {
+                    mTvType.setText("");
+                }
+            });
 
-        arr_adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, mList1);
-        arr_adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinner1.setAdapter(arr_adapter1);
+            arr_adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, mList1);
+            arr_adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            mSpinner1.setAdapter(arr_adapter1);
+        }
+
 //        mSpinner1.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {//选择item的选择点击监听事件
 //            public void onItemSelected(AdapterView<?> arg0, View arg1,
 //                                       int arg2, long arg3) {
@@ -336,13 +348,17 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
         dialog.show();
     }
 
-
+    private final int ADDRESS = 222;// 选择地址
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             default:
                 break;
             case R.id.tv_startime:
+                break;
+                case R.id.fabu_fuwu_address_ll:
+                    Intent     intent = new Intent(FaBuFuWuActivity.this, AutoMapAddressActivity.class);
+                    startActivityForResult(intent, ADDRESS);
                 break;
             case R.id.tv_endtime:
                 break;
@@ -458,7 +474,7 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
 //                && !TextUtils.isEmpty(endString)
 //                && !TextUtils.isEmpty(imageurl)
 //                ) {
-        String fabu = URLS.fabu(URLS.getUser_id(), nameString, addressString, areaString, priceString, otherString, imageurl, anInt, startString, endString, aa, phone);
+        String fabu = URLS.fabu(URLS.getUser_id(), nameString, addressString, areaString, priceString, otherString, imageurl, anInt, startString, endString, aa, phone,lon+"",lat+"");
 //            FormBody formBody = new FormBody.Builder()
 //                    .add("userId", URLS.getUser_id() + "")
 //                    .add("name", nameString)
@@ -554,6 +570,22 @@ public class FaBuFuWuActivity extends AppCompatActivity implements View.OnClickL
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
+            case ADDRESS://地址
+                if (resultCode == 888) {
+//                    intent.putExtra("lat", myLocation.getLatitude());
+//                    intent.putExtra("lon", myLocation.getLongitude());
+//                    intent.putExtra("add", auto_edit.getText());
+                    Bundle extras = data.getExtras();
+                    resultAdd = extras.getString("add");
+                    lat = extras.getString("lat");
+                    lon = extras.getString("lon");
+                    if (!TextUtils.isEmpty(resultAdd)) {
+                        mTvAddress.setText(resultAdd);
+                    }
+
+//                   Double lat= data.getDoubleExtra("lon",0);
+                }
+                break;
             // 表示 调用照相机拍照
             case IMAGE_RESULT_CODE:
                 if (resultCode == RESULT_OK) {

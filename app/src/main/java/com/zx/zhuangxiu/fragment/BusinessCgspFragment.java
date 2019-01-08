@@ -25,6 +25,9 @@ import com.zx.zhuangxiu.model.BusinessCgspBean;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商机，商品需求
+ */
 public class BusinessCgspFragment extends Fragment {
     public static final int REQUEST_CALL_PERMISSION = 10111; //拨号请求码
     private ListView cgxp_listview;

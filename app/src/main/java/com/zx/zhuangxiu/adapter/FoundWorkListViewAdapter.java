@@ -75,6 +75,7 @@ public class FoundWorkListViewAdapter extends BaseAdapter{
             holder.worktypes = (TextView) convertView.findViewById(R.id.shouye_work_item_worktypes);
             holder.treatment = (TextView) convertView.findViewById(R.id.shouye_work_item_treatment);
             holder.wages = (TextView) convertView.findViewById(R.id.shouye_work_item_wages);
+            holder.shouye_work_distance = (TextView) convertView.findViewById(R.id.shouye_work_distance);
 
             holder.work_img = (RoundImageView) convertView.findViewById(R.id.shouye_work_item_img);
             holder.shouye_work_item_ll = (LinearLayout) convertView.findViewById(R.id.shouye_work_item_ll);
@@ -103,6 +104,7 @@ public class FoundWorkListViewAdapter extends BaseAdapter{
             holder.gongzuojingyan.setText("工作经验："+mList.get(position).getExperience());
             holder.work_details.setText("公司名称: "+mList.get(position).getSynopsis());
             holder.work_item_address.setText("项目地址: "+mList.get(position).getAddress());
+            holder.shouye_work_distance.setText("距离你: "+mList.get(position).getDistance()+"米");
             holder.dianzannum.setText(""+mList.get(position).getNumber());
             String imgUrl = mList.get(position).getImgUrl();
             Picasso.with(mContext).load(URLS.HTTP+imgUrl).error(R.mipmap.logo_zhanwei).fit().into(holder.work_img);
@@ -175,7 +177,7 @@ public class FoundWorkListViewAdapter extends BaseAdapter{
 
         RoundImageView work_img;
         TextView work_item_title, work_item_xiaotitle, work_details, work_item_address, shouye_work_item_tv,gongzuojingyan,xueli,dianzannum
-                ,shouye_work_data,worktypes,telenumber,treatment,jobRequire,wages;
+                ,shouye_work_data,worktypes,telenumber,treatment,jobRequire,wages,shouye_work_distance;
         LinearLayout shouye_work_item_ll,fenxianglayout,dianzanlayout,pinglunlayout;
 
     }

@@ -160,5 +160,17 @@
             android:text="私聊"
             android:textColor="@color/white"
             android:textSize="12sp" />
+        <TextView
+
+            android:id="@+id/gmfw_item_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:padding="8dp"
+            android:text="距离"
+            android:textSize="12sp" />
     </RelativeLayout>
 </LinearLayout>

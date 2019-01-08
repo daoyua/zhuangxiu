@@ -77,7 +77,35 @@ public class ShouYeZgrOne {
         private String age;
         private int number;
         private String workType;
+        private int distance;
 
+        public int getDistance() {
+            return distance;
+        }
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "address='" + address + '\'' +
+                    ", fall=" + fall +
+                    ", registrationDate='" + registrationDate + '\'' +
+                    ", userId=" + userId +
+                    ", userUrl='" + userUrl + '\'' +
+                    ", space='" + space + '\'' +
+                    ", daynum=" + daynum +
+                    ", realname='" + realname + '\'' +
+                    ", sex='" + sex + '\'' +
+                    ", yearNum=" + yearNum +
+                    ", age='" + age + '\'' +
+                    ", number=" + number +
+                    ", workType='" + workType + '\'' +
+                    ", distance='" + distance + '\'' +
+                    '}';
+        }
+
+        public void setDistance(int distance) {
+            this.distance = distance;
+        }
 
         public String getWorkType() {
             return workType;

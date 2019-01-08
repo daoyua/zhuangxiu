@@ -267,12 +267,12 @@ public class URLS {
      *  http://47.93.215.205:8081/zxWeb/findWork/selectWork
      * */
     public static String syFoundWorkShow() {
-        String getyz = HTTP + "/api/job/GetJoblist";
+        String getyz = HTTP + "/api/job/GetJoblist?userId="+getUser_id();
         return getyz;
     }
 
     public static String syFoundWorkShow(String searchName, String city) {
-        String getyz = HTTP + "/api/job/GetJoblist?searchName=" + searchName + "&city=" + city;
+        String getyz = HTTP + "/api/job/GetJoblist?searchName=" + searchName + "&city=" + city+"&userId="+getUser_id();
         return getyz;
     }
 
@@ -292,7 +292,7 @@ public class URLS {
      *   http://47.93.215.205:8081/zxWeb/findProduct/selectProduct?type=1
      * */
     public static String shangjiChanPinShow(int type) {
-        String getyz = HTTP + "/api/business/selectpurchase?type=0";
+        String getyz = HTTP + "/api/business/selectpurchase?type=0"+"&userId="+getUser_id();
 //        String getyz = "http://192.168.1.8:8081/zxWeb/findProduct/selectProduct?type="+type;
         return getyz;
     }
@@ -304,7 +304,7 @@ public class URLS {
      * @para
      */
     public static String goumaifuwuShow() {
-        String getyz = HTTP + "/api/business/selectpurchase?type=1";
+        String getyz = HTTP + "/api/business/selectpurchase?type=1&userId="+getUser_id();
         return getyz;
     }
 
@@ -313,7 +313,7 @@ public class URLS {
      * http://47.93.215.205:8081/zxWeb/findWorker/findShop
      * */
     public static String sjJmhzShow() {
-        String getyz = HTTP + "/api/business/selectpurchase?type=2";
+        String getyz = HTTP + "/api/business/selectpurchase?type=2"+"&userId="+getUser_id();
 //        String getyz ="http://192.168.1.8:8081/zxWeb/findWorker/findShop";
         return getyz;
     }
@@ -327,7 +327,7 @@ public class URLS {
      */
 
     public static String syChanPinShow(int type) {
-        String getyz = HTTP + "/api/product/GetProductlistByTypeId?typeId=" + type;
+        String getyz = HTTP + "/api/product/GetProductlistByTypeId?typeId=" + type+"&userId="+getUser_id();
 //        String getyz = "http://192.168.1.8:8081/zxWeb/findProduct/selectProduct?type="+type;
         return getyz;
     }
@@ -338,7 +338,7 @@ public class URLS {
      * @returns
      */
     public static String syChanPinShows(int type) {
-        String getyz = HTTP + "/api/product/GetProductlistByTypeId";
+        String getyz = HTTP + "/api/product/GetProductlistByTypeId?userId=" + getUser_id();
 //        String getyz = "http://192.168.1.8:8081/zxWeb/findProduct/selectProduct?type="+type;
         return getyz;
     }
@@ -358,7 +358,7 @@ public class URLS {
      * http://47.93.215.205:8081/zxWeb/findServe/selectService?type=3&serviceSign=2
      * */
     public static String syFuWuShow(int type) {
-        String getyz = HTTP + "/api/server/serverList?classId=" + type;
+        String getyz = HTTP + "/api/server/serverList?classId=" + type+"&userId="+getUser_id();
         return getyz;
     }
 
@@ -1097,7 +1097,7 @@ public class URLS {
      */
     public static String getdaxiaolei(int typeid) {
 
-        String getyz = URLS.HTTP + "/api/homepage/GetSmallTypeById?typeId=" + typeid;
+        String getyz = URLS.HTTP + "/api/homepage/GetSmallTypeById?typeId=" + typeid+"&userId="+getUser_id();
         return getyz;
     }
 
@@ -1119,10 +1119,12 @@ public class URLS {
     public static String fabu() {
         return URLS.HTTP + "/api/server/addServer";
     }
-    public static String fabu(int user_id,String name,String address,String area,String price ,String requires,String imgUrl,int serverType ,String startTime ,String endTime ,int isNeed,String phone){
+    public static String fabu(int user_id,String name,String address,String area,String price ,String requires
+            ,String imgUrl,int serverType ,String startTime ,String endTime ,int isNeed,String phone,String lon,String lat){
         return URLS.HTTP + "/api/server/addServer?userId="+user_id+"&name="+name+"&address="+address+"&area="+area+"&price="
                 +price+"&requires="+requires+"&imgUrl="+imgUrl+"&serverType="
-                +serverType+"&startTime="+startTime+"&endTime="+endTime+"&isNeed="+isNeed+"&phone="+phone ;
+                +serverType+"&startTime="+startTime+"&endTime="+endTime+"&isNeed="+isNeed+"&phone="+phone
+                +"&longitude="+lon+"&latitude="+lat;
     }
 // /api/business/addBusiness
     public static String addBusiness(int userId,String goodsname,String goodsinfo,String price,long num,String image,String time,long phone){

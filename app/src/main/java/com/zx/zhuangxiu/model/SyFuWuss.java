@@ -111,6 +111,16 @@ public class SyFuWuss {
             private int id;
             private int thumbsup;
             private String requires;
+            private String distance;
+
+            public String getDistance() {
+                return distance;
+            }
+
+            public void setDistance(String distance) {
+                this.distance = distance;
+            }
+
             @SerializedName("addTime")
             public String addTime;
 

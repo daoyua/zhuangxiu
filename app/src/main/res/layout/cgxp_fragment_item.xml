@@ -111,6 +111,16 @@
         android:text="私聊"
         android:textColor="@color/white"
         android:textSize="12sp" />
-
+    <TextView
+        android:padding="8dp"
+        android:id="@+id/cgxp_item_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cgxp_item_img"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="距离"
+        android:textSize="12sp" />
 
 </RelativeLayout>

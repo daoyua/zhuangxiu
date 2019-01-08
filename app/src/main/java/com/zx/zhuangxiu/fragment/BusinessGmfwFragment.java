@@ -23,6 +23,9 @@ import com.zx.zhuangxiu.model.WorkerListItem;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商品服务
+ */
 public class BusinessGmfwFragment extends Fragment {
 
     private ListView mGmfwListview;

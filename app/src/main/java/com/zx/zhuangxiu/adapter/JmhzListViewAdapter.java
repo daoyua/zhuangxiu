@@ -63,6 +63,7 @@ public class JmhzListViewAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = LayoutInflater.from(mContext).inflate(R.layout.jmhz_fragment_item, null);
+            holder.gmfw_item_distance = (TextView) convertView.findViewById(R.id.gmfw_item_distance);
             holder.gmhz_item_phone = (TextView) convertView.findViewById(R.id.gmhz_item_phone);
             holder.gmfw_item_siliao = (TextView) convertView.findViewById(R.id.gmfw_item_siliao);
             holder.jmhz_item_title = (TextView) convertView.findViewById(R.id.jmhz_item_title);
@@ -84,6 +85,10 @@ public class JmhzListViewAdapter extends BaseAdapter {
             holder.jmhz_item_dizhi.setText(" " + mList.get(position).getAddress());
             holder.jmhz_item_xiangqing.setText("详情介绍:" + mList.get(position).getInfo());
             holder.jmhz_item_yaoqiu.setText("合作要求:" + mList.get(position).getRequire());
+//            if(mList.get(position).getDistance()!=null){
+                holder.gmfw_item_distance.setText("距离你:" + mList.get(position).getDistance()+"米");
+//            }
+
             String time = ToTime.getDateTimeFromMillisecond(mList.get(position).getCreattime());
             holder.jmhz_item_qixian.setText("发布时间:" + time);
             holder.jmhz_item_nums.setText("联系电话:" + mList.get(position).getNum());
@@ -220,7 +225,9 @@ public class JmhzListViewAdapter extends BaseAdapter {
     public class ViewHolder {
 
         RoundImageView jmhz_item_img;
-        TextView jmhz_item_title, jmhz_item_dizhi, jmhz_item_xiangqing, jmhz_item_yaoqiu, jmhz_item_qixian, jmhz_item_nums, gmhz_item_phone, gmfw_item_siliao, jmhz_item_hezuo;
+        TextView jmhz_item_title, jmhz_item_dizhi, jmhz_item_xiangqing,
+                jmhz_item_yaoqiu, jmhz_item_qixian, jmhz_item_nums, gmhz_item_phone,
+                gmfw_item_siliao, jmhz_item_hezuo,gmfw_item_distance;
 
     }
 }

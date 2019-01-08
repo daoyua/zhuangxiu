@@ -44,6 +44,9 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
+/**
+ * 商机加盟
+ */
 public class FabushangjiActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText gongsiname;

@@ -66,6 +66,7 @@ public class WorkerListviewAdapter extends BaseAdapter {
             holder.kongjian = (TextView) convertView.findViewById(R.id.worker_item_gerenkongjian);
             holder.address = (TextView) convertView.findViewById(R.id.worker_item_dingweiaddress);
 
+            holder.workdlist_disdance = (TextView) convertView.findViewById(R.id.workdlist_disdance);
             holder.shouye_worker_data = (TextView) convertView.findViewById(R.id.shouye_worker_data);
 
             holder.worker_item_ll = (LinearLayout) convertView.findViewById(R.id.worker_item_ll);
@@ -93,6 +94,7 @@ public class WorkerListviewAdapter extends BaseAdapter {
             holder.sex.setText(collectList.getSex());
             holder.dianzannum.setText(""+collectList.getNumber());
             holder.work_type.setText(collectList.getWorkType());
+            holder.workdlist_disdance.setText("距离你"+collectList.getDistance()+"米");
 
             holder.shouye_worker_data.setText(collectList.getRegistrationDate());
 
@@ -183,7 +185,8 @@ public class WorkerListviewAdapter extends BaseAdapter {
     public class ViewHolder {
         RoundImageView worker_item_touxiang;
         TextView name, age, sex, ruwangAge, kongjian, address,dianzannum ,work_type
-                ,shouye_worker_data;//, dizhi
+                ,shouye_worker_data
+                ,workdlist_disdance;//, dizhi
         LinearLayout worker_item_ll,dianzanlayout,pinglunlayout,fenxianglayout;
 
     }

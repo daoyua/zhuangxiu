@@ -31,6 +31,7 @@ import com.zx.zhuangxiu.ImageYS;
 import com.zx.zhuangxiu.OkHttpUtils;
 import com.zx.zhuangxiu.R;
 import com.zx.zhuangxiu.URLS;
+import com.zx.zhuangxiu.activity.automap.AutoMapAddressActivity;
 import com.zx.zhuangxiu.adapter.GridViewAddImgesAdpter;
 import com.zx.zhuangxiu.model.BaseBean;
 import com.zx.zhuangxiu.model.ImageBean;
@@ -55,8 +56,9 @@ import okhttp3.RequestBody;
 public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView fabu_work_next;
-    private EditText fabu_name, fabu_address, fabu_mianji, fabu_kaigongtime, fabu_wangongtime, fabu_zhiwei, fabu_tiaojian;
+    private EditText fabu_name, fabu_mianji, fabu_kaigongtime, fabu_wangongtime, fabu_zhiwei, fabu_tiaojian;
     private ImageView fabu_img;
+
     private TextView fabu_work_back;
     private AlertDialog dialog;
     private final int IMAGE_RESULT_CODE = 2;// 表示打开照相机
@@ -71,6 +73,10 @@ public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickL
     private List<String> datas;
     private GridViewAddImgesAdpter gridViewAddImgesAdpter;
     private TextView gongzhong;
+    private TextView fabu_address;
+    private String resultAdd;
+    private String lat;
+    private String lon;
 
 
     @Override
@@ -87,7 +93,7 @@ public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickL
         fabu_work_next = (TextView) findViewById(R.id.fabu_work_next);
         fabu_work_back = (TextView) findViewById(R.id.fabu_work_back);
         fabu_name = (EditText) findViewById(R.id.fabu_name);
-        fabu_address = (EditText) findViewById(R.id.fabu_address);
+        fabu_address = (TextView) findViewById(R.id.fabu_address);
         fabu_mianji = (EditText) findViewById(R.id.fabu_mianji);
         fabu_kaigongtime = (EditText) findViewById(R.id.fabu_kaigongtime);
         fabu_wangongtime = (EditText) findViewById(R.id.fabu_wangongtime);
@@ -113,6 +119,7 @@ public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickL
         });
 
 
+        findViewById(R.id.fabu_work_ll).setOnClickListener(this);
         fabu_img.setOnClickListener(this);
         fabu_work_next.setOnClickListener(this);
         fabu_work_back.setOnClickListener(this);
@@ -162,12 +169,20 @@ public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+    private final int ADDRESS = 222;// 选择地址
+
     @Override
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.fabu_work_next:
                 postWork();
+
+
+                break;
+            case R.id.fabu_work_ll:
+                intent = new Intent(FaBuWorkActivity.this, AutoMapAddressActivity.class);
+                startActivityForResult(intent, ADDRESS);
 
 
                 break;
@@ -287,6 +302,9 @@ public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickL
                 .add("treatment", treatmentString)
                 .add("wages", moneyString)
 
+                .add("longitude", lon + "")
+                .add("latitude", lat + "")
+
                 .add("detailUrl", imageurl)
                 .add("startTime", kString)
                 .add("endTime", wString)
@@ -363,6 +381,25 @@ public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickL
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
+            case ADDRESS://地址
+                if (resultCode == 888) {
+//                    intent.putExtra("lat", myLocation.getLatitude());
+//                    intent.putExtra("lon", myLocation.getLongitude());
+//                    intent.putExtra("add", auto_edit.getText());
+                    Bundle extras = data.getExtras();
+                    resultAdd = extras.getString("add");
+                    lat = extras.getString("lat");
+                    lon = extras.getString("lon");
+                    if (lat.equals("0")) {
+                        Toast.makeText(FaBuWorkActivity.this, "坐标值为0", Toast.LENGTH_SHORT).show();
+                    }
+                    if (!TextUtils.isEmpty(resultAdd)) {
+                        fabu_address.setText(resultAdd);
+                    }
+
+//                   Double lat= data.getDoubleExtra("lon",0);
+                }
+                break;
             // 表示 调用照相机拍照
             case IMAGE_RESULT_CODE:
                 if (resultCode == RESULT_OK) {

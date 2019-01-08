@@ -25,6 +25,9 @@ import com.zx.zhuangxiu.model.BusinessJmhzBean;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 合作加盟
+ */
 public class BusinessJmhzFragment extends Fragment {
 
     private ListView mJmhzListview;
