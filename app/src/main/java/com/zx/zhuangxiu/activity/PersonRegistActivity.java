@@ -112,8 +112,8 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
     private String oppid = "";
     private String token = "";
     private TextView register_person_address_tv;
-    private double lat;
-    private double lon;
+    private String lat;
+    private String lon;
     private String resultAdd;
 
     @Override
@@ -311,7 +311,8 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                 Intent intent = new Intent(PersonRegistActivity.this, AutoMapAddressActivity.class);
                 startActivityForResult(intent, ADDRESS);
                 break;
-            case R.id.person_regist_back:
+
+                case R.id.person_regist_back:
                 this.finish();
                 break;
             case R.id.izshenfen://身份证 正面0
@@ -518,8 +519,8 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
 //                    intent.putExtra("add", auto_edit.getText());
                     Bundle extras = data.getExtras();
                     resultAdd = extras.getString("add");
-                    lat = extras.getDouble("lat", 0);
-                    lon = extras.getDouble("lon", 0);
+                    lat = extras.getString("lat");
+                    lon = extras.getString("lon");
                     if (!TextUtils.isEmpty(resultAdd)) {
                         register_person_address_tv.setText(resultAdd);
                     }

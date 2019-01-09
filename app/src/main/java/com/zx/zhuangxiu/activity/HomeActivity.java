@@ -208,7 +208,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         OkHttpUtils.get(ss, new OkHttpUtils.ResultCallback<AddressService>() {
             @Override
             public void onSuccess(AddressService response) {
-                Toast.makeText(HomeActivity.this,lon+":"+lat,Toast.LENGTH_SHORT).show();
+//                Toast.makeText(HomeActivity.this,lon+":"+lat,Toast.LENGTH_SHORT).show();
 //                Toast.makeText(HomeActivity.this, response.getMsg(), Toast.LENGTH_LONG).show();
             }
 

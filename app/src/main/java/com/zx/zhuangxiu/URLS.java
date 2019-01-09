@@ -1161,4 +1161,5 @@ public class URLS {
                 getUser_id()+"&address="+address+"&longitude="+
                 longitude+"&latitude="+latitude;
     }
+
 }

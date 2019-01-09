@@ -35,6 +35,7 @@ import com.zx.zhuangxiu.ImageYS;
 import com.zx.zhuangxiu.OkHttpUtils;
 import com.zx.zhuangxiu.R;
 import com.zx.zhuangxiu.URLS;
+import com.zx.zhuangxiu.activity.automap.UpdataAutoMyselfAddreess;
 import com.zx.zhuangxiu.ali.DataCleanManager;
 import com.zx.zhuangxiu.model.BaseBean;
 import com.zx.zhuangxiu.model.ChengGongBean;
@@ -139,6 +140,7 @@ public class MyInfoActivity extends AppCompatActivity implements View.OnClickLis
         my_info_acc = findViewById(R.id.my_info_acc);
         tv_phone = findViewById(R.id.tv_phone);
         version_name.setText("v" + getVerName(this));
+        findViewById(R.id.myinfo_auto_autoaddress).setOnClickListener(this);
         tuichudengluo.setOnClickListener(this);
         mRlNiCheng.setOnClickListener(this);
         mRlshouji.setOnClickListener(this);
@@ -188,6 +190,10 @@ public class MyInfoActivity extends AppCompatActivity implements View.OnClickLis
 
             case R.id.my_info_bangdingshouji://绑定手机号
                 intent.setClass(MyInfoActivity.this, BindingPhoneActivity.class);
+                startActivity(intent);
+                break;
+                case R.id.myinfo_auto_autoaddress://绑定手机号
+                intent.setClass(MyInfoActivity.this, UpdataAutoMyselfAddreess.class);
                 startActivity(intent);
                 break;
 

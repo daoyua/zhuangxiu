@@ -119,7 +119,32 @@
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:background="@drawable/vip8" />
+        <RelativeLayout
+            android:id="@+id/myinfo_auto_autoaddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:padding="10dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="常用地址"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shisi" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/biaoqian" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/vip8" />
         <RelativeLayout
             android:id="@+id/myinfo_myaddress"
             android:layout_width="match_parent"

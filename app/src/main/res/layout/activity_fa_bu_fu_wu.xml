@@ -157,7 +157,8 @@
 
             <TextView
                 android:id="@+id/tv_address"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:hint="请输入公司地址或个人地址"
@@ -165,7 +166,13 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/shier"
                 android:theme="@style/MyEditText" />
-
+            <ImageView
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/biaoqian" />
         </LinearLayout>
 
         <LinearLayout

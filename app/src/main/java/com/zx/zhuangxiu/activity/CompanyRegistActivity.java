@@ -69,8 +69,8 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
     private TextView mBack;
     private RadioButton mRb1, mRb2;
     private EditText mFuWuCount, mTime;
-    private TextView gongsi_zhuce;
-    private EditText ename, edizhi, ephone, ekongjian, ekoubei, ecname, eshenfennum;
+    private TextView gongsi_zhuce, edizhi;
+    private EditText ename, ephone, ekongjian, ekoubei, ecname, eshenfennum;
     private ImageView iyingye, izshenfen, ifshenfen, iimage, ihead;
     private int yingyeint = 0, zshenfenint = 1, fshenfenint = 2, imageint = 3, headint = 4;
     private int imagetap;//判断是那个控件点击了0营业执照，1身份证正面，2身份正反面3企业、店铺照片4头像
@@ -107,8 +107,8 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
     private String token = "";
     private TextView sj_address;
     private String resultAdd;
-    private double lat;
-    private double lon;
+    private String lat;
+    private String lon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,7 +129,7 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
         eshenfennum = (EditText) findViewById(R.id.eshenfennum);//法人身份证号码
         mFuWuCount = (EditText) findViewById(R.id.company_regist_count);//经营产品
         ename = (EditText) findViewById(R.id.ename);//姓名
-        edizhi = (EditText) findViewById(R.id.edizhi);//地址
+        edizhi = (TextView) findViewById(R.id.edizhi);//地址
         ephone = (EditText) findViewById(R.id.ephone);//电话
         mTime = (EditText) findViewById(R.id.company_regist_time);//注册时间
         ekongjian = (EditText) findViewById(R.id.ekongjian);//企业空间
@@ -370,8 +370,8 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
 //                    intent.putExtra("add", auto_edit.getText());
                     Bundle extras = data.getExtras();
                     resultAdd = extras.getString("add");
-                    lat = extras.getDouble("lat", 0);
-                    lon = extras.getDouble("lon", 0);
+                    lat = extras.getString("lat");
+                    lon = extras.getString("lon");
                     if (!TextUtils.isEmpty(resultAdd)) {
                         sj_address.setText(resultAdd);
                     }
