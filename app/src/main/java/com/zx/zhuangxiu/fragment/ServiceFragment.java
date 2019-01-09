@@ -28,7 +28,6 @@ import com.zx.zhuangxiu.utils.CustomProgressDialog;
 import com.zx.zhuangxiu.utils.ToastUtil;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import okhttp3.FormBody;
@@ -129,7 +128,7 @@ public class ServiceFragment extends Fragment implements ItemClickListener {
                 if (response.getResult() == 1) {
                     syFuWuTwoList.clear();
                     List<SyFuWuss.DataBean.PageBean> page = response.getData().getPage();
-                    Collections.reverse(page);
+//                    Collections.reverse(page);
                     syFuWuTwoList.addAll(page);
                     mFuWuListViewAdapter = new FuWuListViewAdapter(getActivity(), syFuWuTwoList, userID, ServiceFragment.this);
                     mListView.setAdapter(mFuWuListViewAdapter);

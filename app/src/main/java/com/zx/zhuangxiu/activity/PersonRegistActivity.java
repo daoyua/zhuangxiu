@@ -221,7 +221,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (checkboxtwo.isChecked()) {
-                    gz2 = ",装修类";
+                    gz2 = " 装修类";
                 } else {
                     gz2 = null;
                 }
@@ -231,7 +231,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (checkboxthree.isChecked()) {
-                    gz3 = ",安装维修";
+                    gz3 = " 安装维修";
                 } else {
                     gz3 = null;
                 }
@@ -241,7 +241,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (checkboxfour.isChecked()) {
-                    gz4 = ",家政保养";
+                    gz4 = " 家政保养";
                 } else {
                     gz4 = null;
                 }
@@ -251,7 +251,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (checkboxfive.isChecked()) {
-                    gz5 = ",其他类型";
+                    gz5 = " 其他类型";
                 } else {
                     gz5 = null;
                 }
@@ -411,7 +411,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
                 }
 
 //            String workType = gz1 + gz2 + gz3 + gz4 + gz5;
-                String url = URLS.regeste(1, shooujihao, oppid, token, nameString, phoneString, resultAdd + stringshi + stringxian, UserUrl, workType.toString(),
+                String url = URLS.regeste(1, shooujihao, oppid, token, nameString, phoneString, resultAdd , UserUrl, workType.toString(),
                         IDUrl + "," + IDUrl1, IDHoldUrl, "", "",
                         egerenjienng.getText().toString(), egerenkongjian.getText().toString(),
                         ekoubei.getText().toString(), "", "",

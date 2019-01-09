@@ -200,14 +200,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void updateAddressServer(String lon, String lat) {
+    private void updateAddressServer(final String lon, final String lat) {
         String ss = URLS.updateDynamicAddress( lon, lat);
         Constants.lat=lat;
         Constants.lon=lon;
+
         OkHttpUtils.get(ss, new OkHttpUtils.ResultCallback<AddressService>() {
             @Override
             public void onSuccess(AddressService response) {
-
+                Toast.makeText(HomeActivity.this,lon+":"+lat,Toast.LENGTH_SHORT).show();
 //                Toast.makeText(HomeActivity.this, response.getMsg(), Toast.LENGTH_LONG).show();
             }
 
