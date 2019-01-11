@@ -223,6 +223,7 @@ public class FaBuWorkActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(FaBuWorkActivity.this, "项目地址还没填写", Toast.LENGTH_LONG).show();
             return;
         }
+        linkmanString="www";
         if (TextUtils.isEmpty(linkmanString)) {
             Toast.makeText(FaBuWorkActivity.this, "联系人还没填写", Toast.LENGTH_LONG).show();
             return;

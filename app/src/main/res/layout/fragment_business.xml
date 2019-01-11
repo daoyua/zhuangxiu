@@ -52,7 +52,7 @@
                 android:button="@null"
                 android:checked="true"
                 android:gravity="center"
-                android:text="商品需求"
+                android:text="寻找需求"
                 android:textColor="@drawable/radiobutton_textcolor"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -64,7 +64,7 @@
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
-                android:text="服务需求"
+                android:text="找服务商"
                 android:textColor="@drawable/radiobutton_textcolor"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -77,7 +77,7 @@
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
-                android:text="合作加盟"
+                android:text="点工找活"
                 android:textColor="@drawable/radiobutton_textcolor"
                 android:textSize="14sp"
                 android:textStyle="bold" />

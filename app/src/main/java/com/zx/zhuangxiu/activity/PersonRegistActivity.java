@@ -221,7 +221,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (checkboxtwo.isChecked()) {
-                    gz2 = " 装修类";
+                    gz2 = " 建材类";
                 } else {
                     gz2 = null;
                 }
@@ -231,7 +231,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (checkboxthree.isChecked()) {
-                    gz3 = " 安装维修";
+                    gz3 = " 装饰装修";
                 } else {
                     gz3 = null;
                 }
@@ -241,7 +241,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (checkboxfour.isChecked()) {
-                    gz4 = " 家政保养";
+                    gz4 = " 家政服务";
                 } else {
                     gz4 = null;
                 }
@@ -251,7 +251,7 @@ public class PersonRegistActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (checkboxfive.isChecked()) {
-                    gz5 = " 其他类型";
+                    gz5 = " 其他职业";
                 } else {
                     gz5 = null;
                 }

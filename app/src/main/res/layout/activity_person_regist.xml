@@ -451,7 +451,7 @@
                     android:button="@color/gray"
                     android:checked="false"
                     android:gravity="center"
-                    android:text="石材类"
+                    android:text="石材工程"
                     android:textColor="@drawable/radiobutton_textcolor"
                     android:textSize="@dimen/shier" />
 
@@ -464,7 +464,7 @@
                     android:background="@drawable/shape_button"
                     android:button="@color/gray"
                     android:gravity="center"
-                    android:text="装修类"
+                    android:text="建材类"
                     android:textColor="@drawable/radiobutton_textcolor"
                     android:textSize="@dimen/shier" />
 
@@ -477,7 +477,7 @@
                     android:background="@drawable/shape_button"
                     android:button="@color/gray"
                     android:gravity="center"
-                    android:text="安装维修"
+                    android:text="装饰装修"
                     android:textColor="@drawable/radiobutton_textcolor"
                     android:textSize="@dimen/shier" />
 
@@ -490,7 +490,7 @@
                     android:background="@drawable/shape_button"
                     android:button="@color/gray"
                     android:gravity="center"
-                    android:text="家政保养"
+                    android:text="家政服务"
                     android:textColor="@drawable/radiobutton_textcolor"
                     android:textSize="@dimen/shier" />
 
@@ -503,7 +503,7 @@
                     android:background="@drawable/shape_button"
                     android:button="@color/gray"
                     android:gravity="center"
-                    android:text="其他类型"
+                    android:text="其他职业"
                     android:textColor="@drawable/radiobutton_textcolor"
                     android:textSize="@dimen/shier" />
 

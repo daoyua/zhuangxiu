@@ -32,9 +32,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:textSize="@dimen/shiliu"
+                android:text="点工找活"
                 android:textColor="@color/white"
-                android:text="平台合作"/>
+                android:textSize="@dimen/shiliu" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="15dp"
-                android:text="*公司名称："
+                android:text="*工人工种："
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
             <EditText
@@ -134,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="15dp"
-                android:text="*合作意向："
+                android:text="*找活需求："
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
             <EditText
@@ -163,15 +163,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
                 android:layout_gravity="center_vertical"
-                android:textSize="@dimen/shisi"
+                android:layout_marginLeft="15dp"
+                android:text="个人简介："
                 android:textColor="@color/black"
-                android:text="公司简介："
-                />
+                android:textSize="@dimen/shisi" />
             <EditText
                 android:theme="@style/MyEditText"
                 android:id="@+id/shangjifabu_xiangxijs"
@@ -276,9 +276,9 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:textSize="@dimen/shisi"
+                android:text="工作风采:"
                 android:textColor="@color/black"
-                android:text="公司图片:"/>
+                android:textSize="@dimen/shisi" />
 
             <ImageView
                 android:id="@+id/shangjifabu_img1"
@@ -332,25 +332,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:textSize="@dimen/shisi"
+                android:text="上传营业照片:"
                 android:textColor="@color/black"
-                android:text="上传营业照片:"/>
+                android:textSize="@dimen/shisi" />
 
             <ImageView
                 android:id="@+id/shangjifabu_img3"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@drawable/zhaopian"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/zhaopian" />
 
         </LinearLayout>
         <View

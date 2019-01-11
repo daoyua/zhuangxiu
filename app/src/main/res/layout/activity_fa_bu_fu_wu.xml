@@ -46,7 +46,80 @@
             </RelativeLayout>
 
         </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/fabu_fuwu_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp">
 
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="*服务类型"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shisi" />
+
+            <EditText
+                android:id="@+id/tv_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/tv"
+                android:hint="请选择所需类型"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shier"
+                android:theme="@style/MyEditText"
+                android:visibility="gone" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv"
+                android:paddingLeft="10dp"
+                android:singleLine="true"></Spinner>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tv"
+                android:layout_toRightOf="@+id/tv"
+                android:background="@color/black" />
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*服务内容"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shisi" />
+
+            <EditText
+                android:id="@+id/tv_pther"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:hint="请填写服务内容"
+                android:textColor="@color/black"
+                android:textSize="@dimen/shier"
+                android:theme="@style/MyEditText" />
+
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -151,7 +224,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="*公司地址"
+                android:text="*项目地址"
                 android:textColor="@color/black"
                 android:textSize="@dimen/shisi" />
 
@@ -235,54 +308,7 @@
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/fabu_fuwu_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp">
 
-            <TextView
-                android:id="@+id/tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="*服务类型"
-                android:textColor="@color/black"
-                android:textSize="@dimen/shisi" />
-
-            <EditText
-                android:id="@+id/tv_type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/tv"
-                android:hint="请选择所需类型"
-                android:textColor="@color/black"
-                android:textSize="@dimen/shier"
-                android:theme="@style/MyEditText"
-                android:visibility="gone" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/tv"
-                android:paddingLeft="10dp"
-                android:singleLine="true"></Spinner>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/tv"
-                android:layout_toRightOf="@+id/tv"
-                android:background="@color/black" />
-
-        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -335,32 +361,7 @@
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="*服务内容"
-                android:textColor="@color/black"
-                android:textSize="@dimen/shisi" />
-
-            <EditText
-                android:id="@+id/tv_pther"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:hint="请填写服务内容"
-                android:textColor="@color/black"
-                android:textSize="@dimen/shier"
-                android:theme="@style/MyEditText" />
-
-        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -22,6 +22,8 @@
             android:name="RONG_CLOUD_APP_KEY"
             android:value="pkfcgjstpolq8" />
 
+        <!--kj7swf8ok3y92-->
+
         <service
             android:name="io.rong.imlib.ipc.RongService"
             android:exported="true"

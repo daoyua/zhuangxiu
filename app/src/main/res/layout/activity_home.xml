@@ -54,7 +54,7 @@
             android:drawablePadding="3dp"
             android:drawableTop="@drawable/radiobutton_business"
             android:gravity="center"
-            android:text="需求市场"
+            android:text="急需市场"
             android:textColor="@drawable/radiobutton_textcolor"
             android:textSize="@dimen/ten"
             android:textStyle="bold" />
