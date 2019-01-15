@@ -69,7 +69,8 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
     private TextView mBack;
     private RadioButton mRb1, mRb2;
     private EditText mFuWuCount, mTime;
-    private TextView gongsi_zhuce, edizhi;
+    private TextView gongsi_zhuce;
+//            edizhi;
     private EditText ename, ephone, ekongjian, ekoubei, ecname, eshenfennum;
     private ImageView iyingye, izshenfen, ifshenfen, iimage, ihead;
     private int yingyeint = 0, zshenfenint = 1, fshenfenint = 2, imageint = 3, headint = 4;
@@ -105,7 +106,7 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
     private String shooujihao;
     private String oppid = "";
     private String token = "";
-    private TextView sj_address;
+    private TextView company_address;
     private String resultAdd;
     private String lat;
     private String lon;
@@ -125,11 +126,12 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
     private void initView() {
 
         //法人身份证号码
-        sj_address = (TextView) findViewById(R.id.sj_address);
+        company_address = (TextView) findViewById(R.id.company_address);
+
         eshenfennum = (EditText) findViewById(R.id.eshenfennum);//法人身份证号码
         mFuWuCount = (EditText) findViewById(R.id.company_regist_count);//经营产品
         ename = (EditText) findViewById(R.id.ename);//姓名
-        edizhi = (TextView) findViewById(R.id.edizhi);//地址
+//        edizhi = (TextView) findViewById(R.id.edizhi);//地址
         ephone = (EditText) findViewById(R.id.ephone);//电话
         mTime = (EditText) findViewById(R.id.company_regist_time);//注册时间
         ekongjian = (EditText) findViewById(R.id.ekongjian);//企业空间
@@ -149,7 +151,7 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
         gongsi_zhuce = (TextView) findViewById(R.id.gongsi_zhuce);//注册按钮
 
 
-        sj_address.setOnClickListener(this);//地址
+        findViewById(R.id.acom_ddress_rl).setOnClickListener(this);//地址
         iyingye.setOnClickListener(this);//营业执照
         izshenfen.setOnClickListener(this);//身份证正面
         ifshenfen.setOnClickListener(this); //身份证反面
@@ -192,7 +194,7 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
-            case R.id.sj_address:
+            case R.id.acom_ddress_rl:
                 intent = new Intent(CompanyRegistActivity.this, AutoMapAddressActivity.class);
                 startActivityForResult(intent, ADDRESS);
                 break;
@@ -227,10 +229,10 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
                 break;
             case R.id.gongsi_zhuce:
 
-                String address = sj_address.getText().toString().trim();
+                String address = company_address.getText().toString().trim();
                 String nameString = ename.getText().toString().trim();
                 String timeString = mTime.getText().toString().trim();
-                String addressString = edizhi.getText().toString().trim();
+//                String addressString = edizhi.getText().toString().trim();
                 String phoneString = ephone.getText().toString().trim();
                 String shenfennumString = eshenfennum.getText().toString().trim();
                 if(TextUtils.isEmpty(address)){
@@ -239,7 +241,7 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
                 }
                 if (TextUtils.isEmpty(nameString)
                         || TextUtils.isEmpty(timeString)
-                        || TextUtils.isEmpty(addressString)
+//                        || TextUtils.isEmpty(addressString)
                         || TextUtils.isEmpty(phoneString)
                         || TextUtils.isEmpty(shenfennumString)
                         || TextUtils.isEmpty(Licenseurl)
@@ -258,7 +260,7 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
                     return;
                 }
 
-                String url = URLS.regeste(2, shooujihao, oppid, token, nameString, phoneString, addressString, UserUrl, "", IDUrl + "," + IDUrl1
+                String url = URLS.regeste(2, shooujihao, oppid, token, nameString, phoneString, address, UserUrl, "", IDUrl + "," + IDUrl1
                         , "", Licenseurl, ShopUrl, "", ekongjian.getText().toString().trim(), ekoubei.getText().toString().trim(), tapy, mFuWuCount.getText().toString()
                         , "", "", "", "", "");
                 OkHttpUtils.get(url, new OkHttpUtils.ResultCallback<RegisteBean>() {
@@ -373,7 +375,7 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
                     lat = extras.getString("lat");
                     lon = extras.getString("lon");
                     if (!TextUtils.isEmpty(resultAdd)) {
-                        sj_address.setText(resultAdd);
+                        company_address.setText(resultAdd);
                     }
 
 //                   Double lat= data.getDoubleExtra("lon",0);

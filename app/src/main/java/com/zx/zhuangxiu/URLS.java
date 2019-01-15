@@ -1162,4 +1162,14 @@ public class URLS {
                 longitude+"&latitude="+latitude;
     }
 
+    /**
+     * 发布产品
+     *
+     * @return
+     */
+    public static String postSp() {
+        String getyz = HTTP + "/api/product/addProduct";
+        return getyz;
+    }
+
 }

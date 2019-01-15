@@ -42,7 +42,16 @@
                 android:textColor="@color/white"
                 android:text="找产品"/>
 
-
+            <TextView
+                android:id="@+id/foundgood_fabu"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/goods_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/shiliu"
+                android:textColor="@color/white"
+                android:text="发布产品"/>
             <ImageView
                 android:id="@+id/goods_search"
                 android:layout_width="wrap_content"

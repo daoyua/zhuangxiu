@@ -350,7 +350,8 @@
         <activity android:name=".activity.FaBuShngPinActivity" />
         <activity android:name=".activity.OrderActivity" />
         <activity android:name=".activity.automap.AutoMapAddressActivity" />
-        <activity android:name=".activity.automap.UpdataAutoMyselfAddreess"></activity>
+        <activity android:name=".activity.automap.UpdataAutoMyselfAddreess" />
+        <activity android:name=".activity.FabuSpActivity"></activity>
     </application>
 
 </manifest>

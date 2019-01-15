@@ -279,14 +279,15 @@
                </RelativeLayout>-->
 
             <RelativeLayout
+                android:id="@+id/acom_ddress_rl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="50dp"
-                android:paddingRight="50dp">
+                android:paddingRight="10dp">
 
                 <TextView
-                    android:id="@+id/edizhi"
+                    android:id="@+id/company_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -368,21 +369,23 @@
                     android:textSize="@dimen/shier" />
 
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="50dp"
-                android:paddingRight="50dp">
+                android:paddingRight="50dp"
+                android:visibility="gone">
 
                 <TextView
-                    android:clickable="true"
                     android:id="@+id/sj_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:clickable="true"
                     android:gravity="center"
                     android:hint="请输入地址"
-                    android:layout_centerVertical="true"
                     android:textColor="@color/black"
                     android:textSize="@dimen/shier"
                     android:theme="@style/MyEditText" />

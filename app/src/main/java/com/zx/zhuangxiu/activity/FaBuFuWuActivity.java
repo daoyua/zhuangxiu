@@ -465,15 +465,6 @@ boolean isShouye=false;//是否为首页的发布服务
             return;
         }
 
-//        if (!TextUtils.isEmpty(nameString)
-//                && !TextUtils.isEmpty(addressString)
-//                && !TextUtils.isEmpty(areaString)
-//                && !TextUtils.isEmpty(priceString)
-//                && !TextUtils.isEmpty(otherString)
-//                && !TextUtils.isEmpty(startString)
-//                && !TextUtils.isEmpty(endString)
-//                && !TextUtils.isEmpty(imageurl)
-//                ) {
         String fabu = URLS.fabu(URLS.getUser_id(), nameString, addressString, areaString, priceString, otherString, imageurl, anInt, startString, endString, aa, phone,lon+"",lat+"");
 //            FormBody formBody = new FormBody.Builder()
 //                    .add("userId", URLS.getUser_id() + "")

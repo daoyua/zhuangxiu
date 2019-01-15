@@ -6,5 +6,6 @@ public class Constants {
     public static final String SECRET = "db9de10fc8baf65b4b59b272d4db54c4";
     public static String lat = "0";
     public static  String lon = "0";
+    public static  int allow =-1;
 
 }

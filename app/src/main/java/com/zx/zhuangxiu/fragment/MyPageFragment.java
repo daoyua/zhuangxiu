@@ -32,6 +32,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.squareup.picasso.Picasso;
+import com.zx.zhuangxiu.Constants;
 import com.zx.zhuangxiu.OkHttpUtils;
 import com.zx.zhuangxiu.R;
 import com.zx.zhuangxiu.URLS;
@@ -165,7 +166,8 @@ public class MyPageFragment extends Fragment implements View.OnClickListener {
                     }
 
                     mypager_money.setText(data.getBalance() + "");
-                    allow = data.getAllow();
+                    Constants.allow = data.getAllow();
+                  allow=  Constants.allow;
                     if (data.getUserType() == 1) {
                         mydianpu.setVisibility(View.GONE);
                     } else {
