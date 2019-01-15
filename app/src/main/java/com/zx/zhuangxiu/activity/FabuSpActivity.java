@@ -42,7 +42,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -129,20 +128,24 @@ public class FabuSpActivity extends AppCompatActivity implements View.OnClickLis
     public void submit(String cdname , String broadcastUrl , String detailUrl , String picture ,int price ,int typeId ,String simple ) {
         String url = URLS.postSp();
 
-        FormBody formBody = new FormBody.Builder().add("userId", URLS.getUser_id() + "")
-                .add("cdname ", cdname )
-
-                .add("broadcastUrl ", broadcastUrl  )
-                .add("detailUrl ", detailUrl )
-                .add("picture  ", picture  )
-                .add("price ", price  + "")
-                .add("typeId ", typeId  + "")
-                .add("simple ", simple  ).build();
-
-        OkHttpUtils.post(url, formBody, new OkHttpUtils.ResultCallback<FabuSpBean>() {
+//        FormBody formBody = new FormBody.Builder().add("userId", URLS.getUser_id() + "")
+//                .add("cdname ", cdname )
+//
+//                .add("broadcastUrl ", broadcastUrl  )
+//                .add("detailUrl ", detailUrl )
+//                .add("picture  ", picture  )
+//                .add("price ", price  + "")
+//                .add("typeId ", typeId  + "")
+//                .add("simple ", simple  ).build();
+        url=url+"?userId="+URLS.getUser_id()+"&cdname="+cdname+"&broadcastUrl="+broadcastUrl
+        +"&detailUrl="+detailUrl+"&picture="+picture+"&price="+price
+        +"&typeId="+typeId+"&simple="+simple;
+        OkHttpUtils.get(url, new OkHttpUtils.ResultCallback<FabuSpBean>() {
             @Override
             public void onSuccess(FabuSpBean response) {
                 if (response.getResult() == 1) {
+                    ToastUtil.showShort(getApplicationContext(), "发布成功！！！");
+                    finish();
 //                    DingdanBean.DataBean data = response.getData();
 //                   paylogId = data.getPaylogId();
 //                    getjiesuan(payTYpe);
