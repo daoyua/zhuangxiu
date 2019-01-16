@@ -109,7 +109,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:hint="请输入您的商品价格"
-                    android:inputType="number"
+
                     android:textColor="@color/black"
                     android:textSize="@dimen/shier"
                     android:theme="@style/MyEditText" />

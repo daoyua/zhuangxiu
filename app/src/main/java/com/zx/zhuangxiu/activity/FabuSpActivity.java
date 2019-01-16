@@ -125,7 +125,7 @@ public class FabuSpActivity extends AppCompatActivity implements View.OnClickLis
         });
 
     }
-    public void submit(String cdname , String broadcastUrl , String detailUrl , String picture ,int price ,int typeId ,String simple ) {
+    public void submit(String cdname , String broadcastUrl , String detailUrl , String picture ,float price ,int typeId ,String simple ) {
         String url = URLS.postSp();
 
 //        FormBody formBody = new FormBody.Builder().add("userId", URLS.getUser_id() + "")
@@ -238,9 +238,9 @@ public class FabuSpActivity extends AppCompatActivity implements View.OnClickLis
                         Toast.makeText(FabuSpActivity.this,"价格不能为空",Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    int prices=0;
+                    float prices=0;
                     try{
-                         prices=Integer.parseInt(price);
+                         prices=Float.parseFloat(price);
                     }catch (Exception e)
                     {
                         Toast.makeText(FabuSpActivity.this,"价格请输入数字",Toast.LENGTH_SHORT).show();
