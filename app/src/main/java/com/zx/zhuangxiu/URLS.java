@@ -4,8 +4,8 @@ import com.zx.zhuangxiu.model.SubmitDdTwo;
 
 public class URLS {
 
-    public static final String HTTP = "http://47.75.53.109:9095";//测试
-//    public static final String HTTP = "http://47.93.215.205:9095";//正式
+//    public static final String HTTP = "http://47.75.53.109:9095";//测试
+    public static final String HTTP = "http://47.93.215.205:9095";//正式
 //        public static final String HTTP = "http://192.168.2.141:9095";
     public static final String BANNER = HTTP+"/api/homepage/sowingList";
 //    public static final String BANNER = HTTP+"http://47.93.215.205:9095/api/homepage/sowingList";

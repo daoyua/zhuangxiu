@@ -94,7 +94,7 @@
                     android:layout_marginRight="16dp"
                     android:text="注册"
                     android:textColor="@color/green"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
             </RelativeLayout>
 
             <RelativeLayout

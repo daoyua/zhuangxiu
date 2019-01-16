@@ -94,7 +94,7 @@ public class PhoneLoginActivity extends AppCompatActivity implements View.OnClic
         //获取验证码
         phone_login_register = (TextView) findViewById(R.id.phone_login_register);
         //TODO
-        phone_login_register.setVisibility(View.VISIBLE);
+//        phone_login_register.setVisibility(View.VISIBLE);
         phone_login = (TextView) findViewById(R.id.phone_login);
         phone_login_back = (ImageView) findViewById(R.id.phone_login_back);
 //        phone_gerenzhuce = (TextView) findViewById(R.id.phone_gerenzhuce);
