@@ -52,7 +52,7 @@
                 android:button="@null"
                 android:checked="true"
                 android:gravity="center"
-                android:text="寻找需求"
+                android:text="寻找产品"
                 android:textColor="@drawable/radiobutton_textcolor"
                 android:textSize="14sp"
                 android:textStyle="bold" />

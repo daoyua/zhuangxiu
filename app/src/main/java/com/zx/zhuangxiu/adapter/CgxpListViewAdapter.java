@@ -79,9 +79,14 @@ public class CgxpListViewAdapter extends BaseAdapter {
 
 //            holder.cgxp_item_yongtu.setText("电话:" +333333);
             holder.cgxp_item_yongtu.setText("电话:" +phone);
-//            if(mList.get(position).getDistance()!=null){
-                holder.cgxp_item_distance.setText("距离你" +mList.get(position).getDistance()+"米");
-//            }
+         String   distance=  mList.get(position).getDistance();
+            if(distance!=null){
+                float  ssss=  Float.parseFloat(distance)/1000;
+                holder.cgxp_item_distance.setText("距离你"+ssss+"千米");
+            }else{
+                holder.cgxp_item_distance.setText("距离你null千米");
+            }
+//                holder.cgxp_item_distance.setText("距离你" +mList.get(position).getDistance()+"米");
 
             holder.cgxp_item_price.setText("理想价位:￥" + mList.get(position).getPrice());
             holder.cgxp_item_nums.setText("数量:" + mList.get(position).getNum() + "个");

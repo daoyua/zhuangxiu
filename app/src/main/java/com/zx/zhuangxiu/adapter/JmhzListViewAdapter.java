@@ -21,7 +21,6 @@ import com.zx.zhuangxiu.R;
 import com.zx.zhuangxiu.URLS;
 import com.zx.zhuangxiu.model.BusinessJmhzBean;
 import com.zx.zhuangxiu.utils.MyUntils;
-import com.zx.zhuangxiu.utils.ToTime;
 import com.zx.zhuangxiu.view.RoundImageView;
 
 import java.util.List;
@@ -86,11 +85,20 @@ public class JmhzListViewAdapter extends BaseAdapter {
             holder.jmhz_item_xiangqing.setText("详情介绍:" + mList.get(position).getInfo());
             holder.jmhz_item_yaoqiu.setText("合作要求:" + mList.get(position).getRequire());
 //            if(mList.get(position).getDistance()!=null){
-                holder.gmfw_item_distance.setText("距离你:" + mList.get(position).getDistance()+"米");
+            String   distance=  mList.get(position).getDistance();
+            if(distance!=null){
+                float  ssss=  Float.parseFloat(distance)/1000;
+                holder.gmfw_item_distance.setText("距离你"+ssss+"千米");
+            }else{
+                holder.gmfw_item_distance.setText("距离你null千米");
+            }
+//                holder.gmfw_item_distance.setText("距离你:" + mList.get(position).getDistance()+"米");
 //            }
 
-            String time = ToTime.getDateTimeFromMillisecond(mList.get(position).getCreattime());
-            holder.jmhz_item_qixian.setText("发布时间:" + time);
+//            String time = mList.get(position).getCreattime();
+            long l =mList.get(position).getCreattime();
+            String s = MyUntils.timeStamp2Date(l, "yyyy-MM-dd HH:mm:ss");
+            holder.jmhz_item_qixian.setText("发布时间:" + s);
             holder.jmhz_item_nums.setText("联系电话:" + mList.get(position).getNum());
             String imgUrls = mList.get(position).getItemimg();
             if (!TextUtils.isEmpty(imgUrls)) {

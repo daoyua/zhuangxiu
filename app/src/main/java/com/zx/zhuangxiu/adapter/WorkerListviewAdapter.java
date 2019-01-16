@@ -94,7 +94,10 @@ public class WorkerListviewAdapter extends BaseAdapter {
             holder.sex.setText(collectList.getSex());
             holder.dianzannum.setText(""+collectList.getNumber());
             holder.work_type.setText(collectList.getWorkType());
-            holder.workdlist_disdance.setText("距离你"+collectList.getDistance()+"米");
+            int distance = collectList.getDistance();
+            float ff=distance;
+            ff=ff/1000;
+            holder.workdlist_disdance.setText("距离你"+ff+"千米");
 
             holder.shouye_worker_data.setText(collectList.getRegistrationDate());
 

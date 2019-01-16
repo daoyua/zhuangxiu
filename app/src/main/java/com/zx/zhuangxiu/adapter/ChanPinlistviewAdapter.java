@@ -87,7 +87,14 @@ public class ChanPinlistviewAdapter extends BaseAdapter {
         if (mList!=null) {
             holder.chanpin_item_title.setText("" + mList.get(position).getCdname());
             holder.chanpin_item_xiaotitle.setText("简介: " + mList.get(position).getSimple());
-            holder.chanpin_distance.setText("距离你: " + mList.get(position).getDistance()+"米");
+            String distance = mList.get(position).getDistance();
+            if(distance!=null){
+                float  ssss=  Float.parseFloat(distance)/1000;
+                holder.chanpin_distance.setText("距离你"+ssss+"千米");
+            }else{
+                holder.chanpin_distance.setText("距离你null千米");
+            }
+//            holder.chanpin_distance.setText("距离你: " + mList.get(position).getDistance()+"米");
             holder.chanpin_price.setText("￥" + mList.get(position).getPrice());
             holder.chanpin_item_address.setText("" + mList.get(position).getAddress());
             holder.chanpin_item_zan.setText("" + mList.get(position).getUpnum());

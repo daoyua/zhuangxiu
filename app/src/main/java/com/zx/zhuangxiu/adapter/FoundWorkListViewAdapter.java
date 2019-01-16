@@ -104,7 +104,15 @@ public class FoundWorkListViewAdapter extends BaseAdapter{
             holder.gongzuojingyan.setText("工作经验："+mList.get(position).getExperience());
             holder.work_details.setText("公司名称: "+mList.get(position).getSynopsis());
             holder.work_item_address.setText("项目地址: "+mList.get(position).getAddress());
-            holder.shouye_work_distance.setText("距离你: "+mList.get(position).getDistance()+"米");
+            String distance = mList.get(position).getDistance();
+            if(distance!=null){
+              float  ssss=     Float.parseFloat(distance)/1000;
+                holder.shouye_work_distance.setText("距离你"+ssss+"千米");
+            }else{
+                holder.shouye_work_distance.setText("距离你null千米");
+            }
+
+//            holder.shouye_work_distance.setText("距离你: "+mList.get(position).getDistance()+"米");
             holder.dianzannum.setText(""+mList.get(position).getNumber());
             String imgUrl = mList.get(position).getImgUrl();
             Picasso.with(mContext).load(URLS.HTTP+imgUrl).error(R.mipmap.logo_zhanwei).fit().into(holder.work_img);

@@ -139,7 +139,7 @@ public class FabuSpActivity extends AppCompatActivity implements View.OnClickLis
 //                .add("simple ", simple  ).build();
         url=url+"?userId="+URLS.getUser_id()+"&cdname="+cdname+"&broadcastUrl="+broadcastUrl
         +"&detailUrl="+detailUrl+"&picture="+picture+"&price="+price
-        +"&typeId="+typeId+"&simple="+simple;
+        +"&typeId="+typeId+"&simple="+simple+"&specName=件";
         OkHttpUtils.get(url, new OkHttpUtils.ResultCallback<FabuSpBean>() {
             @Override
             public void onSuccess(FabuSpBean response) {

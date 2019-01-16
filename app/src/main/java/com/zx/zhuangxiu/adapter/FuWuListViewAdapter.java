@@ -106,7 +106,14 @@ public class FuWuListViewAdapter extends BaseAdapter{
         if (mList.size() != 0) {
             holder.fuwu_item_title.setText(""+mList.get(position).getName());
             holder.fuwu_item_xiaotitle.setText("服务内容: "+mList.get(position).getRequires());
-            holder.shouye_fuwu_distance.setText("距离你"+mList.get(position).getDistance()+"米");
+            String distance = mList.get(position).getDistance();
+            if(distance!=null){
+                float  ssss=  Float.parseFloat(distance)/1000;
+                holder.shouye_fuwu_distance.setText("距离你"+ssss+"千米");
+            }else{
+                holder.shouye_fuwu_distance.setText("距离你null千米");
+            }
+//            holder.shouye_fuwu_distance.setText("距离你"+mList.get(position).getDistance()+"米");
             holder.fuwu_item_zanTv.setText(""+mList.get(position).getThumbsup());
             holder.fuwu_item_address.setText("地址: "+mList.get(position).getAddress());
             holder.shouye_fuwu_data.setText(mList.get(position).addTime);

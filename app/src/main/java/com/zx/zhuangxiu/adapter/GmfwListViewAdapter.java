@@ -84,7 +84,14 @@ public class GmfwListViewAdapter extends BaseAdapter {
 //            holder.gmfw_item_yaoqiu.setText("项目要求：" + mList.get(position).getRequires());
             holder.gmfw_item_xiangmu.setText("服务内容：" + mList.get(position).getRequires());
             holder.gmfw_item_yaoqiu.setText("项目要求：" + mList.get(position).getName());
-            holder.gmfw_item_distance.setText("距离你：" + mList.get(position).getDistance()+"米");
+            String   distance=  mList.get(position).getDistance();
+            if(distance!=null){
+                float  ssss=  Float.parseFloat(distance)/1000;
+                holder.gmfw_item_distance.setText("距离你"+ssss+"千米");
+            }else{
+                holder.gmfw_item_distance.setText("距离你null千米");
+            }
+//            holder.gmfw_item_distance.setText("距离你：" + mList.get(position).getDistance()+"米");
 
 
             holder.gmfw_item_time.setText("开工时间 : " + demo2(mList.get(position).getStartTime()));
