@@ -408,7 +408,7 @@ public class URLS {
      * @return
      */
     public static String sysrdzFuWuShow() {
-        String getyz = HTTP + "/api/homepage/selectcommodity?type=3";
+        String getyz = HTTP + "/api/homepage/selectcommodity?type=3"+"&userId="+getUser_id();
         return getyz;
     }
 
@@ -417,7 +417,7 @@ public class URLS {
      * http://47.93.215.205:8081/zxWeb/findWorker/selectWorker?pkId=3&findType=0
      * */
     public static String fxFoundWorkerShow(int userId, int findType) {
-        String getyz = HTTP + "/api/LookWork/most?userId="+getUser_id();
+        String getyz = HTTP + "/api/LookWork/most?userId="+getUser_id()+"&type="+findType;
         return getyz;
     }
 
@@ -427,7 +427,7 @@ public class URLS {
      * http://47.93.215.205:8081/zxWeb/search/findByTitle?title=%E7%8E%89%E7%9F%B3
      * */
     public static String sySearchShow(String title) {
-        String getyz = HTTP + "/api/homepage/selectName?cdname=" + title;
+        String getyz = HTTP + "/api/homepage/selectName?cdname=" + title+"&userId="+getUser_id();
 //        String getyz = "http://192.168.1.8:8081/zxWeb/search/findByTitle?title="+title;
         return getyz;
     }
@@ -438,7 +438,7 @@ public class URLS {
      * http://47.93.215.205:8081/zxWeb/findWorker/searchWorkerByNameAndWorkType?userName=时&workName
      * */
     public static String syZgrSearchShow(String userName) {
-        String getyz = HTTP + "/api/LookWork/most?seachName=" + userName;
+        String getyz = HTTP + "/api/LookWork/most?seachName=" + userName+"&userId="+getUser_id();
 //        String getyz = "http://192.168.1.8:8081/zxWeb/findWorker/searchWorkerByNameAndWorkType?userName="+userName;
         return getyz;
     }
@@ -448,7 +448,7 @@ public class URLS {
      * http://47.93.215.205:8081/zxWeb/findServe/searchServiceByTitle?title=
      * */
     public static String syFwSearchShow(String title) {
-        String getyz = HTTP + "/api/server/serverList?seachName=" + title;
+        String getyz = HTTP + "/api/server/serverList?seachName=" + title+"&userId="+getUser_id();
 //        String getyz = "http://192.168.1.8:8081/zxWeb/findServe/searchServiceByTitle?title="+title;
         return getyz;
     }
@@ -459,7 +459,7 @@ public class URLS {
      * http://47.93.215.205:8081/zxWeb/findWork/findWorkByRequire?address=%E5%8C%97%E4%BA%AC&title=XF
      * */
     public static String syZgzSearchShow(String address, String title) {
-        String getyz = HTTP + "/zxWeb/findWork/findWorkByRequire?address=" + address + "&title=" + title;
+        String getyz = HTTP + "/zxWeb/findWork/findWorkByRequire?address=" + address + "&title=" + title+"&userId="+getUser_id();
         return getyz;
     }
 
@@ -469,7 +469,7 @@ public class URLS {
      * http://192.168.1.8:8081/zxWeb/findProduct/findProductDetailById?pkId=1
      * */
     public static String detailsShow(int pkId) {
-        String getyz = HTTP + "/api/product/GetProductDetailById?commodityId=" + pkId;
+        String getyz = HTTP + "/api/product/GetProductDetailById?commodityId=" + pkId+"&userId="+getUser_id();
 //        String getyz ="http://192.168.1.8:8081/zxWeb/findProduct/findProductDetailById?pkId="+pkId;
         return getyz;
     }

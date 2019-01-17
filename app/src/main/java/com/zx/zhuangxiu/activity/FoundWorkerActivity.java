@@ -135,7 +135,8 @@ public class FoundWorkerActivity extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.worker_rb2:
                 shouYeZgrTwoList.clear();
-                getWorkerList(1, URLS.getLocation());
+//                getWorkerList(1, URLS.getLocation());
+                getWorkerList(1);
                 page = 1;
                 break;
             case R.id.worker_rb3:
@@ -184,7 +185,7 @@ public class FoundWorkerActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void getWorkerList(int typeId, String address) {
-        String urlPath = URLS.syFoundWorkerShow(typeId, address);
+        String urlPath = URLS.syFoundWorkerShow(typeId);
 
         OkHttpUtils.get(urlPath, new OkHttpUtils.ResultCallback<ShouYeZgrOne>() {
             @Override
