@@ -89,7 +89,7 @@ public class WorkerListviewAdapter extends BaseAdapter {
             holder.name.setText("" + collectList.getRealname());
             holder.age.setText(" " + collectList.getAge()+ "岁");
 //            holder.dizhi.setText("" + collectList.getAddress());
-            holder.kongjian.setText("" + collectList.getSpace());
+            holder.kongjian.setText("" + collectList.getSelfSkills());
             holder.address.setText("" + collectList.getAddress());
             holder.sex.setText(collectList.getSex());
             holder.dianzannum.setText(""+collectList.getNumber());

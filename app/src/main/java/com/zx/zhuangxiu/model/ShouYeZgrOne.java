@@ -77,7 +77,16 @@ public class ShouYeZgrOne {
         private String age;
         private int number;
         private String workType;
+        private String selfSkills;
         private int distance;
+
+        public String getSelfSkills() {
+            return selfSkills;
+        }
+
+        public void setSelfSkills(String selfSkills) {
+            this.selfSkills = selfSkills;
+        }
 
         public int getDistance() {
             return distance;

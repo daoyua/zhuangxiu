@@ -378,7 +378,7 @@ public class URLS {
      * http://47.93.215.205:8081/zxWeb/findServe/selectService?type=0&serviceSign=1
      * */
     public static String fxFuWuShow() {
-        String getyz = HTTP + "/api/server/serverList";
+        String getyz = HTTP + "/api/server/serverList?userId="+getUser_id();
         return getyz;
     }
 
@@ -388,7 +388,7 @@ public class URLS {
      *   http://47.93.215.205:8081/zxWeb/goldServe/findGoldServe
      * */
     public static String syJinPaiFuWuShow() {
-        String getyz = HTTP + "/api/homepage/selectcommodity?type=2";
+        String getyz = HTTP + "/api/homepage/selectcommodity?type=2&userId="+getUser_id();
         return getyz;
     }
 
@@ -417,7 +417,7 @@ public class URLS {
      * http://47.93.215.205:8081/zxWeb/findWorker/selectWorker?pkId=3&findType=0
      * */
     public static String fxFoundWorkerShow(int userId, int findType) {
-        String getyz = HTTP + "/api/LookWork/most";
+        String getyz = HTTP + "/api/LookWork/most?userId="+getUser_id();
         return getyz;
     }
 
@@ -1016,7 +1016,7 @@ public class URLS {
      */
 
     public static String zhijiejinruxq(int typeId) {
-        String getyz = HTTP + "/api/product/GetProductlistByTypeId?typeId=" + typeId;
+        String getyz = HTTP + "/api/product/GetProductlistByTypeId?typeId=" + typeId+"&userId="+getUser_id();
         return getyz;
     }
 

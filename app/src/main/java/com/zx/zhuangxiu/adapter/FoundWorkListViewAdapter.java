@@ -102,8 +102,9 @@ public class FoundWorkListViewAdapter extends BaseAdapter{
             holder.xueli.setText("学历："+mList.get(position).getEducation());
             holder.work_item_xiaotitle.setText("工作地点："+mList.get(position).getAddress());
             holder.gongzuojingyan.setText("工作经验："+mList.get(position).getExperience());
-            holder.work_details.setText("公司名称: "+mList.get(position).getSynopsis());
-            holder.work_item_address.setText("项目地址: "+mList.get(position).getAddress());
+
+            holder.work_details.setText("项目地址: "+mList.get(position).getAddress());
+            holder.work_item_address.setText("公司名称: "+mList.get(position).getSynopsis());
             String distance = mList.get(position).getDistance();
             if(distance!=null){
               float  ssss=     Float.parseFloat(distance)/1000;
