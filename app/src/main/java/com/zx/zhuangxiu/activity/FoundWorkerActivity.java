@@ -101,7 +101,7 @@ public class FoundWorkerActivity extends AppCompatActivity implements View.OnCli
         worker_back.setOnClickListener(this);
 
         worker_Listview = findViewById(R.id.worker_Listview);
-        getWorkerList(1);
+        getWorkerList(0);
 
         workerListviewAdapter = new WorkerListviewAdapter(FoundWorkerActivity.this, shouYeZgrTwoList, FoundWorkerActivity.this);
         worker_Listview.setAdapter(workerListviewAdapter);

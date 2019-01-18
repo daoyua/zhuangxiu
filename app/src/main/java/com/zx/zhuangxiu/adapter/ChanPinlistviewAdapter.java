@@ -102,6 +102,9 @@ public class ChanPinlistviewAdapter extends BaseAdapter {
             if (!imgUrl.startsWith("http://")&&!imgUrl.startsWith("https://")){
                 imgUrl=URLS.HTTP+imgUrl;
             }
+            if(imgUrl.endsWith(",")){
+                imgUrl= imgUrl.substring(0,imgUrl.length()-1);
+            }
             Picasso.with(mContext).load(imgUrl).error(R.mipmap.logo_zhanwei).placeholder(R.mipmap.logo_zhanwei).fit().into(holder.chanpin_img);
         }
 

@@ -46,6 +46,7 @@ public class FoundGoodsActivity extends AppCompatActivity implements View.OnClic
     private TextView goods_back;
     private List<DaxiaofenleiBean.DataBean> mlist = new ArrayList<>();
     private MyPopupWindow mPopupWindow;
+    private TextView foundgood_fabu;
 
 
     @Override
@@ -84,7 +85,8 @@ public class FoundGoodsActivity extends AppCompatActivity implements View.OnClic
     private void initView() {
         goods_back = (TextView) findViewById(R.id.goods_back);
         goods_search = (ImageView) findViewById(R.id.goods_search);
-        findViewById(R.id.foundgood_fabu).setOnClickListener(this);
+        foundgood_fabu = findViewById(R.id.foundgood_fabu);
+        foundgood_fabu.setOnClickListener(this);
         goods_back.setOnClickListener(this);
         goods_search.setOnClickListener(this);
 
@@ -100,9 +102,10 @@ public class FoundGoodsActivity extends AppCompatActivity implements View.OnClic
         mGoodsTab.setupWithViewPager(goodsViewPager);
         goodsViewpagerAdapter = new GoodsViewpagerAdapter(getSupportFragmentManager(), mList);
         goodsViewPager.setAdapter(goodsViewpagerAdapter);*/
+//TODO
 
     }
-
+boolean dubug=true;//测试发布产品
     @Override
     public void onClick(View view) {
         Intent intent = new Intent();
@@ -111,6 +114,12 @@ public class FoundGoodsActivity extends AppCompatActivity implements View.OnClic
                 this.finish();
                 break;
             case R.id.foundgood_fabu:
+
+                if(dubug){
+                    intent.setClass(FoundGoodsActivity.this, FabuSpActivity.class);
+                    startActivity(intent);
+                    return;
+                }
                 if(Constants.allow==-1){
                     germyneirong();
                     break;
@@ -141,6 +150,13 @@ public class FoundGoodsActivity extends AppCompatActivity implements View.OnClic
 
                     MydexinxiBean.DataBean data = response.getData();
                     Constants.allow = data.getAllow();
+                    //TODO
+//                    if (data.getUserType() == 1) {
+//                        Toast.makeText(foudgood)
+//                        foundgood_fabu.setVisibility(View.GONE);
+//                    } else {
+//                        foundgood_fabu.setVisibility(View.VISIBLE);
+//                    }
                     if (Constants.allow == 0) {
                         showPopWindow();
                     } else {

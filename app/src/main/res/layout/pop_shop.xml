@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:paddingLeft="10dp"
-        android:text="大时圈平台店铺为缴费使用项，请您先缴费我们尽快给您开通" />
+        android:text="您好，大时圈产品店铺开通需缴费，服务费为360元/年，缴费后系统将自动为您开通，谢谢合作！" />
 
     <Button
         android:id="@+id/btn_wxpay"

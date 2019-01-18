@@ -259,10 +259,10 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
                     Toast.makeText(this, "请输入正确的身份证号", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+//TODO
                 String url = URLS.regeste(2, shooujihao, oppid, token, nameString, phoneString, address, UserUrl, "", IDUrl + "," + IDUrl1
                         , "", Licenseurl, ShopUrl, "", ekongjian.getText().toString().trim(), ekoubei.getText().toString().trim(), tapy, mFuWuCount.getText().toString()
-                        , "", "", "", "", "");
+                        , "", "", "", lon, lat);
                 OkHttpUtils.get(url, new OkHttpUtils.ResultCallback<RegisteBean>() {
                     @Override
                     public void onSuccess(RegisteBean response) {
@@ -281,6 +281,8 @@ public class CompanyRegistActivity extends AppCompatActivity implements View.OnC
                             intent.putExtra("UserID", userId);
                             startActivity(intent);
                             CompanyRegistActivity.this.finish();
+                        }else{
+                            Toast.makeText(CompanyRegistActivity.this,response.getMsg(),Toast.LENGTH_SHORT).show();
                         }
 
                     }
