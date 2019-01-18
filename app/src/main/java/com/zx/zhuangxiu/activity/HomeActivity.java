@@ -1,14 +1,17 @@
 package com.zx.zhuangxiu.activity;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -22,7 +25,6 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.blankj.utilcode.util.PermissionUtils;
 import com.zx.zhuangxiu.Constants;
 import com.zx.zhuangxiu.OkHttpUtils;
 import com.zx.zhuangxiu.R;
@@ -34,8 +36,6 @@ import com.zx.zhuangxiu.fragment.HomePageFragment;
 import com.zx.zhuangxiu.fragment.MyPageFragment;
 import com.zx.zhuangxiu.model.AddressService;
 import com.zx.zhuangxiu.model.IMBean;
-
-import java.util.List;
 
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
@@ -125,23 +125,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+//        }
 
-        PermissionUtils.permission(Manifest.permission.CAMERA,Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION).callback(new PermissionUtils.FullCallback() {
-            @Override
-            public void onGranted(List<String> permissionsGranted) {
-
-            }
-
-            @Override
-            public void onDenied(List<String> permissionsDeniedForever, List<String> permissionsDenied) {
-
-            }
-        }).rationale(new PermissionUtils.OnRationaleListener() {
-            @Override
-            public void rationale(ShouldRequest shouldRequest) {
-
-            }
-        }).request();
 
         //TODO
 
@@ -156,11 +141,62 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         }, Conversation.ConversationType.PRIVATE);
+//        initPermission();
+        checkPermission();
 
-//        CheckPermission();
-
-        updateAddress();
     }
+
+    private boolean mShowRequestPermission = true;
+
+    private void initPermission() {
+//    String[] permissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
+//    List<String> mPermissionList = new ArrayList<>();
+//    for (int i = 0; i < permissions.length; i++) {
+//        if (ContextCompat.checkSelfPermission(HomeActivity.this, permissions[i]) != PackageManager.PERMISSION_GRANTED) {
+//            mPermissionList.add(permissions[i]);
+//        }
+//    }
+//    if (mPermissionList.isEmpty()) {// 全部允许
+//        mShowRequestPermission = true;
+//        updateAddress();
+//    } else {//存在未允许的权限
+//        String[] permissionsArr = mPermissionList.toArray(new String[mPermissionList.size()]);
+//        ActivityCompat.requestPermissions(HomeActivity.this, permissionsArr, 101);
+//    }
+
+//        checkPermission();
+    }
+
+    private void checkPermission() {
+        if (ContextCompat.checkSelfPermission(HomeActivity.this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(HomeActivity.this, new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+        }
+        if (ContextCompat.checkSelfPermission(HomeActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(HomeActivity.this, new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.CAMERA}, 2);
+        } else {
+            updateAddress();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        for (int i = 0; i < grantResults.length; i++) {
+            if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                //判断是否勾选禁止后不再询问
+                boolean showRequestPermission = ActivityCompat.shouldShowRequestPermissionRationale(HomeActivity.this, permissions[i]);
+                if (showRequestPermission) {
+                    checkPermission();
+                    return;
+                } else { // false 被禁止了，不在访问
+                    mShowRequestPermission = false;//已经禁止了
+                }
+            }
+        }
+        checkPermission();
+    }
+
+
 
     AMapLocationClient mlocationClient;
     AMapLocationClientOption mLocationOption;
@@ -176,7 +212,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             mlocationClient.setLocationListener(new AMapLocationListener() {
                 @Override
                 public void onLocationChanged(AMapLocation aMapLocation) {
-//                    Toast.makeText(HomeActivity.this, aMapLocation.getLongitude() + ":" + aMapLocation.getLatitude(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(HomeActivity.this, aMapLocation.getLongitude() + ":" + aMapLocation.getLatitude(), Toast.LENGTH_LONG).show();
                     updateAddressServer(aMapLocation.getLongitude() + "", aMapLocation.getLatitude() + "");
 
                     if (mlocationClient != null) {
@@ -201,9 +237,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void updateAddressServer(final String lon, final String lat) {
-        String ss = URLS.updateDynamicAddress( lon, lat);
-        Constants.lat=lat;
-        Constants.lon=lon;
+        String ss = URLS.updateDynamicAddress(lon, lat);
+        Constants.lat = lat;
+        Constants.lon = lon;
 
         OkHttpUtils.get(ss, new OkHttpUtils.ResultCallback<AddressService>() {
             @Override
