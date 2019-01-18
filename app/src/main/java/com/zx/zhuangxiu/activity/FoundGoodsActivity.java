@@ -105,7 +105,7 @@ public class FoundGoodsActivity extends AppCompatActivity implements View.OnClic
 //TODO
 
     }
-boolean dubug=true;//测试发布产品
+boolean dubug=false;//测试发布产品
     @Override
     public void onClick(View view) {
         Intent intent = new Intent();

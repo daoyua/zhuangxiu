@@ -126,7 +126,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
-        PermissionUtils.permission(Manifest.permission.CAMERA).callback(new PermissionUtils.FullCallback() {
+        PermissionUtils.permission(Manifest.permission.CAMERA,Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION).callback(new PermissionUtils.FullCallback() {
             @Override
             public void onGranted(List<String> permissionsGranted) {
 
