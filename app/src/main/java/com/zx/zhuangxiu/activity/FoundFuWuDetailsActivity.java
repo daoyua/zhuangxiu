@@ -208,6 +208,8 @@ private Context context;
             case R.id.fuwudetails_dizhi:
                 Intent intents = new Intent(this, MapActivity.class);
                 intents.putExtra("map", dizhitext.getText().toString());
+//                intents.putExtra("lat",);
+//                intents.putExtra("lon", );
                 startActivity(intents);
                 break;
         }

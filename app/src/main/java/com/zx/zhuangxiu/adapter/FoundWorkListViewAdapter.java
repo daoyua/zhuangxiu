@@ -126,6 +126,8 @@ public class FoundWorkListViewAdapter extends BaseAdapter{
                 Bundle bundle = new Bundle();
                 bundle.putInt("pkId", mList.get(position).getId());
                 bundle.putString("address", mList.get(position).getAddress());
+                bundle.putString("lat", mList.get(position).getLatitude());
+                bundle.putString("lon", mList.get(position).getLongitude());
                 intent.putExtras(bundle);
                 mContext.startActivity(intent);
             }

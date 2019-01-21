@@ -160,6 +160,8 @@ public class FoundWorkerDetailsActivity extends AppCompatActivity implements Vie
             case R.id.worker_details_dizhi:
                 Intent intents = new Intent(this, MapActivity.class);
                 intents.putExtra("map",worker_details_dizhi.getText().toString());
+//                intents.putExtra("lat",worker_details_dizhi.getl);
+//                intents.putExtra("lon",worker_details_dizhi.getText().toString());
                 startActivity(intents);
 
                 break;

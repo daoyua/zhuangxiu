@@ -212,7 +212,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             mlocationClient.setLocationListener(new AMapLocationListener() {
                 @Override
                 public void onLocationChanged(AMapLocation aMapLocation) {
-                    Toast.makeText(HomeActivity.this, aMapLocation.getLongitude() + ":" + aMapLocation.getLatitude(), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(HomeActivity.this, aMapLocation.getLongitude() + ":" + aMapLocation.getLatitude(), Toast.LENGTH_LONG).show();
                     updateAddressServer(aMapLocation.getLongitude() + "", aMapLocation.getLatitude() + "");
 
                     if (mlocationClient != null) {

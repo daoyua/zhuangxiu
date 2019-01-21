@@ -79,6 +79,8 @@
 -keep class com.amap.api.navi.**{*;}
 -keep class com.autonavi.**{*;}
 
+-keep class com.baidu.autoupdatesdk.**{*;}
+
 ##---------------Begin: proguard configuration for Gson  ----------
 # Gson uses generic type information stored in a class file when working with fields. Proguard
 # removes such information by default, so configure it to keep all of it.

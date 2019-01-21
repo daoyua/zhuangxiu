@@ -6,12 +6,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.zx.zhuangxiu.OkHttpUtils;
@@ -47,6 +48,8 @@ public class FoundWorkDetailsActivity extends AppCompatActivity implements View.
     private TextView end_time;
     private int othXer;
     private Context context;
+    private String lat;
+    private String lon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,11 @@ public class FoundWorkDetailsActivity extends AppCompatActivity implements View.
         Bundle bundle = getIntent().getExtras();
         pkId = bundle.getInt("pkId");
         address = bundle.getString("address");
+        lat = bundle.getString("lat");
+        lon = bundle.getString("lon");
+        if(TextUtils.isEmpty(lat)){
+            Toast.makeText(FoundWorkDetailsActivity.this, "没有坐标", Toast.LENGTH_SHORT).show();
+        }
         initView();
         context=this;
     }
@@ -83,6 +91,8 @@ public class FoundWorkDetailsActivity extends AppCompatActivity implements View.
             public void onClick(View v) {
                 Intent intents = new Intent(FoundWorkDetailsActivity.this, MapActivity.class);
                 intents.putExtra("map",work_details_dizhi.getText().toString());
+                intents.putExtra("lat",lat);
+                intents.putExtra("lon",lon);
                 startActivity(intents);
 
             }

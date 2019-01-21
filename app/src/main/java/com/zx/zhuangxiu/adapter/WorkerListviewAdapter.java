@@ -117,6 +117,8 @@ public class WorkerListviewAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent intent=new Intent(mContext, MapActivity.class);
                 intent.putExtra("map",mList.get(position).getAddress());
+                intent.putExtra("lat",mList.get(position).getLatitude());
+                intent.putExtra("lon",mList.get(position).getLongitude());
                 mContext.startActivity(intent);
             }
         });

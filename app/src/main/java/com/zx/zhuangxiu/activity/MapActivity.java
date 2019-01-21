@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps2d.AMap;
+import com.amap.api.maps2d.CameraUpdate;
 import com.amap.api.maps2d.CameraUpdateFactory;
 import com.amap.api.maps2d.MapView;
 import com.amap.api.maps2d.model.BitmapDescriptorFactory;
@@ -72,6 +74,10 @@ public class MapActivity extends AppCompatActivity implements AMapLocationListen
             }
         }
     };
+    private String mudilat;
+    private String mudilon;
+    private double mulon;
+    private double mulat;
 
 
     @Override
@@ -79,12 +85,46 @@ public class MapActivity extends AppCompatActivity implements AMapLocationListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         map = getIntent().getStringExtra("map");
-
-
+        mudilat = getIntent().getStringExtra("lat");
+        mudilon = getIntent().getStringExtra("lon");
         //获取地图控件引用
         initView(savedInstanceState);
 
+try {
 
+    String lons = getIntent().getStringExtra("lon");
+    if(TextUtils.isEmpty(lons)){
+        location();
+    }else{
+        mulon = Double.valueOf(lons);
+        String lats = getIntent().getStringExtra("lat");
+        mulat = Double.valueOf(lats);
+        updateMap(map,mulat,mulon);
+    }
+
+
+}catch (Exception e){
+    Toast.makeText(MapActivity.this, "没有传坐标", Toast.LENGTH_SHORT).show();
+}
+
+    }
+
+    private LatLonPoint currentLatLng = new LatLonPoint(0, 0);
+
+    private void updateMap(String s, double latitude, double longitude) {
+        currentLatLng.setLatitude(latitude);
+        currentLatLng.setLongitude(longitude);
+//        auto_edit.setText(s);
+        LatLng latLonPoint1 = new LatLng(latitude, longitude);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(latLonPoint1);
+        CameraUpdate cameraUpdate1 = CameraUpdateFactory.zoomTo(14);
+        //TODO
+        mAMap.animateCamera(cameraUpdate);
+        mAMap.animateCamera(cameraUpdate1);
+
+        mAMap.animateCamera(cameraUpdate);
+        LatLng latLng = new LatLng(latitude, longitude);
+        Marker marker = mAMap.addMarker(new MarkerOptions().position(latLng).title(s).snippet("DefaultMarker"));
     }
 
     private void initView(Bundle savedInstanceState) {
@@ -93,15 +133,94 @@ public class MapActivity extends AppCompatActivity implements AMapLocationListen
         mMapView.onCreate(savedInstanceState);
         mAMap = mMapView.getMap();
 
+
+
+//        location();
+
+
+
+
+        findViewById(R.id.my_info_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        findViewById(R.id.btn_map).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mudilat!=null){
+                    IntenMap(mudilat, mudilon);
+                }else{
+                    IntenMap(lat+"", lon+"");
+                }
+
+            }
+        });
+
+    }
+
+
+    private void IntenMap(String lat, String lon) {
+        if (isAvilible(this, "com.autonavi.minimap")) {
+            try {
+                Intent intent = Intent.getIntent("androidamap://navi?sourceApplication=null&poiname=" + "" + "&lat="
+                        + lat
+                        + "&lon="
+                        + lon + "&dev=0");
+                startActivity(intent);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Toast.makeText(this, "您尚未安装高德地图", Toast.LENGTH_LONG)
+                    .show();
+            Uri uri = Uri
+                    .parse("market://details?id=com.autonavi.minimap");
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        }
+    }
+
+    public static boolean isAvilible(Context context, String packageName) {
+        // 获取packagemanager
+        final PackageManager packageManager = context.getPackageManager();
+        // 获取所有已安装程序的包信息
+        List<PackageInfo> packageInfos = packageManager.getInstalledPackages(0);
+        // 用于存储所有已安装程序的包名
+        List<String> packageNames = new ArrayList<String>();
+        // 从pinfo中将包名字逐一取出，压入pName list中
+        if (packageInfos != null) {
+            for (int i = 0; i < packageInfos.size(); i++) {
+                String packName = packageInfos.get(i).packageName;
+                packageNames.add(packName);
+            }
+        }
+        // 判断packageNames中是否有目标程序的包名，有TRUE，没有FALSE
+        return packageNames.contains(packageName);
+    }
+
+    public void location() {
         myLocationStyle = new MyLocationStyle();
         myLocationStyle.showMyLocation(true);
         myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.location)));
         mAMap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
         mAMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
         mAMap.setMyLocationType(MyLocationStyle.LOCATION_TYPE_SHOW);
-
-        location();
-
+        mLocationOption = new AMapLocationClientOption();
+//初始化定位
+        mLocationClient = new AMapLocationClient(getApplicationContext());
+//设置定位回调监听
+        mLocationClient.setLocationListener(this);
+        //设置定位模式为AMapLocationMode.Hight_Accuracy，高精度模式。
+        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+        //获取一次定位结果：
+//该方法默认为false。
+        mLocationOption.setOnceLocation(true);
+        //给定位客户端对象设置定位参数
+        mLocationClient.setLocationOption(mLocationOption);
+//启动定位
+        mLocationClient.startLocation();
         GeoCodeUtils.GeocodeSearch(map, this, new GeocodeSearch.OnGeocodeSearchListener() {
             @Override
             public void onRegeocodeSearched(RegeocodeResult regeocodeResult, int i) {
@@ -126,84 +245,19 @@ public class MapActivity extends AppCompatActivity implements AMapLocationListen
 
             }
         });
-
-
-        findViewById(R.id.my_info_back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        findViewById(R.id.btn_map).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            IntenMap(lat,lon);
-            }
-        });
-
-    }
-    private void IntenMap( float lat,float lon ){
-        if (isAvilible(this, "com.autonavi.minimap")) {
-            try {
-                Intent intent = Intent.getIntent("androidamap://navi?sourceApplication=null&poiname="+""+"&lat="
-                        + lat
-                        + "&lon="
-                        + lon + "&dev=0");
-                startActivity(intent);
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            }
-        } else {
-            Toast.makeText(this, "您尚未安装高德地图", Toast.LENGTH_LONG)
-                    .show();
-            Uri uri = Uri
-                    .parse("market://details?id=com.autonavi.minimap");
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
-        }
-    }
-    public static boolean isAvilible(Context context, String packageName) {
-        // 获取packagemanager
-        final PackageManager packageManager = context.getPackageManager();
-        // 获取所有已安装程序的包信息
-        List<PackageInfo> packageInfos = packageManager.getInstalledPackages(0);
-        // 用于存储所有已安装程序的包名
-        List<String> packageNames = new ArrayList<String>();
-        // 从pinfo中将包名字逐一取出，压入pName list中
-        if (packageInfos != null) {
-            for (int i = 0; i < packageInfos.size(); i++) {
-                String packName = packageInfos.get(i).packageName;
-                packageNames.add(packName);
-            }
-        }
-        // 判断packageNames中是否有目标程序的包名，有TRUE，没有FALSE
-        return packageNames.contains(packageName);}
-
-    public void location() {
-
-        mLocationOption = new AMapLocationClientOption();
-//初始化定位
-        mLocationClient = new AMapLocationClient(getApplicationContext());
-//设置定位回调监听
-        mLocationClient.setLocationListener(this);
-        //设置定位模式为AMapLocationMode.Hight_Accuracy，高精度模式。
-        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-        //获取一次定位结果：
-//该方法默认为false。
-        mLocationOption.setOnceLocation(true);
-        //给定位客户端对象设置定位参数
-        mLocationClient.setLocationOption(mLocationOption);
-//启动定位
-        mLocationClient.startLocation();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mMapView.onDestroy();
-        mLocationClient.stopLocation();
-        mLocationClient.onDestroy();
-        handler.removeMessages(10);
+        if(mLocationClient!=null){
+            mLocationClient.stopLocation();
+            mLocationClient.onDestroy();
+            handler.removeMessages(10);
+        }
+
+
     }
 
     @Override

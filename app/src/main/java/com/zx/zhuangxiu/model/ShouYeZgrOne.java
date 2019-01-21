@@ -78,7 +78,25 @@ public class ShouYeZgrOne {
         private int number;
         private String workType;
         private String selfSkills;
+        private String latitude;
+        private String longitude;
         private int distance;
+
+        public String getLatitude() {
+            return latitude;
+        }
+
+        public void setLatitude(String latitude) {
+            this.latitude = latitude;
+        }
+
+        public String getLongitude() {
+            return longitude;
+        }
+
+        public void setLongitude(String longitude) {
+            this.longitude = longitude;
+        }
 
         public String getSelfSkills() {
             return selfSkills;

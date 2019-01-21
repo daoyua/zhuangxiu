@@ -26,8 +26,8 @@ android {
         targetSdkVersion 28
 //        versionCode 3
 //        versionName "version 1.03"
-        versionCode 6
-        versionName "version 2.01"
+        versionCode 7
+        versionName "version 2.02"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             //选择要添加的对应cpu类型的.so库

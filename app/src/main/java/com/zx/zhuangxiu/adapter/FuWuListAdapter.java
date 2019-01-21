@@ -161,6 +161,8 @@ public class FuWuListAdapter extends BaseAdapter{
                 Intent intent = new Intent(mContext, FoundFuWuDetailsActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("pkId", mList.get(position).getId());
+//                bundle.putString("lat", mList.get(position).getId());
+//                bundle.putString("lon", mList.get(position).getId());
                 intent.putExtras(bundle);
                 mContext.startActivity(intent);
             }
