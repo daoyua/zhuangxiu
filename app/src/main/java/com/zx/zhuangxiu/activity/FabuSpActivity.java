@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -347,7 +346,7 @@ public class FabuSpActivity extends AppCompatActivity implements View.OnClickLis
                     if (resultCode == RESULT_OK) {
                         Uri uri = data.getData();
                         try {
-                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+//                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
                             Bitmap bit = ImageYS.getBitmapFormUri(FabuSpActivity.this, uri);
 //                        photoPath(bit);
                             changebitmap(current_type, bit);

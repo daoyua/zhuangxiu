@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -52,11 +53,16 @@ public class MyDianPuActivity extends AppCompatActivity {
         back = (TextView) findViewById(R.id.back);
         dianpuimage = (CircleImageView) findViewById(R.id.dianpuimage);
         address = (LinearLayout) findViewById(R.id.address);
+        //TODO
         address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MyDianPuActivity.this, MapActivity.class);
                 intent.putExtra("map", dizhi.getText().toString());
+                if(!TextUtils.isEmpty(longitude)){
+                    intent.putExtra("lat",latitude);
+                    intent.putExtra("lon",longitude);
+                }
                 startActivity(intent);
             }
         });
@@ -82,10 +88,14 @@ public class MyDianPuActivity extends AppCompatActivity {
         into();
     }
 
-
+    private String longitude;
+    private String latitude;
     private void into() {
         String shop = URLS.shop(intExtra);
         OkHttpUtils.get(shop, new OkHttpUtils.ResultCallback<MyShop>() {
+
+
+
             @Override
             public void onSuccess(MyShop response) {
                 if (response.getResult() == 1) {
@@ -93,6 +103,8 @@ public class MyDianPuActivity extends AppCompatActivity {
                     if (data != null) {
                         dizhi.setText(response.getData().getAddress());
                         dianpuname.setText(response.getData().getNickname());
+                        latitude = data.getLatitude();
+                         longitude = data.getLongitude();
                         Picasso.with(getApplicationContext()).load(URLS.HTTP + response.getData().getShopUrl()).error(R.mipmap.logo_zhanwei).placeholder(R.mipmap.logo_zhanwei).fit().into(dianpuimage);
                     }
 
